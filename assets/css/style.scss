@@ -10,7 +10,6 @@
 
 body {
   background: #303030;
-  padding: 10px;
   color: #F0EAD6;
 }
 
@@ -19,23 +18,38 @@ body {
   backdrop-filter: blur(5px); /* apply a blur effect to the area behind the element */
 }
 
+.wrapper {
+  margin: 0;
+}
 
 #nav-bar {
   display: flex;
-  justify-content: space-around; /* or any other value such as 'space-between' or 'space-evenly' */
+  margin: 0;
   text-align: center;
-  padding: 20px;
-  background-color: #F21B3F;
-  border-radius: 10px;
+  background: rgb(24, 24, 24);
+  opacity: 0.8;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999; /* Ensures the nav bar is on top of other content */
 }
 
-#nav-bar td {
-  align-items: center;
-  background: rgba(242, 27, 63, 0.5);
-  padding: 20px;
+#nav-bar button {
+  align-items: right;
+  border: 1px solid #F0EAD6;
+  border: 5px;
+  background: rgb(24, 24, 24);
+  opacity: 0.6;
+  length: 140px;
+  padding: 30px;
 }
 
-#nav-bar td a {
+#nav-bar button:hover {
+  opacity: 1;
+}
+
+#nav-bar button a {
   color: #F0EAD6;
   text-decoration: none;
 }

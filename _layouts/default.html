@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+    {% include head-custom.html %}
     {% seo %}
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
@@ -19,11 +19,12 @@
     <link rel="stylesheet" href="{{ '/assets/css/ie.css' | relative_url }}">
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    {% include head-custom.html %}
 
   </head>
   <body>
-      
+    <div style="padding: 35px;"></div>
+    {% include home.html %}
+    <br>
     <div class="wrapper">
 
       <section>
@@ -34,7 +35,6 @@
         
         </div>
         <br>
-        {% include home.html %}
         <!-- this is Jekyll magic, each md file in site will be inserted here -->
         {{ content }}
 
