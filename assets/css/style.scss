@@ -10,7 +10,9 @@
 
 body {
   background: #303030;
+  font-family: 'Open Sans', sans-serif;
   color: #F0EAD6;
+  
 }
 
 .shadow {
@@ -43,6 +45,7 @@ body {
   opacity: 0.6;
   length: 140px;
   padding: 30px;
+  color: #F0EAD6;
 }
 
 #nav-bar button:hover {
@@ -54,13 +57,17 @@ body {
   text-decoration: none;
 }
 
+#nav-bar button a:hover {
+  opacity: 1;
+}
+
 #title {
   padding: 15px;
   text-align: center;
-  text-shadow: 2px 2px #ff0000;
+  text-shadow: 2px 2px #0000;
   border-radius: 15px;
   font-size: 30px;
-  background: rgba(41, 191, 18, 0.8);
+  background: rgb(97, 167, 242);
   color: #F0EAD6;
   border-radius: #F0EAD6;
     a {
