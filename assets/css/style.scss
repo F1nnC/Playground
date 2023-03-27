@@ -67,11 +67,33 @@ body {
   text-shadow: 2px 2px #0000;
   border-radius: 15px;
   font-size: 30px;
-  background: rgb(97, 167, 242);
+  background: rgb(119, 51, 172);
   color: #F0EAD6;
   border-radius: #F0EAD6;
     a {
       color: #F0EAD6;
       text-decoration:none
     }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: px;
+}
+
+#div1 {
+  flex: 1;
+  background-color: rgb(101, 134, 224);
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+#div2 {
+  flex: 1;
+  background-color: #F21B3F;
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
 }
