@@ -115,5 +115,23 @@ body {
 }
 
 .ControlB {
-  padding: 20px;
+  height: 75px;
+  width: 75px;
+}
+
+#board {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  margin: auto;
+}
+
+#square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background-color: blue;
 }
