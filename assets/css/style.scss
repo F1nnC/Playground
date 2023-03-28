@@ -76,6 +76,22 @@ body {
     }
 }
 
+#titlerobot {
+  padding: 15px;
+  text-align: center;
+  text-shadow: 2px 2px #0000;
+  border-radius: 15px;
+  font-size: 30px;
+  background: rgb(101, 134, 224);
+  color: #F0EAD6;
+  border-radius: #F0EAD6;
+    a {
+      color: #F0EAD6;
+      text-decoration:none
+    }
+}
+
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -96,4 +112,8 @@ body {
   text-align: center;
   margin-right: 20px;
   margin-left: 20px;
+}
+
+.ControlB {
+  padding: 20px;
 }

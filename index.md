@@ -1,3 +1,7 @@
+---
+layout: default 
+---
+
 ## Playground
 
 - Add an image here
