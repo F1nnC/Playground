@@ -8,14 +8,14 @@ layout: robot
 <div class="container">
   <div id="div1" class="shadow">
         <h1>Controller</h1>
-        <div>
+        <div style="padding: 5px;">
         <button class="ControlB" id="up">UP</button>
         </div>
         <div>
         <button class="ControlB" id="left">LEFT</button>
         <button class="ControlB" id="right">RIGHT</button>
         </div>
-        <div>
+        <div style="padding: 5px;">
         <button class="ControlB" id="down">DOWN</button>
         </div>
     </div>

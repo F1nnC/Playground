@@ -117,6 +117,11 @@ body {
 .ControlB {
   height: 75px;
   width: 75px;
+  border: 0px;
+  opacity: 0.9;
+}
+.ControlB:hover {
+  opacity: 1;
 }
 
 #board {
