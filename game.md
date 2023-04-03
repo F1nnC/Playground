@@ -17,21 +17,40 @@
     var y = canvas.height-30;
     var dx = 2;
     var dy = -2;
-    function draw() {
-        console.log(x);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    function drawBall() {
         ctx.beginPath();
-        ctx.arc(240, 240, 15, 0, Math.PI*2, false);
-        ctx.fillStyle = "rgb(0,0,255)";
+        ctx.arc(x, y, 10, 0, Math.PI*2);
+        ctx.fillStyle = "#0095DD";
         ctx.fill();
-        
         ctx.closePath();
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBall();
+        if (x > 480) {
+            dx = -2;
+        }
+        if (x < 0) {
+            dx = 2;
+        }
+        if (y > 320) {
+            dy = -2;
+        }
+        if (y < 0) {
+            dy = 2;
+        }
         x += dx;
         y += dy;
     }
-    // ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-    // ctx.fillRect (30, 30, 50, 50);
-    setInterval(draw(), 10);
+
+    setInterval(draw, 10);
+    function pause() {
+        switch(e.code) {
+            case p:
+        }
+    }
 </script>
 
 </body>
