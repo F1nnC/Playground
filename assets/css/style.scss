@@ -10,7 +10,7 @@
 
 body {
   background: #303030;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans';
   color: #F0EAD6;
   
 }
@@ -37,11 +37,23 @@ body {
   z-index: 999; /* Ensures the nav bar is on top of other content */
 }
 
-#nav-bar button {
+#nav-bar button, button .robot, button .home, button .api, button .about, button .profile {
   align-items: right;
   border: 1px solid #F0EAD6;
   border: 5px;
   background: rgb(24, 24, 24);
+  opacity: 0.6;
+  length: 140px;
+  padding: 30px;
+  color: #F0EAD6;
+}
+
+#nav-bar .active {
+  /* styles for the active button */
+  align-items: right;
+  border: 1px solid #F0EAD6;
+  border: 5px;
+  background: rgb(226, 2, 2);
   opacity: 0.6;
   length: 140px;
   padding: 30px;
