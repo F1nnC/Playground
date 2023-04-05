@@ -20,23 +20,30 @@ function Bar() {
     ctx.beginPath()
     ctx.arc()
 }
+function drawText(text) {
+    ctx.font = "bold 70px arial";
+    ctx.fillStyle = "blue";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(text, WIDTH / 2, HEIGHT / 2);
+}
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
-    if (x > 480) {
+    if (x > 470) {
         dx = -2;
     }
-    if (x < 0) {
+    if (x < 10) {
         dx = 2;
     }
-    if (y > 320) {
+    if (y > 310) {
         dy = -2;
     }
-    if (y < 0) {
+    if (y < 10) {
         dy = 2;
     }
     x += dx;
-        y += dy;
+    y += dy;
 }
 function pause() {
     if (stopped == false) {
@@ -45,6 +52,7 @@ function pause() {
         dx = 0;
         dy = 0;
         stopped = true;
+        drawText("Pause");
         return
     }
     if (stopped == true) {
@@ -54,8 +62,5 @@ function pause() {
         return
     }
 }
-// setInterval(draw, 10);
-while (true) {
-    draw();
-    
-}
+
+setInterval(draw, 10);
