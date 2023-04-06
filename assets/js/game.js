@@ -25,33 +25,39 @@ function drawText(text) {
     ctx.fillStyle = "blue";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText(text, WIDTH / 2, HEIGHT / 2);
+    ctx.fillText(text, 240, 160);
 }
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (stopped == false) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
     drawBall();
-    if (x > 470) {
+    if (x + dx> 480) {
         dx = -2;
     }
-    if (x < 10) {
+    if (x + dx < 0) {
         dx = 2;
     }
-    if (y > 310) {
+    if (y + dy > 320) {
         dy = -2;
     }
-    if (y < 10) {
+    if (y +dy < 00) {
         dy = 2;
     }
     x += dx;
     y += dy;
+    
 }
+setInterval(draw, 10)
 function pause() {
     if (stopped == false) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         i = dx;
         j = dy;
         dx = 0;
         dy = 0;
         stopped = true;
+
         drawText("Pause");
         return
     }
@@ -63,4 +69,3 @@ function pause() {
     }
 }
 
-setInterval(draw, 10);
