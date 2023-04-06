@@ -1,9 +1,51 @@
 ---
 layout: robot
 ---
-
+<style>
+.dropdown {
+  display: inline-block;
+  background-color: green;
+  font-size: 25px;
+}
+.dropdown-content {
+  text-align: center;
+  display: none;
+  position: absolute;
+  background-color: rgb(102, 255, 153);
+  min-width: 160px;
+  box-shadow: green;
+  padding: 12px 16px;
+  z-index: 1;
+  color: rgb(255, 80, 80);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.levelAlign {
+  text-align: center;
+  position: relative;
+}
+.levelButton {
+  width: 20%;
+  text-align: center;
+  position: relative;
+}
+</style>
 
 # Robot Learning
+
+
+<div class="dropdown">
+  <div id="levelAlign">
+  <span>Choose Your Level</span>
+  </div>
+  <div class="dropdown-content">
+    <div class="levelButton"><a href="/robotlvl1"><p>Level 1</p></a></div>
+    <p>Level 2</p>
+    <p>Level 3</p>
+    <p>Level 4</p>
+  </div>
+</div>
 
 <div class="container">
   <div id="div1" class="shadow">
