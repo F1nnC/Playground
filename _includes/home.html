@@ -1,10 +1,117 @@
-<table>
-    <tr>
-        <td><a href="/">Home</a></td>
-        <td><a href="/housing">Housing</a></td>
-        <td><a href="/food">Food</a></td>
-        <td><a href="/activities">Activities</a></td>
-        <td><a href="/family-night">Family-Night</a></td>
-        <td><a href="/gallery">Gallery</a></td>
-    </tr>
-</table>
+<!-- If you want to see the page when running local, just do http://localhost:4000/EXAMPLEPAGE-->
+<!-- EXAMPLE PAGES ON HOW-->
+<!-- http://localhost:4000/robot-->
+<!-- http://localhost:4000/API-->
+
+<style>
+button {
+    font-size: 15px;
+}
+</style>
+<div id="nav-bar">
+    <!--Finn, please try and fix if you get time-->
+    <!-- <div class="container">
+    <a href="/"><img src="/images/Playground-Logo-transparent.png" position="absolute" alt="Logo" class="image" style=width:100%></a>
+        <div class="middle">
+            <div class="text">Playground</div>
+        </div>
+    </div> -->
+    <a href="/"><button>Home</button></a>
+    <a href="/robot"><button>Robot</button></a>
+    <a href="/API"><button>API</button></a>
+    <a href="/profile"><button>Profile</button></a>
+    <a href="/About"><button>About</button></a>
+    <a href="/game"><button>Game</button></a>
+</div>
+</html>
+<style>
+/*CSS Code for the Logo*/
+.container {
+  position: relative;
+  width: 50%;
+}
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.container:hover .image {
+  opacity: 0.3;
+}
+.container:hover .middle {
+  opacity: 1;
+}
+.text {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+</style>
+<!--Edwin's Test Code-->
+<!-- <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: gray;
+    }
+    nav {
+        width: 100%;
+        background: black;
+        overflow: auto;
+    }
+    ul {
+        padding: 0;
+        margin: 0 0 0 150px;
+        list-style: none;
+    }
+    li {
+        float: left;
+    }
+    .logo img {
+        position: absolute;
+        margin-top: 15px;
+        margin-left: 10px;
+    }
+    .nav a {
+        width: 100px;
+        display: block;
+        padding: 20px 15px;
+        text-decoration: none;
+        font-family: Arial;
+        color: blue;
+        text-align: center;
+    }
+    nav a:hover {
+        background: orange;
+        transition: 0.5s;
+        text-transform: uppercase;
+    }
+</style>
+<head>
+    <title>Playground Group Project | Home</title>
+</head>
+<body>
+    <div class ="logo"><a href=""><img src="/images/Playground-Logo.jpeg"></a></div>
+    <nav>
+        <ul>
+            <li><a href ="#">Home</a></li>
+            <li><a href ="#">Robot</a></li>
+            <li><a href ="#">API</a></li>
+            <li><a href ="#">Profile</a></li>
+            <li><a href ="#">About</a></li>
+        </ul>
+    </nav>
+</body> -->

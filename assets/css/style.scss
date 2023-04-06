@@ -1,16 +1,155 @@
 ---
 ---
 
-@import "{{ site.theme }}";
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap);
+
 
 /* "row style" is flexible size and aligns pictures in center */
-.row {
-    align-items: center;
-    display: flex;
-  }
+
+body {
+  background: #303030;
+  font-family: 'Open Sans';
+  color: #F0EAD6;
   
-  /* "column style" is one-third of the width with padding */
-  .column {
-    flex: 33.33%;
-    padding: 5px;
-  }
+}
+
+.shadow {
+  box-shadow: 0 0 10px rgba(24, 24, 24, 0.6); /* create a regular shadow */
+  backdrop-filter: blur(5px); /* apply a blur effect to the area behind the element */
+}
+
+.wrapper {
+  margin: 0;
+}
+
+#nav-bar {
+  display: flex;
+  margin: 0;
+  text-align: center;
+  background: rgb(24, 24, 24);
+  opacity: 0.8;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999; /* Ensures the nav bar is on top of other content */
+}
+
+#nav-bar button, button .robot, button .home, button .api, button .about, button .profile {
+  align-items: right;
+  border: 1px solid #F0EAD6;
+  border: 5px;
+  background: rgb(24, 24, 24);
+  opacity: 0.6;
+  length: 140px;
+  padding: 30px;
+  color: #F0EAD6;
+}
+
+#nav-bar .active {
+  /* styles for the active button */
+  align-items: right;
+  border: 1px solid #F0EAD6;
+  border: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 0.6;
+  length: 140px;
+  padding: 30px;
+  color: #F0EAD6;
+}
+
+#nav-bar button:hover {
+  opacity: 1;
+}
+
+#nav-bar button a {
+  color: #F0EAD6;
+  text-decoration: none;
+}
+
+#nav-bar button a:hover {
+  opacity: 1;
+}
+
+#title {
+  padding: 15px;
+  text-align: center;
+  text-shadow: 2px 2px #0000;
+  border-radius: 15px;
+  font-size: 30px;
+  background: rgb(119, 51, 172);
+  color: #F0EAD6;
+  border-radius: #F0EAD6;
+    a {
+      color: #F0EAD6;
+      text-decoration:none
+    }
+}
+
+#titlerobot {
+  padding: 15px;
+  text-align: center;
+  text-shadow: 2px 2px #0000;
+  border-radius: 15px;
+  font-size: 30px;
+  background: rgb(101, 134, 224);
+  color: #F0EAD6;
+  border-radius: #F0EAD6;
+    a {
+      color: #F0EAD6;
+      text-decoration:none
+    }
+}
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: px;
+}
+
+#div1 {
+  flex: 1;
+  background-color: rgb(101, 134, 224);
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+#div2 {
+  flex: 1;
+  background-color: #F21B3F;
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.ControlB {
+  height: 75px;
+  width: 75px;
+  border: 0px;
+  opacity: 0.9;
+}
+.ControlB:hover {
+  opacity: 1;
+}
+
+#board {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 3px solid black;
+  margin: auto;
+}
+
+#square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background-image: url("https://f1nnc.github.io/Playground/images/rooobot.png");
+  background-size: cover;
+}
