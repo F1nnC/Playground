@@ -94,7 +94,7 @@ body {
   text-shadow: 2px 2px #0000;
   border-radius: 15px;
   font-size: 30px;
-  background: rgb(101, 134, 224);
+  background: rgba(101, 134, 224, 1);
   color: #F0EAD6;
   border-radius: #F0EAD6;
     a {
@@ -112,7 +112,7 @@ body {
 
 #div1 {
   flex: 1;
-  background-color: rgb(101, 134, 224);
+  background-color: rgb(221, 126, 44);
   text-align: center;
   margin-right: 20px;
   margin-left: 20px;
@@ -120,7 +120,7 @@ body {
 
 #div2 {
   flex: 1;
-  background-color: #F21B3F;
+  background-color: rgba(101, 105, 224, 0.9);
   text-align: center;
   margin-right: 20px;
   margin-left: 20px;

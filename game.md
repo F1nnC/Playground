@@ -31,7 +31,7 @@
     }
     // ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
     // ctx.fillRect (30, 30, 50, 50);
-    setInterval(draw(), 10);
+    setInterval(draw, 10);
 </script>
 
 </body>
