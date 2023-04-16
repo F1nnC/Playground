@@ -17,6 +17,11 @@
 
   </head>
   <body>
+    <style>
+      #div3 {
+        background-color: rgb(29, 27, 27);
+      }
+    </style>
     <div style="padding: 35px;"></div>
     {% include home.html %}
     <br>
@@ -32,10 +37,9 @@
         </div>
         <br>
         <!-- this is Jekyll magic, each md file in site will be inserted here -->
-        {{ content }}
 
       </section>
-
+      {{ content }}
     </div>
   </body>
 </html>

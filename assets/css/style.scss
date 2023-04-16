@@ -12,7 +12,6 @@ body {
   background: #303030;
   font-family: 'Open Sans';
   color: #F0EAD6;
-  
 }
 
 .shadow {
@@ -46,6 +45,7 @@ body {
   length: 140px;
   padding: 30px;
   color: #F0EAD6;
+  transition-duration: 0.4s;
 }
 
 #nav-bar .active {
@@ -58,6 +58,7 @@ body {
   length: 140px;
   padding: 30px;
   color: #F0EAD6;
+  transition-duration: 0.4s;
 }
 
 #nav-bar button:hover {
@@ -67,6 +68,7 @@ body {
 #nav-bar button a {
   color: #F0EAD6;
   text-decoration: none;
+  transition-duration: 0.4s;
 }
 
 #nav-bar button a:hover {
@@ -76,10 +78,10 @@ body {
 #title {
   padding: 15px;
   text-align: center;
-  text-shadow: 2px 2px #0000;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
   font-size: 30px;
-  background: rgb(119, 51, 172);
+  background: rgba(0, 52, 89, 1);;
   color: #F0EAD6;
   border-radius: #F0EAD6;
     a {
@@ -94,7 +96,7 @@ body {
   text-shadow: 2px 2px #0000;
   border-radius: 15px;
   font-size: 30px;
-  background: rgb(101, 134, 224);
+  background: rgba(101, 134, 224, 1);
   color: #F0EAD6;
   border-radius: #F0EAD6;
     a {
@@ -105,14 +107,15 @@ body {
 
 
 .container {
-  display: flex;
   justify-content: space-between;
-  padding: px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
 }
 
 #div1 {
   flex: 1;
-  background-color: rgb(101, 134, 224);
+  background-color: rgb(227, 11, 11);
   text-align: center;
   margin-right: 20px;
   margin-left: 20px;
@@ -120,10 +123,24 @@ body {
 
 #div2 {
   flex: 1;
-  background-color: #F21B3F;
+  background-color: rgba(101, 105, 224, 0.9);
   text-align: center;
   margin-right: 20px;
   margin-left: 20px;
+}
+
+#div3 {
+  flex: 1;
+  background-color: rgb(227, 11, 11);
+  text-align: center;
+  margin-left: 20px;
+}
+
+#div4 {
+  width: 350px;
+  flex: 1;
+  background-color: rgba(220, 224, 101, 0.9);
+  text-align: center;
 }
 
 .ControlB {
@@ -136,20 +153,57 @@ body {
   opacity: 1;
 }
 
-#board {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  border: 3px solid black;
-  margin: auto;
+.label-block {
+  padding: 5px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 16px;
+  color: black;
 }
 
-#square {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50px;
-  height: 50px;
-  background-image: url("https://f1nnc.github.io/Playground/images/rooobot.png");
-  background-size: cover;
+.block-input {
+  width: 15px;
+}
+
+.up-block {
+  background-color: #da3030;
+  border-radius: 5px 0px 0px 5px;
+  padding: 10px;
+  display: inline-block;
+  width: 150px;
+  text-align: left;
+}
+
+.down-block {
+  background-color: #e139c0;
+  border-radius: 5px 0px 0px 5px;
+  padding: 10px;
+  display: inline-block;
+  width: 150px;
+  text-align: left;
+}
+
+.left-block {
+  background-color: #08dc72;
+  border-radius: 5px 0px 0px 5px;
+  padding: 10px;
+  display: inline-block;
+  width: 150px;
+  text-align: left;
+}
+
+.right-block {
+  background-color: #0852dc;
+  border-radius: 5px 0px 0px 5px;
+  padding: 10px;
+  display: inline-block;
+  width: 150px;
+  text-align: left;
+}
+
+.loop-block {
+  display: inline-block;
+  background-color: #da8d30;
+  padding-left: 5px;
+  padding-bottom: 5px;
 }
