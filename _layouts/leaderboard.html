@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Input Form</title>
+</head>
+<body>
+    <h1>User Input Form</h1>
+    <form action="http://localhost:___/add_user" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="level">Level:</label>
+        <input type="number" id="level" name="level" required>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Level</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.level }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Input Form</title>
+</head>
+<body>
+    <h1>User Input Form</h1>
+    <form action="http://localhost:5000/add_user" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="level">Level:</label>
+        <input type="number" id="level" name="level" required>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <a href="/leaderboard">View Leaderboard</a>
+</body>
+</html>
