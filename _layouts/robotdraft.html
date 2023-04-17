@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Robot Game</title>
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 50px);
+      grid-template-rows: repeat(5, 50px);
+      grid-gap: 5px;
+      margin-bottom: 20px;
+    }
+    .cell {
+      background-color: #eee;
+      border: 1px solid #ccc;
+      text-align: center;
+      font-size: 24px;
+      line-height: 50px;
+    }
+    .robot {
+      background-color: #f00;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid"></div>
+  <input type="text" id="input" placeholder="Enter command">
+  <button id="submit">Submit</button>
+  
+  <script>
+    const gridEl = document.querySelector('.grid');
+    const inputEl = document.querySelector('#input');
+    const submitBtn = document.querySelector('#submit');
+    let robotPosition = { x: 0, y: 0 };
+    
+    function renderGrid() {
+      gridEl.innerHTML = '';
+      for (let i = 0; i < 25; i++) {
+        const cellEl = document.createElement('div');
+        cellEl.classList.add('cell');
+        if (robotPosition.x === i % 5 && robotPosition.y === Math.floor(i / 5)) {
+          cellEl.classList.add('robot');
+          cellEl.textContent = '^';
+        }
+        gridEl.appendChild(cellEl);
+      }
+    }
+    
+    function handleInput() {
+      const command = inputEl.value.trim().toLowerCase();
+      if (command === 'move up' && robotPosition.y > 0) {
+        robotPosition.y--;
+      } else if (command === 'move down' && robotPosition.y < 4) {
+        robotPosition.y++;
+      } else if (command === 'move left' && robotPosition.x > 0) {
+        robotPosition.x--;
+      } else if (command === 'move right' && robotPosition.x < 4) {
+        robotPosition.x++;
+      }
+      inputEl.value = '';
+      renderGrid();
+    }
+    
+    inputEl.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        handleInput();
+      }
+    });
+    
+    submitBtn.addEventListener('click', function() {
+      handleInput();
+    });
+    
+    renderGrid();
+  </script>
+</body>
+</html>
