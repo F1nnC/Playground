@@ -9,8 +9,7 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="480" height="320"></canvas><script src="{{ '/assets/js/game.js' | relative_url }}"></script>
-<button onclick="pause()">Pause</button>
+<canvas id="myCanvas" tabindex='1' width="480" height="320"></canvas><script src="{{ '/assets/js/game.js' | relative_url }}"></script>
 
 </body>
 </html>
