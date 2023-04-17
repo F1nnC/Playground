@@ -14,7 +14,9 @@ layout: robot
 </div>
 <br>
 <button onclick="run()">RUN</button>
-<button onclick="reset()">RESET</button>
+<form action="https://f1nnc.github.io/Playground/robot2">
+    <button type="submit">RESET</button>
+</form>
 </div>
 <div id="div4" class="shadow" style="padding: 50px;">
 <h1>Simulation</h1>
