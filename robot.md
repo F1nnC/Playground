@@ -23,8 +23,6 @@ layout: robot
         <button class="ControlB" onclick="down()">DOWN</button>
       </div>
     </div>
-    <input placeholder="How many times right" id="right">
-    <button onclick="run()">RUN</button>
   </div>
   <div id="div2" class="shadow" style="padding: 50px;">
     <h1>Simulation</h1>
