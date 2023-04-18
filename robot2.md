@@ -48,19 +48,10 @@ function draw() {
     ctx.fill();
     ctx.closePath();
 
-    // Check if the square hits the walls of the canvas
-    if (squareX + squareSize > canvasWidth) {
-        squareX = canvasWidth - squareSize;
-    }
-    if (squareX < 0) {
-        squareX = 0;
-    }
-    if (squareY + squareSize > canvasHeight) {
-        squareY = canvasHeight - squareSize;
-    }
-    if (squareY < 0) {
-        squareY = 0;
-    }
+    ctx.beginPath();
+    ctx.arc(225, 225, 10, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.closePath();
 }
 
 function run() {
@@ -69,19 +60,30 @@ function run() {
     LEFTinput = parseInt(document.getElementById("left").value);
     RIGHTinput = parseInt(document.getElementById("right").value);
     for (let i = 0; i < UPinput; i++) {
-        setTimeout(up, 800);
+        setTimeout(up, 800 * i);
     }
     for (let i = 0; i < DOWNinput; i++) {
-        setTimeout(down, 800);
+        setTimeout(down, 800 * i);
     }
     for (let i = 0; i < LEFTinput; i++) {
-        setTimeout(left, 800);
+        setTimeout(left, 800 * i);
     }
     for (let i = 0; i < RIGHTinput; i++) {
-        setTimeout(right, 800);
+        setTimeout(right, 800 * i);
     }
 }
 
+
+function win() {
+    if (squareX == 200 && squareY == 200) {
+        let person = prompt("Please enter your name to get credit for the level");
+        squareX = 0
+        squareY = 0
+    }
+    else {
+        return
+    }
+}
 
 function right() {
     squareX += squareSize;
@@ -115,6 +117,8 @@ function down() {
     }
 }
 
+setInterval(win, 1000)
 setInterval(draw, 10);
+
 
 </script>
