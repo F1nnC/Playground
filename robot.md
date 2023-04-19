@@ -74,9 +74,28 @@ function draw() {
   ctx.fill();
   ctx.closePath();
 
-
-  // Check if the square hits the walls of the canvas
 }
+
+function collide() {
+  if (squareX == barX1 && squareY == barY1) {
+    squareX = 0;
+    squareY = 0;
+  }
+  if (squareX == barX1 && squareY == barY2) {
+    squareX = 0;
+    squareY = 0;
+  }
+  if (squareX == barX1 && squareY == barY3) {
+    squareX = 0;
+    squareY = 0;
+  }
+  if (squareX == barX1 && squareY == barY4) {
+    squareX = 0;
+    squareY = 0;
+  }
+}
+
+
 function win() {
     if (squareX == 200 && squareY == 200) {
         let person = prompt("Please enter your name to get credit for the level");
@@ -91,6 +110,7 @@ function right() {
     squareX = canvasWidth - squareSize;
   }
     win();
+    collide();
 }
 
 function left() {
@@ -100,6 +120,7 @@ function left() {
     squareX = 0;
   }
   win();
+  collide();
 }
 
 function up() {
@@ -109,6 +130,7 @@ function up() {
     squareY = 0;
   }
   win();
+  collide();
 }
 
 function down() {
@@ -118,6 +140,7 @@ function down() {
     squareY = canvasHeight - squareSize;
   }
   win();
+  collide();
 }
 
 setInterval(draw, 10);
