@@ -131,6 +131,7 @@ function up() {
   }
   win();
   collide();
+  
 }
 
 function down() {

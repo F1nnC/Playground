@@ -62,7 +62,6 @@ function draw() {
 // and uses setInterval to execute each movement in sequence at a delay of 800 milliseconds.
 function run() {
     // Read input values from the HTML document and convert them to integers.
-    looper = parseInt(document.getElementById("loop").value);
 
     runner.style.opacity = 0;
     
