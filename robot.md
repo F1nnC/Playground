@@ -42,6 +42,11 @@ var canvasHeight = sim.height;
 var squareSize = 50;
 var squareX = canvasWidth - squareSize;
 var squareY = 0;
+var barX1 = 100;
+var barY1 = 100;
+var barY2 = 50;
+var barY3 = 0;
+var barY4 = 200;
 squareX = 0;
 squareY = 0;
 
@@ -49,12 +54,22 @@ squareY = 0;
 function draw() {
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
   ctx.beginPath();
-  ctx.fillRect(squareX, squareY, squareSize, squareSize);
   ctx.fillStyle = "rgb(0, 0, 0)";
+  ctx.fillRect(squareX, squareY, squareSize, squareSize);
+  ctx.fill();
+  ctx.closePath();
+
+  ctx.beginPath();
+  ctx.fillStyle = "rgb(255, 0, 0)";
+  ctx.fillRect(barX1, barY1, 50, 50);
+  ctx.fillRect(barX1, barY2, 50, 50);
+  ctx.fillRect(barX1, barY3, 50, 50);
+  ctx.fillRect(barX1, barY4, 50, 50);
   ctx.fill();
   ctx.closePath();
   
   ctx.beginPath();
+  ctx.fillStyle = "yellow";
   ctx.arc(225, 225, 10, 0, 2 * Math.PI);
   ctx.fill();
   ctx.closePath();

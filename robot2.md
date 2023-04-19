@@ -46,13 +46,14 @@ let winCheck = 0;
 function draw() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     ctx.beginPath();
-    ctx.fillRect(squareX, squareY, squareSize, squareSize);
     ctx.fillStyle = "rgb(0, 0, 0)";
+    ctx.fillRect(squareX, squareY, squareSize, squareSize);
     ctx.fill();
     ctx.closePath();
 
     //barrier
     ctx.beginPath();
+    ctx.fillStyle = "rgb(255, 0, 0)";
     ctx.fillRect(barX1, barY1, 50, 50);
     ctx.fillRect(barX2, barY1, 50, 50);
     ctx.fillRect(barX3, barY1, 50, 50);
@@ -61,13 +62,32 @@ function draw() {
 
     //end point
     ctx.beginPath();
+    ctx.fillStyle = "yellow";
     ctx.arc(225, 225, 10, 0, 2 * Math.PI);
     ctx.fill();
     ctx.closePath();
 }
 
 function collide() {
-
+    if (squareX == barX1 && squareY == barY1) {
+        squareX = 0;
+        squareY = 0;
+        console.log("collide");
+        return;
+    }
+    if (squareX == barX1 && squareY == barY1) {
+        squareX = 0;
+        squareY = 0;
+        console.log("collide");
+        return;
+    }
+    if (squareX == barX1 && squareY == barY1) {
+        squareX = 0;
+        squareY = 0;
+        console.log("collide");
+        return;
+    }
+    return;
 }
 
 // This function reads input values from the HTML document, creates an array of movements based on the input, 
@@ -134,6 +154,7 @@ function right() {
     if (squareX + squareSize > canvasWidth) {
         squareX = canvasWidth - squareSize;
     }
+    collide();
     console.log("right")
 }
 
@@ -143,6 +164,7 @@ function left() {
     if (squareX < 0) {
         squareX = 0;
     }
+    collide();
     console.log("left")
 }
 
@@ -152,6 +174,7 @@ function up() {
     if (squareY < 0) {
         squareY = 0;
     }
+    collide();
     console.log("up")
 }
 
@@ -161,6 +184,7 @@ function down() {
     if (squareY + squareSize > canvasHeight) {
         squareY = canvasHeight - squareSize;
     }
+    collide();
     console.log("down")
 }
 
