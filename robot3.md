@@ -64,7 +64,7 @@ function run() {
     // Read input values from the HTML document and convert them to integers.
 
     runner.style.opacity = 0;
-    
+    looper = parseInt(document.getElementById("loop").value);
 
     // Create an array to hold the movements.
     let movements = [];
