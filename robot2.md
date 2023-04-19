@@ -13,7 +13,7 @@ layout: robot
     <div class="right-block"><input id="right" class="block-input"><label class="label-block"><b>RIGHT</b></label></div><br>
 </div>
 <br>
-<button onclick="run()">RUN</button>
+<button id="runner" onclick="run()">RUN</button>
 <form action="https://f1nnc.github.io/Playground/robot2">
     <button type="submit">RESET</button>
 </form>
@@ -28,16 +28,19 @@ layout: robot
 </div>
 
 <script>
+var runner = document.getElementById("runner");
 var sim = document.getElementById("sim");
 var ctx = sim.getContext("2d");
 var canvasWidth = sim.width;
 var canvasHeight = sim.height;
 var squareSize = 50;
-var squareX = canvasWidth - squareSize;
+var squareX = 0;
 var squareY = 0;
-var input = parseInt(document.getElementById("right").value);
-squareX = 0;
-squareY = 0;
+var barX1 = 100;
+var barX2 = 150;
+var barX3 = 200;
+var barY1 = 100;
+let winCheck = 0;
 
 
 function draw() {
@@ -48,49 +51,90 @@ function draw() {
     ctx.fill();
     ctx.closePath();
 
+    //barrier
+    ctx.beginPath();
+    ctx.fillRect(barX1, barY1, 50, 50);
+    ctx.fillRect(barX2, barY1, 50, 50);
+    ctx.fillRect(barX3, barY1, 50, 50);
+    ctx.fill();
+    ctx.closePath();
+
+    //end point
     ctx.beginPath();
     ctx.arc(225, 225, 10, 0, 2 * Math.PI);
     ctx.fill();
     ctx.closePath();
 }
 
+function collide() {
+
+}
+
+// This function reads input values from the HTML document, creates an array of movements based on the input, 
+// and uses setInterval to execute each movement in sequence at a delay of 800 milliseconds.
 function run() {
+    // Read input values from the HTML document and convert them to integers.
     UPinput = parseInt(document.getElementById("up").value);
     DOWNinput = parseInt(document.getElementById("down").value);
     LEFTinput = parseInt(document.getElementById("left").value);
     RIGHTinput = parseInt(document.getElementById("right").value);
-    for (let i = 0; i < UPinput; i++) {
-        setTimeout(up, 800 * i);
-    }
-    for (let i = 0; i < DOWNinput; i++) {
-        setTimeout(down, 800 * i);
-    }
-    for (let i = 0; i < LEFTinput; i++) {
-        setTimeout(left, 800 * i);
-    }
-    for (let i = 0; i < RIGHTinput; i++) {
-        setTimeout(right, 800 * i);
-    }
-}
 
+    runner.style.opacity = 0;
+    
+
+    // Create an array to hold the movements.
+    let movements = [];
+
+    // Push 'up' movements to the array.
+    for (let i = 0; i < UPinput; i++) {
+        movements.push(up);
+    }
+
+    // Push 'down' movements to the array.
+    for (let i = 0; i < DOWNinput; i++) {
+        movements.push(down);
+    }
+
+    // Push 'left' movements to the array.
+    for (let i = 0; i < LEFTinput; i++) {
+        movements.push(left);
+    }
+
+    // Push 'right' movements to the array.
+    for (let i = 0; i < RIGHTinput; i++) {
+        movements.push(right);
+    }
+
+    // Set the initial index to 0 and execute each movement in sequence with a delay of 800 milliseconds.
+    let index = 0;
+    let intervalId = setInterval(() => {
+        // If the end of the movements array has been reached, stop executing movements.
+        if (index >= movements.length) {
+            clearInterval(intervalId);
+            win(); // Call the win function.
+            return;
+        }
+        movements[index](); // Execute the movement at the current index.
+        index++; // Increment the index.
+    }, 800);
+}
 
 function win() {
     if (squareX == 200 && squareY == 200) {
         let person = prompt("Please enter your name to get credit for the level");
-        squareX = 0
-        squareY = 0
-    }
-    else {
-        return
+        console.log(person); // Print the entered name to the console.
     }
 }
 
+
 function right() {
     squareX += squareSize;
+
     // Check if the square hits the right wall
     if (squareX + squareSize > canvasWidth) {
         squareX = canvasWidth - squareSize;
     }
+    console.log("right")
 }
 
 function left() {
@@ -99,6 +143,7 @@ function left() {
     if (squareX < 0) {
         squareX = 0;
     }
+    console.log("left")
 }
 
 function up() {
@@ -107,6 +152,7 @@ function up() {
     if (squareY < 0) {
         squareY = 0;
     }
+    console.log("up")
 }
 
 function down() {
@@ -115,9 +161,10 @@ function down() {
     if (squareY + squareSize > canvasHeight) {
         squareY = canvasHeight - squareSize;
     }
+    console.log("down")
 }
 
-setInterval(win, 1000)
+
 setInterval(draw, 10);
 
 
