@@ -100,8 +100,25 @@ function win() {
     if (squareX == 200 && squareY == 200) {
         let person = prompt("Please enter your name to get credit for the level");
         console.log(person); // Print the entered name to the console.
+
+        fetch('/api/leaderboard', {
+            method: 'POST',
+            body: JSON.stringify({
+                name: person,
+                level: 'Level 1'
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            console.log(response);
+            fetch('/api/leaderboard').then(response => response.json()).then(data => console.log(data));
+        }).catch(error => {
+            console.error(error);
+        });
     }
 }
+
 
 function right() {
   squareX += squareSize;
