@@ -42,7 +42,6 @@ var canvasHeight = sim.height;
 var squareSize = 50;
 var squareX = canvasWidth - squareSize;
 var squareY = 0;
-var input = parseInt(document.getElementById("right").value);
 squareX = 0;
 squareY = 0;
 
@@ -54,28 +53,20 @@ function draw() {
   ctx.fillStyle = "rgb(0, 0, 0)";
   ctx.fill();
   ctx.closePath();
+  
+  ctx.beginPath();
+  ctx.arc(225, 225, 10, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.closePath();
+
 
   // Check if the square hits the walls of the canvas
-  if (squareX + squareSize > canvasWidth) {
-    squareX = canvasWidth - squareSize;
-  }
-  if (squareX < 0) {
-    squareX = 0;
-  }
-  if (squareY + squareSize > canvasHeight) {
-    squareY = canvasHeight - squareSize;
-  }
-  if (squareY < 0) {
-    squareY = 0;
-  }
 }
-
-function run() {
-  input = parseInt(document.getElementById("right").value);
-  for (let i = 0; i < input; i++) {
-    right();
-    setTimeout(2000)
-  }
+function win() {
+    if (squareX == 200 && squareY == 200) {
+        let person = prompt("Please enter your name to get credit for the level");
+        console.log(person); // Print the entered name to the console.
+    }
 }
 
 function right() {
@@ -84,6 +75,7 @@ function right() {
   if (squareX + squareSize > canvasWidth) {
     squareX = canvasWidth - squareSize;
   }
+    win();
 }
 
 function left() {
@@ -92,6 +84,7 @@ function left() {
   if (squareX < 0) {
     squareX = 0;
   }
+  win();
 }
 
 function up() {
@@ -100,6 +93,7 @@ function up() {
   if (squareY < 0) {
     squareY = 0;
   }
+  win();
 }
 
 function down() {
@@ -108,6 +102,7 @@ function down() {
   if (squareY + squareSize > canvasHeight) {
     squareY = canvasHeight - squareSize;
   }
+  win();
 }
 
 setInterval(draw, 10);
