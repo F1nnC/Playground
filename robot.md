@@ -23,8 +23,6 @@ layout: robot
         <button class="ControlB" onclick="down()">DOWN</button>
       </div>
     </div>
-    <input placeholder="How many times right" id="right">
-    <button onclick="run()">RUN</button>
   </div>
   <div id="div2" class="shadow" style="padding: 50px;">
     <h1>Simulation</h1>
@@ -44,7 +42,11 @@ var canvasHeight = sim.height;
 var squareSize = 50;
 var squareX = canvasWidth - squareSize;
 var squareY = 0;
-var input = parseInt(document.getElementById("right").value);
+var barX1 = 100;
+var barY1 = 100;
+var barY2 = 50;
+var barY3 = 0;
+var barY4 = 200;
 squareX = 0;
 squareY = 0;
 
@@ -52,32 +54,53 @@ squareY = 0;
 function draw() {
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
   ctx.beginPath();
-  ctx.fillRect(squareX, squareY, squareSize, squareSize);
   ctx.fillStyle = "rgb(0, 0, 0)";
+  ctx.fillRect(squareX, squareY, squareSize, squareSize);
   ctx.fill();
   ctx.closePath();
 
-  // Check if the square hits the walls of the canvas
-  if (squareX + squareSize > canvasWidth) {
-    squareX = canvasWidth - squareSize;
-  }
-  if (squareX < 0) {
+  ctx.beginPath();
+  ctx.fillStyle = "rgb(255, 0, 0)";
+  ctx.fillRect(barX1, barY1, 50, 50);
+  ctx.fillRect(barX1, barY2, 50, 50);
+  ctx.fillRect(barX1, barY3, 50, 50);
+  ctx.fillRect(barX1, barY4, 50, 50);
+  ctx.fill();
+  ctx.closePath();
+  
+  ctx.beginPath();
+  ctx.fillStyle = "yellow";
+  ctx.arc(225, 225, 10, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.closePath();
+
+}
+
+function collide() {
+  if (squareX == barX1 && squareY == barY1) {
     squareX = 0;
+    squareY = 0;
   }
-  if (squareY + squareSize > canvasHeight) {
-    squareY = canvasHeight - squareSize;
+  if (squareX == barX1 && squareY == barY2) {
+    squareX = 0;
+    squareY = 0;
   }
-  if (squareY < 0) {
+  if (squareX == barX1 && squareY == barY3) {
+    squareX = 0;
+    squareY = 0;
+  }
+  if (squareX == barX1 && squareY == barY4) {
+    squareX = 0;
     squareY = 0;
   }
 }
 
-function run() {
-  input = parseInt(document.getElementById("right").value);
-  for (let i = 0; i < input; i++) {
-    right();
-    setTimeout(2000)
-  }
+
+function win() {
+    if (squareX == 200 && squareY == 200) {
+        let person = prompt("Please enter your name to get credit for the level");
+        console.log(person); // Print the entered name to the console.
+    }
 }
 
 function right() {
@@ -86,6 +109,8 @@ function right() {
   if (squareX + squareSize > canvasWidth) {
     squareX = canvasWidth - squareSize;
   }
+    win();
+    collide();
 }
 
 function left() {
@@ -94,6 +119,8 @@ function left() {
   if (squareX < 0) {
     squareX = 0;
   }
+  win();
+  collide();
 }
 
 function up() {
@@ -102,6 +129,8 @@ function up() {
   if (squareY < 0) {
     squareY = 0;
   }
+  win();
+  collide();
 }
 
 function down() {
@@ -110,6 +139,8 @@ function down() {
   if (squareY + squareSize > canvasHeight) {
     squareY = canvasHeight - squareSize;
   }
+  win();
+  collide();
 }
 
 setInterval(draw, 10);

@@ -43,7 +43,10 @@
           <!-- this is Jekyll magic, each md file in site will be inserted here -->
   
         </section>
-        {{ content }}
+        {% include robot-nav.html %}
+        <div style="text-align: center;">
+            {{ content }}
+        </div>
       </div>
     </body>
   </html>
