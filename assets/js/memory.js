@@ -4,14 +4,19 @@ var ctx = canvas.getContext("2d");
 // const img2 = new Image();
 // img1.src = '/images/Playground-Logo-transparent.png'; 
 // img2.src = '/images/kush.png'; 
-imgs = [im1, img2, img3, img4]
-for (i = 0; i < 5; i++) {
+images = [];
+console.log(images);
+image = [{"image_src": '/images/Playground-Logo-transparent.png', "image_selected": 0 },
+{"image_src": '/images/kush.png', "image_selected": 0 }]
+for (i = 0; i < 4; i++) {
     
-    imgs[i] - new Image();
-    imgs[i]
-  }
+    a = new Image();
+    a.src = image[i%2]['image_src'];
+    images.push(a);
+}
+console.log(images);
 var select_image = 1;
-image = [{"image_src": '/images/Playground-Logo-transparent.png', "image_selected": 1 }]
+
 var first_clickX = 0;
 var first_clickY = 0;
 let pairsDone = 0;
@@ -41,7 +46,7 @@ function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
 }
 // images = [img1, img1, img2, img2];
-console.log(toString(images[0]))
+
 shuffle(images);
 function clickCanvas(event) {
     var x = event.offsetX;
@@ -60,9 +65,9 @@ function clickCanvas(event) {
             }
             
             else {
-                if (select_image != images[0]) {
+                if (select_image == images[1]) {
                     setTimeout(function() {
-                        console.log("hello");
+                        
                         select_image = 1;
                         ctx.clearRect(35, 35, 90, 90);
                         ctx.clearRect(first_clickX, first_clickY, 90, 90);
@@ -71,7 +76,7 @@ function clickCanvas(event) {
                         ctx.fillRect(first_clickX, first_clickY, 90, 90);
                     }, 500);
                 }
-                if (select_image == images[0]) {
+                if (select_image === images[0]) {
                     select_image = 1;
                     console.log("hello"); 
                     pairsDone++;
@@ -96,27 +101,32 @@ function clickCanvas(event) {
             }
             
             else {
-                console.log(select_image, images[0]);
-                if (select_image != images[1]) {
+                console.log(select_image, images[1]);
+                
+                
+                if (select_image === images[0]) {
                     setTimeout(function() {
-                        select_image = 1;
+                        
+                        console.log(images[1]);
+                        console.log(select_image, images[0]);
                         ctx.clearRect(180, 180, 90, 90);
                         ctx.clearRect(first_clickX, first_clickY, 90, 90);
                         ctx.fillRect(180, 180, 90, 90);
                         ctx.fillRect(first_clickX, first_clickY, 90, 90);
+                        select_image = 1;
                     }, 500);
-                    
                 }
-                if (select_image == images[1]) {
+                if (select_image === images[1]) {
                     
                     select_image = 1;
-                    
+                        
                     console.log("hello");
                     pairsDone++;
                     if (pairsDone == 2) {
-                        drawText("finish");
+                            drawText("finish");
                     }
                 }
+    
                 
                 
             }
@@ -133,6 +143,7 @@ function clickCanvas(event) {
                 first_clickX = 180;
                 first_clickY = 35;
             }
+        
             
             else {
                 console.log(select_image, images[2], "both");
@@ -144,10 +155,10 @@ function clickCanvas(event) {
                         ctx.fillRect(180, 35, 90, 90);
                         ctx.fillRect(first_clickX, first_clickY, 90, 90);
                     }, 500);
-                    
+                        
                 }
                 if (select_image == images[2]) {
-                    
+                        
                     select_image = 1;
                     console.log("hello");
                     pairsDone++;
@@ -181,13 +192,13 @@ function clickCanvas(event) {
                         ctx.fillRect(35, 180, 90, 90);
                         ctx.fillRect(first_clickX, first_clickY, 90, 90);
                     }, 500);
-                    
+                        
                 }
                 if (select_image == images[3]) {
-                   
+                    
                     select_image = 1;
                     console.log("hello");
-                    
+                        
                     pairsDone++;
                     if (pairsDone == 2) {
                         drawText("finish");
@@ -195,10 +206,8 @@ function clickCanvas(event) {
                 }
                 
                 
+            
             }
         }
     }
-    
-    
-    
 }
