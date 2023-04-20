@@ -10,8 +10,8 @@ layout: robot
 <div class="loop-block">
     <p style="color: black; text-align: left;"><input id="loop" class="block-input"><b>Loop</b></p>
     <div class="up-block"><input id="up" class="block-input"><label class="label-block"><b>UP</b></label></div><br>
+    <div class="left-block"><label class="label-block"><b>2 LEFT</b></label></div><br>
     <div class="down-block"><input id="down" class="block-input"><label class="label-block"><b>DOWN</b></label></div><br>
-    <div class="left-block"><input id="left" class="block-input"><label class="label-block"><b>LEFT</b></label></div><br>
     <div class="right-block"><input id="right" class="block-input"><label class="label-block"><b>RIGHT</b></label></div><br>
 </div>
 <br>
@@ -36,12 +36,24 @@ var ctx = sim.getContext("2d");
 var canvasWidth = sim.width;
 var canvasHeight = sim.height;
 var squareSize = 50;
-var squareX = 0;
-var squareY = 0;
-var barX1 = 0;
-var barX2 = 200;
-var barY1 = 100;
+var squareX = 200;
+var squareY = 200;
+var barX1 = 150;
+var barX2 = 150;
+var barX3 = 50;
+var barX4 = 50;
+var barX5 = 50;
+var barX6 = 50;
+var barX7 = 150;
+var barX8 = 150;
+var barY1 = 200;
 var barY2 = 150;
+var barY3 = 150;
+var barY4 = 200;
+var barY5 = 0;
+var barY6 = 50;
+var barY7 = 0;
+var barY8 = 50;
 let winCheck = 0;
 
 
@@ -58,46 +70,37 @@ function draw() {
     ctx.fillStyle = "rgb(255, 0, 0)";
     ctx.fillRect(barX1, barY1, 50, 50);
     ctx.fillRect(barX2, barY2, 50, 50);
+    ctx.fillRect(barX3, barY3, 50, 50);
+    ctx.fillRect(barX4, barY4, 50, 50);
+    ctx.fillRect(barX5, barY5, 50, 50);
+    ctx.fillRect(barX6, barY6, 50, 50);
+    ctx.fillRect(barX7, barY7, 50, 50);
+    ctx.fillRect(barX8, barY8, 50, 50);
     ctx.fill();
     ctx.closePath();
 
     //end point
     ctx.beginPath();
     ctx.fillStyle = "yellow";
-    ctx.arc(225, 225, 10, 0, 2 * Math.PI);
+    ctx.arc(25, 225, 10, 0, 2 * Math.PI);
     ctx.fill();
     ctx.closePath();
 }
 
 function collide() {
     if (squareX == barX1 && squareY == barY1) {
-        squareX = 0;
-        squareY = 0;
+        squareX = 200;
+        squareY = 200;
         console.log("collide");
         return;
     }
     if (squareX == barX2 && squareY == barY2) {
-        squareX = 0;
-        squareY = 0;
+        squareX = 200;
+        squareY = 200;
         console.log("collide");
         return;
     }
     return;
-}
-
-function changepos() {
-    if (barX1 == 200) {
-        barX1 = 0;
-    } 
-    else {
-        barX1 = barX1 + 50;
-    }
-    if (barX2 == 0) {
-        barX2 = 200;
-    } 
-    else {
-        barX2 = barX2 - 50;
-    }
 }
 
 
@@ -106,11 +109,11 @@ function changepos() {
 // and uses setInterval to execute each movement in sequence at a delay of 800 milliseconds.
 function run() {
     // Read input values from the HTML document and convert them to integers.
-    UPinput = parseInt(document.getElementById("up").value);
-    DOWNinput = parseInt(document.getElementById("down").value);
-    LEFTinput = parseInt(document.getElementById("left").value);
-    RIGHTinput = parseInt(document.getElementById("right").value);
-    looper = parseInt(document.getElementById("loop").value);
+    var UPinput = parseInt(document.getElementById("up").value);
+    var DOWNinput = parseInt(document.getElementById("down").value);
+    var LEFTinput = 2;
+    var RIGHTinput = parseInt(document.getElementById("right").value);
+    var looper = parseInt(document.getElementById("loop").value);
 
     runner.style.opacity = 0;
     
@@ -124,15 +127,15 @@ function run() {
             movements.push(up);
         }
 
+        for (let a = 0; a < LEFTinput; a++) {
+            movements.push(left);
+        }
+
         // Push 'down' movements to the array.
         for (let i = 0; i < DOWNinput; i++) {
             movements.push(down);
         }
 
-        // Push 'left' movements to the array.
-        for (let a = 0; a < LEFTinput; a++) {
-            movements.push(left);
-        }
 
         // Push 'right' movements to the array.
         for (let c = 0; c < RIGHTinput; c++) {
@@ -156,7 +159,7 @@ function run() {
 }
 
 function win() {
-    if (squareX == 200 && squareY == 200) {
+    if (squareX == 0 && squareY == 200) {
         let person = prompt("Please enter your name to get credit for the level");
         console.log(person); // Print the entered name to the console.
     }
@@ -204,7 +207,6 @@ function down() {
     console.log("down")
 }
 
-setInterval(changepos, 1000)
 setInterval(draw, 10);
 
 
