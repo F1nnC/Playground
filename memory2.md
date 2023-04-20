@@ -8,7 +8,7 @@
   <body>
     <h1>Memory Game</h1> 
     <h3>SCORE: <span id="score"></span></h3>
-    <div class="tile" width= "400" height="300" >
+    <div class="tile" width= "400" height="400" >
     </div>
   </body>
 </html>
