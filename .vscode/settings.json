@@ -36,7 +36,8 @@
         "webp",
         "wiffle",
         "Zumba"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 
    
 }
