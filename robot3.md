@@ -12,7 +12,7 @@ layout: robot
 </div>
 <br>
 <button id="runner" onclick="run()">RUN</button>
-<form action="https://f1nnc.github.io/Playground/robot2">
+<form action="https://f1nnc.github.io/Playground/robot3">
     <button type="submit">RESET</button>
 </form>
 </div>
@@ -62,10 +62,9 @@ function draw() {
 // and uses setInterval to execute each movement in sequence at a delay of 800 milliseconds.
 function run() {
     // Read input values from the HTML document and convert them to integers.
-    looper = parseInt(document.getElementById("loop").value);
 
     runner.style.opacity = 0;
-    
+    looper = parseInt(document.getElementById("loop").value);
 
     // Create an array to hold the movements.
     let movements = [];
