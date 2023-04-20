@@ -100,6 +100,42 @@ function collide() {
         console.log("collide");
         return;
     }
+    if (squareX == barX2 && squareY == barY2) {
+        squareX = 200;
+        squareY = 200;
+        console.log("collide");
+        return;
+    }
+    if (squareX == barX3 && squareY == barY3) {
+        squareX = 200;
+        squareY = 200;
+        console.log("collide");
+        return;
+    }
+    if (squareX == barX4 && squareY == barY4) {
+        squareX = 200;
+        squareY = 200;
+        console.log("collide");
+        return;
+    }
+    if (squareX == barX5 && squareY == barY5) {
+        squareX = 200;
+        squareY = 200;
+        console.log("collide");
+        return;
+    }
+    if (squareX == barX6 && squareY == barY6) {
+        squareX = 200;
+        squareY = 200;
+        console.log("collide");
+        return;
+    }
+    if (squareX == barX7 && squareY == barY7) {
+        squareX = 200;
+        squareY = 200;
+        console.log("collide");
+        return;
+    }
     return;
 }
 
