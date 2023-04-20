@@ -33,10 +33,10 @@ function drawText(text) {
     ctx.textBaseline = "middle";
     ctx.fillText(text, 240, 160);
 }
-function ball_angle(angle) {
-    bounce_angle = angle/90 * Math.PI;
-    return Math.sin(bounce_angle)
-}
+// function ball_angle(angle) {
+//     bounce_angle = angle/90 * Math.PI;
+//     return Math.sin(bounce_angle)
+// }
 function draw() {
     if (stopped == false) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -49,18 +49,17 @@ function draw() {
     if (x + dx < 0) {
         dx = -dx;
     }
-    if (x + dx >= x_bar-45 && x + dx <= x_bar +45) {
-        if (y + dy == 300) {
-            speed_cache = x;
-            bar_cache = x_bar;
-            b_angle = ball_angle(x-x_bar);
-            dy = -dy*b_angle;
-        }
+    if (x + dx >= x_bar+dx_bar && x + dx <= x_bar+90+dx_bar && y + dy == 300) {
+
+
+        dy = -dy;
+    
+        
     }
     if (y + dy > 320) {
         dy = -dy;
     }
-    if (y +dy < 00) {
+    if (y +dy < 0) {
         dy = -dy;
     }
     x += dx;
