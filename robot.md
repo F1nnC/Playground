@@ -1,11 +1,7 @@
----
 layout: robot
 ---
 
 # Robot Learning
-
-
-
 
 <div class="container" style="">
   <div id="div1" class="shadow" style="padding: 50px; ">
@@ -33,7 +29,6 @@ layout: robot
   </div>
 </div>
 
-
 <script>
 var sim = document.getElementById("sim");
 var ctx = sim.getContext("2d");
@@ -49,7 +44,6 @@ var barY3 = 0;
 var barY4 = 200;
 squareX = 0;
 squareY = 0;
-
 
 function draw() {
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -73,7 +67,6 @@ function draw() {
   ctx.arc(225, 225, 10, 0, 2 * Math.PI);
   ctx.fill();
   ctx.closePath();
-
 }
 
 function collide() {
@@ -96,12 +89,13 @@ function collide() {
 }
 
 
+...
 function win() {
     if (squareX == 200 && squareY == 200) {
         let person = prompt("Please enter your name to get credit for the level");
         console.log(person); // Print the entered name to the console.
 
-        fetch('/api/leaderboard', {
+        fetch('https://playgroundproject.duckdns.org/api/leaderboard', {
             method: 'POST',
             body: JSON.stringify({
                 name: person,
@@ -110,16 +104,18 @@ function win() {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(response => {
+        })
+        .then(response => {
             console.log(response);
-            fetch('/api/leaderboard').then(response => response.json()).then(data => console.log(data));
-        }).catch(error => {
+            fetch('https://playgroundproject.duckdns.org/api/leaderboard')
+            .then(response => response.json())
+            .then(data => console.log(data));
+        })
+        .catch(error => {
             console.error(error);
         });
     }
 }
-
-
 function right() {
   squareX += squareSize;
   // Check if the square hits the right wall
