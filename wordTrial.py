@@ -1,45 +1,29 @@
 import random
 
-words = ['kindly', 'recite', 'repeat', 'tree', 'display', 'geeks', 'coader', 'programmer', 'python', 'premium', 'watch']
+word_list = ["python", "computer", "programming", "algorithm", "database", "function", "variable", "loop"]
 
-word = random.choice(words)
+word = random.choice(word_list)
 
-spaces = ['_']* len(word)
+scrambled_word = "".join(random.sample(word, len(word)))
 
-def get_letter_position(guess, word, spaces):
-    index = -2
-    while index != -1:
-        if guess in word:
-            index = word.find(guess)
-            removed_character ='*'
-            word = word[:index]+removed_character+word[index+1:]
-            spaces[index] = guess
-        else:
-            index = -1
-     
-    return (word, spaces)
+print(f"Unscramble the following word: {scrambled_word}")
 
+hints = 1
 
-def win_check():
-    for i in range(0, len(spaces)):
-        if spaces[i] == '_':
-            return -1
-     
-    return 1
+guesses = 1
+guess = input("What's the unscrambled word? ").lower()
 
-num_turns = len(word) + 3
-for i in range(-1, num_turns):
-    guess = input('Guess a character:')
- 
-    if guess in word:
-        word, spaces = get_letter_position(guess, word, spaces)
-        print(spaces)
-    else:
-        print('Sorry that letter is not in the word.')
-     
-    if win_check() == 1:
-        print('Congratulations you won')
-        break
-     
-    print('you have '+str(num_turns - i)+' turns left.')
-    print()
+while guess != word and guesses < 3:
+    print("Sorry, that's not the word. Try again!")
+    guess = input("What's the unscrambled word? ").lower()
+    guesses += 1
+
+if guesses == 2:
+    print(f"Hint 1: The first letter of the word is '{word[0]}'")
+if guesses == 1:
+    print(f"Hint 2: The second letter of the word is '{word[1]}")
+
+if guess == word:
+    print("Congratulations, you unscrambled the word!")
+else:
+    print(f"Sorry, you didn't unscramble the word. The word was {word}.")
