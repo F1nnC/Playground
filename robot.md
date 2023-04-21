@@ -106,7 +106,7 @@ function win() {
   if (squareX == 200 && squareY == 200) {
     let person = prompt("Please enter your name to get credit for the level");
     if (person != null) {
-      fetch('http://10.8.136.26:5000/api/', {
+      fetch('http://10.8.136.26:5000/api/leaderboard/', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: person, level: parseInt(localStorage.getItem('level')) || 1 })
@@ -129,7 +129,7 @@ function win() {
 }
 
 function displayLeaderboard() {
-  fetch('http://10.8.136.26:5000/api/')
+  fetch('http://10.8.136.26:5000/api/leaderboard/')
     .then(response => response.json())
     .then(data => {
       const leaderboard = document.getElementById("leaderboard");
