@@ -33,4 +33,4 @@ while guess != word and guesses == 3:
 if guess == word:
     print("Congratulations, you unscrambled the word!")
 else:
-    print(f"All 3 Guesses have been used, you didn't unscramble the word, the word was {word}")
+    print(f"All 4 Guesses have been used, you didn't unscramble the word, the word was {word}")
