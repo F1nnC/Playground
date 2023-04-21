@@ -32,6 +32,12 @@ layout: robot
     </div>
   </div>
 </div>
+<div id="div3" class="shadow" style="padding: 50px;">
+  <h1>Leaderboard</h1>
+  <div style="padding: 25px">
+    <ul id="leaderboard"></ul>
+  </div>
+</div>
 
 
 <script>
@@ -97,11 +103,57 @@ function collide() {
 
 
 function win() {
-    if (squareX == 200 && squareY == 200) {
-        let person = prompt("Please enter your name to get credit for the level");
-        console.log(person); // Print the entered name to the console.
+  if (squareX == 200 && squareY == 200) {
+    let person = prompt("Please enter your name to get credit for the level");
+    if (person != null) {
+      fetch('http://10.8.136.26:5000/api/', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: person, level: parseInt(localStorage.getItem('level')) || 1 })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data); // Print the saved player object to the console
+        displayLeaderboard();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+      
+      // increase the player's level by 1
+      let level = parseInt(localStorage.getItem('level')) || 1;
+      level += 1;
+      localStorage.setItem('level', level);
     }
+  }
 }
+
+function displayLeaderboard() {
+  fetch('http://10.8.136.26:5000/api/')
+    .then(response => response.json())
+    .then(data => {
+      const leaderboard = document.getElementById("leaderboard");
+      leaderboard.innerHTML = '';
+      data.forEach(player => {
+        const listItem = document.createElement('li');
+        listItem.innerText = `${player.name}: Level ${player.level}`;
+        leaderboard.appendChild(listItem);
+      });
+      // Display the current player's level
+      const level = parseInt(localStorage.getItem('level')) || 1;
+      const listItem = document.createElement('li');
+      listItem.innerText = `You: Level ${level}`;
+      leaderboard.appendChild(listItem);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
+displayLeaderboard();
+
+
 
 function right() {
   squareX += squareSize;
