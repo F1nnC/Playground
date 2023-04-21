@@ -7,6 +7,6 @@ table {
 </style>
 <table>
     <td>
-        <tr>Text</tr>
+        <tr>Text, in progress for project</tr>
     </td>
 </table>
