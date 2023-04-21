@@ -36,15 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function checkForMatch() {
       let cards = document.querySelectorAll('img');
-      let optionOneId = cardChosenId[0];
-      let optionTwoId = cardChosenId[1];
+      let first_click = cardChosenId[0];
+      let second_click = cardChosenId[1];
       if(cardChosen[0] === cardChosen[1]) {
         
         cardsWon.push(cardChosen);
   
       } else {
-        cards[optionOneId].setAttribute('src', 'images/Playground-Logoss.jpg')
-        cards[optionTwoId].setAttribute('src', 'images/Playground-Logoss.jpg')
+        cards[first_click].setAttribute('src', 'images/Playground-Logoss.jpg')
+        cards[second_click].setAttribute('src', 'images/Playground-Logoss.jpg')
         }
         result.textContent = cardsWon.length;
         if(cardsWon.length === cardArray.length/2){
