@@ -3,6 +3,40 @@ layout: robot
 ---
 
 # Robot Learning
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Robot Learning</title>
+  <script>
+    function displayLeaderboard(players) {
+      const leaderboardBody = document.getElementById('leaderboard-body');
+      leaderboardBody.innerHTML = '';
+      players.forEach((player, index) => {
+        const row = leaderboardBody.insertRow(index);
+        const rankCell = row.insertCell(0);
+        const nameCell = row.insertCell(1);
+        const levelCell = row.insertCell(2);
+        rankCell.textContent = index + 1;
+        nameCell.textContent = player.name;
+        levelCell.textContent = player.level;
+      });
+    }
+
+    function getLeaderboard() {
+      fetch('/api/leaderboard')
+        .then(response => response.json())
+        .then(data => {
+          displayLeaderboard(data);
+        });
+    }
+
+    window.onload = function() {
+      getLeaderboard();
+    };
+  </script>
+</head>
+
 
 <div class="container" style="">
   <div id="div1" class="shadow" style="padding: 50px; ">
@@ -63,30 +97,29 @@ squareX = 0;
 squareY = 0;
 var score = 0;
 
-function draw() {
-  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-  ctx.beginPath();
-  ctx.fillStyle = "rgb(0, 0, 0)";
-  ctx.fillRect(squareX, squareY, squareSize, squareSize);
-  ctx.fill();
-  ctx.closePath();
-
-  ctx.beginPath();
-  ctx.fillStyle = "rgb(255, 0, 0)";
-  ctx.fillRect(barX1, barY1, 50, 50);
-  ctx.fillRect(barX1, barY2, 50, 50);
-  ctx.fillRect(barX1, barY3, 50, 50);
-  ctx.fillRect(barX1, barY4, 50, 50);
-  ctx.fill();
-  ctx.closePath();
-  
-  ctx.beginPath();
-  ctx.fillStyle = "yellow";
-  ctx.arc(225, 225, 10, 0, 2 * Math.PI);
-  ctx.fill();
-  ctx.closePath();
+function displayLeaderboard(players) {
+  const leaderboardBody = document.getElementById('leaderboard-body');
+  leaderboardBody.innerHTML = '';
+  players.forEach((player, index) => {
+    const row = leaderboardBody.insertRow(index);
+    const rankCell = row.insertCell(0);
+    const nameCell = row.insertCell(1);
+    const levelCell = row.insertCell(2);
+    rankCell.textContent = index + 1;
+    nameCell.textContent = player.name;
+    levelCell.textContent = player.level;
+  });
 }
 
+function getLeaderboard() {
+  fetch('/api/leaderboard')
+    .then(response => response.json())
+    .then(data => {
+      displayLeaderboard(data);
+    });
+}
+
+getLeaderboard();
 function collide() {
   if (squareX == barX1 && squareY == barY1) {
     squareX = 0;
@@ -139,6 +172,22 @@ function win() {
             // Update the player's score on the frontend
             let scoreElement = document.getElementById('score');
             scoreElement.innerHTML = 'Score: ' + playerScore;
+            // Increment the player's level in the database
+            fetch('https://playgroundproject.duckdns.org/api/leaderboard/' + person, {
+              method: 'PUT',
+              body: JSON.stringify({
+                level: 'Level ' + (playerScore + 1)
+              }),
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+              .then(response => {
+                console.log(response);
+              })
+              .catch(error => {
+                console.error(error);
+              });
           });
       })
       .catch(error => {
@@ -146,6 +195,7 @@ function win() {
       });
   }
 }
+
 
 function right() {
   squareX += squareSize;
