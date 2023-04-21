@@ -3,39 +3,8 @@ layout: robot
 ---
 
 # Robot Learning
-<!DOCTYPE html>
-<html>
 
-<head>
-  <title>Robot Learning</title>
-  <script>
-    function displayLeaderboard(players) {
-      const leaderboardBody = document.getElementById('leaderboard-body');
-      leaderboardBody.innerHTML = '';
-      players.forEach((player, index) => {
-        const row = leaderboardBody.insertRow(index);
-        const rankCell = row.insertCell(0);
-        const nameCell = row.insertCell(1);
-        const levelCell = row.insertCell(2);
-        rankCell.textContent = index + 1;
-        nameCell.textContent = player.name;
-        levelCell.textContent = player.level;
-      });
-    }
 
-    function getLeaderboard() {
-      fetch('/api/leaderboard')
-        .then(response => response.json())
-        .then(data => {
-          displayLeaderboard(data);
-        });
-    }
-
-    window.onload = function() {
-      getLeaderboard();
-    };
-  </script>
-</head>
 
 
 <div class="container" style="">
@@ -60,25 +29,10 @@ layout: robot
     <div style="padding: 25px">
       <canvas id="sim" width="250" height="250" style="background: white;">
       </canvas>
-      <div style="padding: 10px;"></div>
-      <div id="scoreboard">
-        <h2>Score: <span id="score">0</span></h2>
-        <h2>Leaderboard:</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>Level</th>
-            </tr>
-          </thead>
-          <tbody id="leaderboard-body">
-          </tbody>
-        </table>
-      </div>
     </div>
   </div>
 </div>
+
 
 <script>
 var sim = document.getElementById("sim");
@@ -95,31 +49,33 @@ var barY3 = 0;
 var barY4 = 200;
 squareX = 0;
 squareY = 0;
-var score = 0;
 
-function displayLeaderboard(players) {
-  const leaderboardBody = document.getElementById('leaderboard-body');
-  leaderboardBody.innerHTML = '';
-  players.forEach((player, index) => {
-    const row = leaderboardBody.insertRow(index);
-    const rankCell = row.insertCell(0);
-    const nameCell = row.insertCell(1);
-    const levelCell = row.insertCell(2);
-    rankCell.textContent = index + 1;
-    nameCell.textContent = player.name;
-    levelCell.textContent = player.level;
-  });
+
+function draw() {
+  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+  ctx.beginPath();
+  ctx.fillStyle = "rgb(0, 0, 0)";
+  ctx.fillRect(squareX, squareY, squareSize, squareSize);
+  ctx.fill();
+  ctx.closePath();
+
+  ctx.beginPath();
+  ctx.fillStyle = "rgb(255, 0, 0)";
+  ctx.fillRect(barX1, barY1, 50, 50);
+  ctx.fillRect(barX1, barY2, 50, 50);
+  ctx.fillRect(barX1, barY3, 50, 50);
+  ctx.fillRect(barX1, barY4, 50, 50);
+  ctx.fill();
+  ctx.closePath();
+  
+  ctx.beginPath();
+  ctx.fillStyle = "yellow";
+  ctx.arc(225, 225, 10, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.closePath();
+
 }
 
-function getLeaderboard() {
-  fetch('/api/leaderboard')
-    .then(response => response.json())
-    .then(data => {
-      displayLeaderboard(data);
-    });
-}
-
-getLeaderboard();
 function collide() {
   if (squareX == barX1 && squareY == barY1) {
     squareX = 0;
@@ -141,61 +97,11 @@ function collide() {
 
 
 function win() {
-  if (squareX == 200 && squareY == 200) {
-    let person = prompt("Please enter your name to get credit for the level");
-    console.log(person); // Print the entered name to the console.
-
-    fetch('https://playgroundproject.duckdns.org/api/leaderboard', {
-      method: 'POST',
-      body: JSON.stringify({
-        name: person,
-        level: 'Level 1'
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(response => {
-        console.log(response);
-        fetch('https://playgroundproject.duckdns.org/api/leaderboard')
-          .then(response => response.json())
-          .then(data => {
-            console.log(data);
-            // Get the player's score from the data
-            let playerScore = 0;
-            for (let i = 0; i < data.length; i++) {
-              if (data[i].name === person) {
-                playerScore = parseInt(data[i].level.split(' ')[1]);
-                break;
-              }
-            }
-            // Update the player's score on the frontend
-            let scoreElement = document.getElementById('score');
-            scoreElement.innerHTML = 'Score: ' + playerScore;
-            // Increment the player's level in the database
-            fetch('https://playgroundproject.duckdns.org/api/leaderboard/' + person, {
-              method: 'PUT',
-              body: JSON.stringify({
-                level: 'Level ' + (playerScore + 1)
-              }),
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            })
-              .then(response => {
-                console.log(response);
-              })
-              .catch(error => {
-                console.error(error);
-              });
-          });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
+    if (squareX == 200 && squareY == 200) {
+        let person = prompt("Please enter your name to get credit for the level");
+        console.log(person); // Print the entered name to the console.
+    }
 }
-
 
 function right() {
   squareX += squareSize;
@@ -225,7 +131,6 @@ function up() {
   }
   win();
   collide();
-  
 }
 
 function down() {
@@ -239,22 +144,5 @@ function down() {
 }
 
 setInterval(draw, 10);
-
-
-fetch('https://playgroundproject.duckdns.org/api/leaderboard')
-.then(response => response.json())
-.then(data => {
-    console.log(data);
-    let leaderboardElement = document.getElementById('leaderboard');
-    leaderboardElement.innerHTML = '<h2>Leaderboard</h2><ol>';
-    for (let i = 0; i < data.length; i++) {
-        leaderboardElement.innerHTML += '<li>' + data[i].name + ' - Level ' + data[i].level.split(' ')[1] + '</li>';
-    }
-    leaderboardElement.innerHTML += '</ol>';
-})
-.catch(error => {
-    console.error(error);
-});
-
 
 </script>
