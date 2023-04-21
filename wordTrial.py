@@ -1,45 +1,31 @@
 import random
 
-words = ['kindly', 'recite', 'repeat', 'tree', 'display', 'geeks', 'coader', 'programmer', 'python', 'premium', 'watch']
+word_list = ["python", "computer", "programming", "algorithm", "database", "function", "variable", "loop", "iteration", "array", "mutable", "insertion", "deletion", "key", "API"]
 
-word = random.choice(words)
+word = random.choice(word_list)
 
-spaces = ['_']* len(word)
+scrambled_word = "".join(random.sample(word, len(word)))
 
-def get_letter_position(guess, word, spaces):
-    index = -2
-    while index != -1:
-        if guess in word:
-            index = word.find(guess)
-            removed_character ='*'
-            word = word[:index]+removed_character+word[index+1:]
-            spaces[index] = guess
+print(f"Unscramble the following Computer Science Word: {scrambled_word}")
+
+hints = 1
+guesses = 1
+guess = ""
+
+while guess != word and guesses <= 4:
+    guess = input("What's the unscrambled word? ").lower()
+    if guess != word:
+        print("Sorry, that's not the word. Try again!")
+        if guesses == 1:
+            guesses += 1
+        elif guesses == 2:
+            print(f"Hint 1: The first letter of the word is '{word[0]}'")
+            guesses += 1
+        elif guesses == 3:
+            print(f"Hint 2: The second letter of the word is '{word[1]}'")
+            guesses += 1
         else:
-            index = -1
-     
-    return (word, spaces)
-
-
-def win_check():
-    for i in range(0, len(spaces)):
-        if spaces[i] == '_':
-            return -1
-     
-    return 1
-
-num_turns = len(word) + 3
-for i in range(-1, num_turns):
-    guess = input('Guess a character:')
- 
-    if guess in word:
-        word, spaces = get_letter_position(guess, word, spaces)
-        print(spaces)
+            print(f"All 4 Guesses have been used, you didn't unscramble the word, the word was {word}")
+            guesses += 1
     else:
-        print('Sorry that letter is not in the word.')
-     
-    if win_check() == 1:
-        print('Congratulations you won')
-        break
-     
-    print('you have '+str(num_turns - i)+' turns left.')
-    print()
+        print("Congratulations, you unscrambled the word!")

@@ -4,6 +4,9 @@ layout: robot
 
 # Robot Learning
 
+
+
+
 <div class="container" style="">
   <div id="div1" class="shadow" style="padding: 50px; ">
     <h1>Controller</h1>
@@ -26,25 +29,16 @@ layout: robot
     <div style="padding: 25px">
       <canvas id="sim" width="250" height="250" style="background: white;">
       </canvas>
-      <div style="padding: 10px;"></div>
-      <div id="scoreboard">
-        <h2>Score: <span id="score">0</span></h2>
-        <h2>Leaderboard:</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>Level</th>
-            </tr>
-          </thead>
-          <tbody id="leaderboard-body">
-          </tbody>
-        </table>
-      </div>
     </div>
   </div>
 </div>
+<div id="div3" class="shadow" style="padding: 50px;">
+  <h1>Leaderboard</h1>
+  <div style="padding: 25px">
+    <ul id="leaderboard"></ul>
+  </div>
+</div>
+
 
 <script>
 var sim = document.getElementById("sim");
@@ -61,7 +55,7 @@ var barY3 = 0;
 var barY4 = 200;
 squareX = 0;
 squareY = 0;
-var score = 0;
+
 
 function draw() {
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -85,6 +79,7 @@ function draw() {
   ctx.arc(225, 225, 10, 0, 2 * Math.PI);
   ctx.fill();
   ctx.closePath();
+
 }
 
 function collide() {
@@ -110,42 +105,55 @@ function collide() {
 function win() {
   if (squareX == 200 && squareY == 200) {
     let person = prompt("Please enter your name to get credit for the level");
-    console.log(person); // Print the entered name to the console.
-
-    fetch('https://playgroundproject.duckdns.org/api/leaderboard', {
-      method: 'POST',
-      body: JSON.stringify({
-        name: person,
-        level: 'Level 1'
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(response => {
-        console.log(response);
-        fetch('https://playgroundproject.duckdns.org/api/leaderboard')
-          .then(response => response.json())
-          .then(data => {
-            console.log(data);
-            // Get the player's score from the data
-            let playerScore = 0;
-            for (let i = 0; i < data.length; i++) {
-              if (data[i].name === person) {
-                playerScore = parseInt(data[i].level.split(' ')[1]);
-                break;
-              }
-            }
-            // Update the player's score on the frontend
-            let scoreElement = document.getElementById('score');
-            scoreElement.innerHTML = 'Score: ' + playerScore;
-          });
+    if (person != null) {
+      fetch('http://10.8.136.26:5000/api/', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: person, level: parseInt(localStorage.getItem('level')) || 1 })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data); // Print the saved player object to the console
+        displayLeaderboard();
       })
       .catch(error => {
-        console.error(error);
+        console.error('Error:', error);
       });
+      
+      // increase the player's level by 1
+      let level = parseInt(localStorage.getItem('level')) || 1;
+      level += 1;
+      localStorage.setItem('level', level);
+    }
   }
 }
+
+function displayLeaderboard() {
+  fetch('http://10.8.136.26:5000/api/')
+    .then(response => response.json())
+    .then(data => {
+      const leaderboard = document.getElementById("leaderboard");
+      leaderboard.innerHTML = '';
+      data.forEach(player => {
+        const listItem = document.createElement('li');
+        listItem.innerText = `${player.name}: Level ${player.level}`;
+        leaderboard.appendChild(listItem);
+      });
+      // Display the current player's level
+      const level = parseInt(localStorage.getItem('level')) || 1;
+      const listItem = document.createElement('li');
+      listItem.innerText = `You: Level ${level}`;
+      leaderboard.appendChild(listItem);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
+displayLeaderboard();
+
+
 
 function right() {
   squareX += squareSize;
@@ -175,7 +183,6 @@ function up() {
   }
   win();
   collide();
-  
 }
 
 function down() {
@@ -189,22 +196,5 @@ function down() {
 }
 
 setInterval(draw, 10);
-
-
-fetch('https://playgroundproject.duckdns.org/api/leaderboard')
-.then(response => response.json())
-.then(data => {
-    console.log(data);
-    let leaderboardElement = document.getElementById('leaderboard');
-    leaderboardElement.innerHTML = '<h2>Leaderboard</h2><ol>';
-    for (let i = 0; i < data.length; i++) {
-        leaderboardElement.innerHTML += '<li>' + data[i].name + ' - Level ' + data[i].level.split(' ')[1] + '</li>';
-    }
-    leaderboardElement.innerHTML += '</ol>';
-})
-.catch(error => {
-    console.error(error);
-});
-
 
 </script>
