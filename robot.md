@@ -4,7 +4,11 @@ layout: robot
 
 # Robot Learning
 
-
+<style>
+  body {
+        background-color: rgba(24, 24, 24, 0.8);
+      }
+</style>
 
 
 <div class="container" style="">
