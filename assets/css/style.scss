@@ -19,10 +19,6 @@ body {
   backdrop-filter: blur(5px); /* apply a blur effect to the area behind the element */
 }
 
-.wrapper {
-  margin: 0;
-}
-
 #nav-bar {
   display: flex;
   margin: 0;
@@ -88,6 +84,7 @@ body {
       color: #F0EAD6;
       text-decoration:none
     }
+  margin: auto;
 }
 
 #titlerobot {
@@ -108,7 +105,6 @@ body {
 
 .container {
   justify-content: space-between;
-  padding: 10px;
   text-align: center;
   display: flex;
 }
@@ -244,4 +240,39 @@ body:before {
 }
 body {
   background-color: rgba(24, 24, 24, 0.8);
+  overflow-x: hidden;
 }
+
+.Ptable {
+  background-color: #0852dc;
+  text-align: center;
+  margin: auto;
+  padding: 15px;
+
+  th {
+    background-color: rgba(24, 24, 24, 0.6);
+    padding: 8px;
+  }
+  td {
+    border: 1px solid rgba(24, 24, 24, 0.6);
+    padding: 8px;
+  }
+  tr:nth-child(even) td {
+    background-color: rgba(24, 24, 24, 0.6);
+  }
+  
+  input {
+    padding: 5px;
+    width: 175px;
+    height: 75px;
+  }
+  
+  button {
+    padding: 5px;
+    width: 75px;
+  }
+
+  box-shadow: 0 0 10px rgba(24, 24, 24, 0.6); /* create a regular shadow */
+  backdrop-filter: blur(5px); /* apply a blur effect to the area behind the element */
+}
+
