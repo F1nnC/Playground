@@ -74,6 +74,8 @@ function pause() {
         j = dy;
         dx = 0;
         dy = 0;
+        dx_bar = 0;
+
         stopped = true;
 
         drawText("Pause");
@@ -82,6 +84,7 @@ function pause() {
     if (stopped == true) {
         dx = i;
         dy = j;
+        
         stopped = false;
         return
     }
@@ -93,10 +96,20 @@ document.addEventListener('keydown', function(ev) {
         pause()
     }
     if (ev.code === "ArrowLeft") {
-        dx_bar = -5;
+        if (dx == 0 || dy == 0) {
+            dx_bar = 0;
+        }
+        else {
+            dx_bar = 5;
+        }
     }
     if (ev.code === "ArrowRight") {
-        dx_bar = 5;
+        if (dx == 0 || dy == 0) {
+            dx_bar = 0;
+        }
+        else {
+            dx_bar = -5;
+        }
     }
 });
 document.addEventListener('keyup', event => {
