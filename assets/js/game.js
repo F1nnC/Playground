@@ -24,6 +24,9 @@ var pawn_black7 = [480, 80];
 var pawn_black8 = [560, 80];
 var clickX = 0;
 var clickY = 0;
+var black_click = false;
+var user_clickX = 0;
+var user_clickY = 0;
 for (i = 0; i < 8; i++) {
     for (j = 0; j < 8; j++) {
         board_add.push([80*i, 80*j]);
@@ -73,21 +76,173 @@ function clickCanvas(event) {
             }
         }
     }
-    if (clickY == 10) {
-        ctx.fillStyle = "#DFFE00";
-        ctx.fillRect (clickX, clickY, 80, 80);
-        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-    }
-    if (clickY == 480) {
-        ctx.fillStyle = "#DFFE00";
-        ctx.fillRect (clickX, clickY, 80, 80);
-        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-    }
-    else {
-        ctx.fillStyle = "#DFFE00";
-        ctx.fillRect (clickX, clickY, 80, 80);
-    }
-    // if (clickX == pawn_black1[0]) {
-        
+    
+    
+    // if (clickY == 480) {
+    //     ctx.fillStyle = "#DFFE00";
+    //     ctx.fillRect (clickX, clickY, 80, 80);
+    //     ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
     // }
+    // else if (clickY === 80) {
+    //     ctx.fillStyle = "#DFFE00";
+    //     ctx.fillRect (clickX, clickY, 80, 80);
+    //     ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+    // }
+    // else {
+    //     ctx.fillStyle = "#DFFE00";
+    //     ctx.fillRect (clickX, clickY, 80, 80);
+    // }
+    if (black_click == false) {
+        if (clickX == pawn_black1[0] && clickY == pawn_black1[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+        }
+        if (clickX == pawn_black2[0] && clickY == pawn_black2[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+        }
+        if (clickX == pawn_black3[0] && clickY == pawn_black3[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+        }
+        if (clickX == pawn_black4[0] && clickY == pawn_black4[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+        }
+        if (clickX == pawn_black5[0] && clickY == pawn_black5[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+        }
+        if (clickX == pawn_black6[0] && clickY == pawn_black6[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+        }
+        if (clickX == pawn_black7[0] && clickY == pawn_black7[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+        }
+        if (clickX == pawn_black8[0] && clickY == pawn_black8[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+        }
+    }
+    
+    else if (black_click) {
+        if (clickX == pawn_black1[0] && clickY == pawn_black1[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+            return;
+        }
+        if (clickX == pawn_black2[0] && clickY == pawn_black2[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+            return;
+        }
+        if (clickX == pawn_black3[0] && clickY == pawn_black3[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+            return;
+        }
+        if (clickX == pawn_black4[0] && clickY == pawn_black4[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+            return;
+        }
+        if (clickX == pawn_black5[0] && clickY == pawn_black5[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+            return;
+            
+        }
+        if (clickX == pawn_black6[0] && clickY == pawn_black6[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+            return;
+        }
+        if (clickX == pawn_black7[0] && clickY == pawn_black7[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+            return;
+        }
+        if (clickX == pawn_black8[0] && clickY == pawn_black8[1]) {
+            black_click = true;
+            user_clickX = clickX;
+            user_clickY = clickY;
+            return;
+        }
+        else {
+            if (user_clickX == pawn_black1[0] && user_clickY == pawn_black1[1]) {
+                pawn_black1[0] = clickX;
+                pawn_black1[1] = clickY;
+            }
+            if (user_clickX == pawn_black2[0] && user_clickY == pawn_black2[1]) {
+                pawn_black2[0] = clickX;
+                pawn_black2[1] = clickY;
+            }
+            if (user_clickX == pawn_black3[0] && user_clickY == pawn_black3[1]) {
+                pawn_black3[0] = clickX;
+                pawn_black3[1] = clickY;
+            }
+            if (user_clickX == pawn_black4[0] && user_clickY == pawn_black4[1]) {
+                pawn_black4[0] = clickX;
+                pawn_black4[1] = clickY;
+            }
+            if (user_clickX == pawn_black5[0] && user_clickY == pawn_black5[1]) {
+                pawn_black5[0] = clickX;
+                pawn_black5[1] = clickY;
+            }
+            if (user_clickX == pawn_black6[0] && user_clickY == pawn_black6[1]) {
+                pawn_black6[0] = clickX;
+                pawn_black6[1] = clickY;
+            }
+            if (user_clickX == pawn_black7[0] && user_clickY == pawn_black7[1]) {
+                pawn_black7[0] = clickX;
+                pawn_black7[1] = clickY;
+            }
+            if (user_clickX == pawn_black8[0] && user_clickY == pawn_black8[1]) {
+                pawn_black8[0] = clickX;
+                pawn_black8[1] = clickY;
+            }
+            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+            if (user_clickX%160 == 0) {
+                if (user_clickY%160 == 0){
+                    ctx.clearRect(user_clickX, user_clickY, 80, 80);
+                }
+                else {
+                    ctx.fillStyle = "#484848";
+                    ctx.fillRect(user_clickX, user_clickY, 80, 80);
+                }
+                
+
+            }
+            else if (user_clickX%160 == 80) {
+                if (user_clickY%160 == 0) {
+                    ctx.fillStyle = "#484848";
+                    ctx.fillRect (user_clickX, user_clickY, 80, 80);
+                }
+                else {
+                    ctx.clearRect(user_clickX, user_clickY, 80, 80);
+                }
+
+            }
+            black_click = false;
+        }
+    }
+    
+
 }
