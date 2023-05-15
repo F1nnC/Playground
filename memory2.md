@@ -1,6 +1,5 @@
 <html>
   <head>
-    <meta charset='UTF-8'>
     <title>Memory Game</title>
     <script src="{{ '/assets/js/memory2.js' | relative_url }}"></script>
   </head>
