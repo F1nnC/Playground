@@ -1,40 +1,4 @@
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext('2d');
-const pawn_black = new Image();
-pawn_black.src = "https://github.com/F1nnC/Playground/blob/gh-pages/images/pawn_black.png";
-const pawn_white = new Image();
-pawn_white.src = "https://github.com/F1nnC/Playground/blob/gh-pages/images/pawn_white.png";
-var chess_board = [];
-var board_add = [];
-var pawn_white1 = [0, 480];
-var pawn_white2 = [80, 480];
-var pawn_white3 = [160, 480];
-var pawn_white4 = [240, 480];
-var pawn_white5 = [320, 480];
-var pawn_white6 = [400, 480];
-var pawn_white7 = [480, 480];
-var pawn_white8 = [560, 480];
-var pawn_black1 = [0, 80];
-var pawn_black2 = [80, 80];
-var pawn_black3 = [160, 80];
-var pawn_black4 = [240, 80];
-var pawn_black5 = [320, 80];
-var pawn_black6 = [400, 80];
-var pawn_black7 = [480, 80];
-var pawn_black8 = [560, 80];
-var clickX = 0;
-var clickY = 0;
-var black_click = false;
-var userBlack_clickX = 0;
-var userBlack_clickXY = 0;
-for (i = 0; i < 8; i++) {
-    for (j = 0; j < 8; j++) {
-        board_add.push([80*i, 80*j]);
 
-    }
-    chess_board.push(board_add);
-    board_add = [];
-}
 
 function draw_chess_board() {
     for (t=0; t< 4; t++) {
