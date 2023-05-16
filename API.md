@@ -36,139 +36,17 @@
   <tbody id="tbody">
   </tbody>
 </table>
+<br>
 
-<script>
-  // Sample orders
-  const sampleOrders = [
-    { name: "John", pizza: "Margherita", address: "123 Main St" },
-    { name: "Sarah", pizza: "Pepperoni", address: "456 Elm St" },
-    { name: "Michael", pizza: "Supreme", address: "789 Oak St" }
-  ];
+<h1>API Learning</h1>
+<p> Going to have explantions of API, methods, code images, and more </p>
+<br>
+<h1> GET METHOD </h1>
+<br>
+<h1> POST METHOD </h1>
+<br>
+<h1> UPDATE METHOD </h1>
+<br>
+<h1> DELETE METHOD </h1>
 
-  // Get table elements
-  const nameInput = document.getElementById("name");
-  const pizzaInput = document.getElementById("pizza");
-  const addressInput = document.getElementById("address");
-  const tbody = document.getElementById("tbody");
-
-  // Function to populate the table with sample orders
-  function populateTable() {
-    for (let i = 0; i < sampleOrders.length; i++) {
-      const order = sampleOrders[i];
-      const newRow = document.createElement("tr");
-      const nameCell = document.createElement("td");
-      const pizzaCell = document.createElement("td");
-      const addressCell = document.createElement("td");
-      const deleteCell = document.createElement("td");
-
-      nameCell.textContent = order.name;
-      pizzaCell.textContent = order.pizza;
-      addressCell.textContent = order.address;
-
-      const deleteButton = document.createElement("button");
-      deleteButton.innerHTML = "Delete";
-      deleteButton.onclick = () => {
-        tbody.removeChild(newRow);
-      };
-      deleteCell.appendChild(deleteButton);
-
-      newRow.appendChild(nameCell);
-      newRow.appendChild(pizzaCell);
-      newRow.appendChild(addressCell);
-      newRow.appendChild(deleteCell);
-
-      tbody.appendChild(newRow);
-    }
-  }
-  // Function to add an order
-  function addOrder() {
-    const name = nameInput.value;
-    const pizza = pizzaInput.value;
-    const address = addressInput.value;
-
-    // Check if the name already exists in the table
-    const existingRow = Array.from(tbody.getElementsByTagName("tr")).find(
-      (row) => row.cells[0].textContent === name
-    );
-
-    if (existingRow) {
-      // Update address and pizza for existing name
-      existingRow.cells[2].textContent = address;
-      existingRow.cells[1].textContent = pizza;
-    } else {
-      // Create a new row
-      const newRow = document.createElement("tr");
-      const nameCell = document.createElement("td");
-      const pizzaCell = document.createElement("td");
-      const addressCell = document.createElement("td");
-      const deleteCell = document.createElement("td");
-
-      nameCell.textContent = name;
-      pizzaCell.textContent = pizza;
-      addressCell.textContent = address;
-
-      // Add delete button to the new row
-      const deleteButton = document.createElement("button");
-      deleteButton.innerHTML = "Delete";
-      deleteButton.onclick = () => {
-        tbody.removeChild(newRow);
-      };
-      deleteCell.appendChild(deleteButton);
-
-      newRow.appendChild(nameCell);
-      newRow.appendChild(pizzaCell);
-      newRow.appendChild(addressCell);
-      newRow.appendChild(deleteCell);
-
-      tbody.appendChild(newRow);
-    }
-
-    // Clear input fields after order
-    nameInput.value = "";
-    pizzaInput.value = "";
-    addressInput.value = "";
-  }
-
-  // Function to update an order
-  function updateOrder() {
-    const name = nameInput.value;
-    const pizza = pizzaInput.value;
-    const address = addressInput.value;
-
-    // Find the row with the matching name
-    const rows = tbody.getElementsByTagName("tr");
-    for (let i = 0; i < rows.length; i++) {
-      const row = rows[i];
-      if (row.cells[0].textContent === name) {
-        // Update
-      row.cells[2].textContent = address;
-      row.cells[1].textContent = pizza;
-      break;
-      }
-      }
-    nameInput.value = "";
-    pizzaInput.value = "";
-    addressInput.value = "";
-    }
-
-  // Function to delete an order
-  function deleteOrder() {
-  const name = nameInput.value;
-  // Find the row with the matching name
-  const rows = tbody.getElementsByTagName("tr");
-  for (let i = 0; i < rows.length; i++) {
-    const row = rows[i];
-    if (row.cells[0].textContent === name) {
-      tbody.removeChild(row);
-      break;
-    }
-  }
-
-  // Clear input fields after deletion
-  nameInput.value = "";
-  pizzaInput.value = "";
-  addressInput.value = "";
-  }
-  
-  populateTable();
-</script>
+<script src="{{ '/assets/js/pizzaFront.js' | relative_url }}"></script>
