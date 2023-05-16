@@ -1,9 +1,9 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext('2d');
 const pawn_black = new Image();
-pawn_black.src = "/images/pawn_black.png";
+pawn_black.src = "https://github.com/F1nnC/Playground/blob/gh-pages/images/pawn_black.png";
 const pawn_white = new Image();
-pawn_white.src = "/images/pawn_white.png";
+pawn_white.src = "https://github.com/F1nnC/Playground/blob/gh-pages/images/pawn_white.png";
 var chess_board = [];
 var board_add = [];
 var pawn_white1 = [0, 480];
@@ -187,34 +187,53 @@ function clickCanvas(event) {
         }
         else {
             if (user_clickX == pawn_black1[0] && user_clickY == pawn_black1[1]) {
+                // this is the code for pawn 
+                // edit this code to make a rule
+                if (pawn_black1[1] == 80) {
+
+                }
                 pawn_black1[0] = clickX;
                 pawn_black1[1] = clickY;
             }
             if (user_clickX == pawn_black2[0] && user_clickY == pawn_black2[1]) {
+                // this is the code for pawn 
+                // edit this code to make a rule
                 pawn_black2[0] = clickX;
                 pawn_black2[1] = clickY;
             }
             if (user_clickX == pawn_black3[0] && user_clickY == pawn_black3[1]) {
+                // this is the code for pawn 
+                // edit this code to make a rule
                 pawn_black3[0] = clickX;
                 pawn_black3[1] = clickY;
             }
             if (user_clickX == pawn_black4[0] && user_clickY == pawn_black4[1]) {
+                // this is the code for pawn 
+                // edit this code to make a rule
                 pawn_black4[0] = clickX;
                 pawn_black4[1] = clickY;
             }
             if (user_clickX == pawn_black5[0] && user_clickY == pawn_black5[1]) {
+                // this is the code for pawn 
+                // edit this code to make a rule
                 pawn_black5[0] = clickX;
                 pawn_black5[1] = clickY;
             }
             if (user_clickX == pawn_black6[0] && user_clickY == pawn_black6[1]) {
+                // this is the code for pawn 
+                // edit this code to make a rule
                 pawn_black6[0] = clickX;
                 pawn_black6[1] = clickY;
             }
             if (user_clickX == pawn_black7[0] && user_clickY == pawn_black7[1]) {
+                // this is the code for pawn 
+                // edit this code to make a rule
                 pawn_black7[0] = clickX;
                 pawn_black7[1] = clickY;
             }
             if (user_clickX == pawn_black8[0] && user_clickY == pawn_black8[1]) {
+                // this is the code for pawn 
+                // edit this code to make a rule
                 pawn_black8[0] = clickX;
                 pawn_black8[1] = clickY;
             }
