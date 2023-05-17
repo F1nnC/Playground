@@ -21,3 +21,4 @@ Today, the whole group was present and we continued on the work we had. Today wa
 <br>
 
 ## Tuesday, May 16th, 2023
+Today was another live review where Mr. Mortensen checked in with individual and their progress on this project. Edwin and Luka talked about their plans for the Pizza API, and using SQLite and the JavaScript Frontend table. Gene and Zeen also talked about they are using a login system, as well as applying the leaderboard to each game. Then, Kush and James talked about how they were working on 2D Array games, mainly chess, but also Tic-Tac-Toe. Finn talked about his plans in changing his robot game and adding in some animations to show how the sprite can move from one spot to another.
