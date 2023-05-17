@@ -10,6 +10,8 @@ layout: robot
       }
 </style>
 
+<canvas id="animation" width="50" height="50">
+</canvas>
 
 <div class="container" style="">
   <div id="div1" class="shadow" style="padding: 50px; ">
@@ -45,6 +47,13 @@ layout: robot
 
 
 <script>
+
+const path = "https://f1nnc.github.io/Playground/images/robot-animation.png"
+var imageX = 0;
+var imageY = 0;
+
+
+
 var sim = document.getElementById("sim");
 var ctx = sim.getContext("2d");
 var canvasWidth = sim.width;
@@ -59,6 +68,18 @@ var barY3 = 0;
 var barY4 = 200;
 squareX = 0;
 squareY = 0;
+
+
+var image = new Image();
+image.src = path;
+image.onload = function() {
+  drawImage();
+};
+
+function drawImage() {
+  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+  ctx.drawImage(image, imageX, imageY, 50, 50, 0, 0, 50, 50); // Draw only the first 50x50 pixels
+}
 
 
 function draw() {
@@ -84,6 +105,7 @@ function draw() {
   ctx.fill();
   ctx.closePath();
 
+  drawImage();
 }
 
 function collide() {
