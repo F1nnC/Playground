@@ -1,7 +1,8 @@
+
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext('2d');
 const pawn_black = new Image();
-pawn_black.src = "https://f1nnc.github.io/Playground/images/pawn_black.png";
+pawn_black.src = "https://github.com/F1nnC/Playground/blob/gh-pages/images/pawn_black.png";
 const pawn_white = new Image();
 pawn_white.src = "https://f1nnc.github.io/Playground/images/pawn_white.png";
 var chess_board = [];

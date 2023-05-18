@@ -39,7 +39,7 @@ permalink: /login
 <script>
     document.getElementById("form").addEventListener("submit", (event) => {
         event.preventDefault();
-        const url = "tbd";
+        const url = "/api/leaderboards/";
         // const url = "http://172.20.159.234:8087/api/names/"
         const body = {
             name: document.getElementById("loginName").value,
