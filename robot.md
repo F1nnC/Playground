@@ -48,7 +48,8 @@ layout: robot
 
 <script>
 
-const path = "https://f1nnc.github.io/Playground/images/robot-animation.png"
+const path = "https://f1nnc.github.io/Playground/images/robotIdle.jpg"
+const pathR = "https://f1nnc.github.io/Playground/images/robotRun.jpg"
 var imageX = 0;
 var imageY = 0;
 
