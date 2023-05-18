@@ -282,8 +282,8 @@ function clickCanvas(event) {
                 if (pawn_black2[1] == 80) {
                     if (clickY == 240 && clickX == pawn_black2[0]) {
                         ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                        pawn_black1[0] = clickX;
-                        pawn_black1[1] = clickY;
+                        pawn_black2[0] = clickX;
+                        pawn_black2[1] = clickY;
                         if (userBlack_clickX%160 == 0) {
                             if (userBlack_clickY%160 == 0){
                                 ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
@@ -308,10 +308,10 @@ function clickCanvas(event) {
                         black_click = false;
                         return;
                     }
-                    if (clickY == 160 && clickX == pawn_black1[0]) {
+                    if (clickY == 160 && clickX == pawn_black2[0]) {
                         ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                        pawn_black1[0] = clickX;
-                        pawn_black1[1] = clickY;
+                        pawn_black2[0] = clickX;
+                        pawn_black2[1] = clickY;
                         if (userBlack_clickX%160 == 0) {
                             if (userBlack_clickY%160 == 0){
                                 ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
@@ -338,10 +338,10 @@ function clickCanvas(event) {
                     }
                 }
                 else {
-                    if (clickY == pawn_black1[1]+80 && clickX == pawn_black1[0]) {
+                    if (clickY == pawn_black2[1]+80 && clickX == pawn_black2[0]) {
                         ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                        pawn_black1[0] = clickX;
-                        pawn_black1[1] = clickY;
+                        pawn_black2[0] = clickX;
+                        pawn_black2[1] = clickY;
                         if (userBlack_clickX%160 == 0) {
                             if (userBlack_clickY%160 == 0){
                                 ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
@@ -369,28 +369,364 @@ function clickCanvas(event) {
                 }
             }
             if (userBlack_clickX == pawn_black3[0] && userBlack_clickY == pawn_black3[1]) {
-                // this is the code for pawn 
-                // edit this code to make a rule
-                pawn_black3[0] = clickX;
-                pawn_black3[1] = clickY;
+                if (pawn_black3[1] == 80) {
+                    if (clickY == 240 && clickX == pawn_black3[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black3[0] = clickX;
+                        pawn_black3[1] = clickY;
+                        if (userBlack_clickX%160 == 0) {
+                            if (userBlack_clickY%160 == 0){
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            
+            
+                        }
+                        else if (userBlack_clickX%160 == 80) {
+                            if (userBlack_clickY%160 == 0) {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect (userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+            
+                        }
+                        black_click = false;
+                        return;
+                    }
+                    if (clickY == 160 && clickX == pawn_black3[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black3[0] = clickX;
+                        pawn_black3[1] = clickY;
+                        if (userBlack_clickX%160 == 0) {
+                            if (userBlack_clickY%160 == 0){
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            
+            
+                        }
+                        else if (userBlack_clickX%160 == 80) {
+                            if (userBlack_clickY%160 == 0) {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect (userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+            
+                        }
+                        black_click = false;
+                        return;
+                    }
+                }
+                else {
+                    if (clickY == pawn_black3[1]+80 && clickX == pawn_black3[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black3[0] = clickX;
+                        pawn_black3[1] = clickY;
+                        if (userBlack_clickX%160 == 0) {
+                            if (userBlack_clickY%160 == 0){
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            
+            
+                        }
+                        else if (userBlack_clickX%160 == 80) {
+                            if (userBlack_clickY%160 == 0) {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect (userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+            
+                        }
+                        black_click = false;
+                        return;
+                    }
+                }
             }
             if (userBlack_clickX == pawn_black4[0] && userBlack_clickY == pawn_black4[1]) {
-                // this is the code for pawn 
-                // edit this code to make a rule
-                pawn_black4[0] = clickX;
-                pawn_black4[1] = clickY;
+                if (pawn_black4[1] == 80) {
+                    if (clickY == 240 && clickX == pawn_black4[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black4[0] = clickX;
+                        pawn_black4[1] = clickY;
+                        if (userBlack_clickX%160 == 0) {
+                            if (userBlack_clickY%160 == 0){
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            
+            
+                        }
+                        else if (userBlack_clickX%160 == 80) {
+                            if (userBlack_clickY%160 == 0) {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect (userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+            
+                        }
+                        black_click = false;
+                        return;
+                    }
+                    if (clickY == 160 && clickX == pawn_black4[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black4[0] = clickX;
+                        pawn_black4[1] = clickY;
+                        if (userBlack_clickX%160 == 0) {
+                            if (userBlack_clickY%160 == 0){
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            
+            
+                        }
+                        else if (userBlack_clickX%160 == 80) {
+                            if (userBlack_clickY%160 == 0) {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect (userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+            
+                        }
+                        black_click = false;
+                        return;
+                    }
+                }
+                else {
+                    if (clickY == pawn_black4[1]+80 && clickX == pawn_black4[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black4[0] = clickX;
+                        pawn_black4[1] = clickY;
+                        if (userBlack_clickX%160 == 0) {
+                            if (userBlack_clickY%160 == 0){
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            
+            
+                        }
+                        else if (userBlack_clickX%160 == 80) {
+                            if (userBlack_clickY%160 == 0) {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect (userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+            
+                        }
+                        black_click = false;
+                        return;
+                    }
+                }
             }
             if (userBlack_clickX == pawn_black5[0] && userBlack_clickY == pawn_black5[1]) {
-                // this is the code for pawn 
-                // edit this code to make a rule
-                pawn_black5[0] = clickX;
-                pawn_black5[1] = clickY;
+                if (pawn_black5[1] == 80) {
+                    if (clickY == 240 && clickX == pawn_black5[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black5[0] = clickX;
+                        pawn_black5[1] = clickY;
+                        if (userBlack_clickX%160 == 0) {
+                            if (userBlack_clickY%160 == 0){
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            
+            
+                        }
+                        else if (userBlack_clickX%160 == 80) {
+                            if (userBlack_clickY%160 == 0) {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect (userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+            
+                        }
+                        black_click = false;
+                        return;
+                    }
+                    if (clickY == 160 && clickX == pawn_black5[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black5[0] = clickX;
+                        pawn_black5[1] = clickY;
+                        if (userBlack_clickX%160 == 0) {
+                            if (userBlack_clickY%160 == 0){
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            
+            
+                        }
+                        else if (userBlack_clickX%160 == 80) {
+                            if (userBlack_clickY%160 == 0) {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect (userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+            
+                        }
+                        black_click = false;
+                        return;
+                    }
+                }
+                else {
+                    if (clickY == pawn_black5[1]+80 && clickX == pawn_black5[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black5[0] = clickX;
+                        pawn_black5[1] = clickY;
+                        if (userBlack_clickX%160 == 0) {
+                            if (userBlack_clickY%160 == 0){
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            
+            
+                        }
+                        else if (userBlack_clickX%160 == 80) {
+                            if (userBlack_clickY%160 == 0) {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect (userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+            
+                        }
+                        black_click = false;
+                        return;
+                    }
+                }
             }
             if (userBlack_clickX == pawn_black6[0] && userBlack_clickY == pawn_black6[1]) {
-                // this is the code for pawn 
-                // edit this code to make a rule
-                pawn_black6[0] = clickX;
-                pawn_black6[1] = clickY;
+                if (pawn_black6[1] == 80) {
+                    if (clickY == 240 && clickX == pawn_black6[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black6[0] = clickX;
+                        pawn_black6[1] = clickY;
+                        if (userBlack_clickX%160 == 0) {
+                            if (userBlack_clickY%160 == 0){
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            
+            
+                        }
+                        else if (userBlack_clickX%160 == 80) {
+                            if (userBlack_clickY%160 == 0) {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect (userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+            
+                        }
+                        black_click = false;
+                        return;
+                    }
+                    if (clickY == 160 && clickX == pawn_black6[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black6[0] = clickX;
+                        pawn_black6[1] = clickY;
+                        if (userBlack_clickX%160 == 0) {
+                            if (userBlack_clickY%160 == 0){
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            
+            
+                        }
+                        else if (userBlack_clickX%160 == 80) {
+                            if (userBlack_clickY%160 == 0) {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect (userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+            
+                        }
+                        black_click = false;
+                        return;
+                    }
+                }
+                else {
+                    if (clickY == pawn_black6[1]+80 && clickX == pawn_black6[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black1[0] = clickX;
+                        pawn_black1[1] = clickY;
+                        if (userBlack_clickX%160 == 0) {
+                            if (userBlack_clickY%160 == 0){
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            
+            
+                        }
+                        else if (userBlack_clickX%160 == 80) {
+                            if (userBlack_clickY%160 == 0) {
+                                ctx.fillStyle = "#484848";
+                                ctx.fillRect (userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+                            else {
+                                ctx.clearRect(userBlack_clickX, userBlack_clickY, 80, 80);
+                            }
+            
+                        }
+                        black_click = false;
+                        return;
+                    }
+                }
             }
             if (userBlack_clickX == pawn_black7[0] && userBlack_clickY == pawn_black7[1]) {
                 // this is the code for pawn 
