@@ -26,3 +26,6 @@ Today was another live review where Mr. Mortensen checked in with individual and
 <br>
 
 ## Wednesday, May 17th, 2023
+Today in class we did the animation and 2d arrays tech talk. We then also continued working on the plans that we had created and how we were going to incorporate animations into our projects. Finn planned on implementing animation into the robot game by giving the robot movements when it moved into different spaces. Edwin was working on the animations that were presented in class. Afterschool Edwin was working very deligently on tic tac toe and created a working beta. 
+
+## Thursday, May 17th, 2023
