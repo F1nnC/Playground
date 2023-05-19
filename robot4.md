@@ -56,6 +56,65 @@ var barY7 = 0;
 var barY8 = 50;
 let winCheck = 0;
 
+var robotState = 0;
+var path = "https://f1nnc.github.io/Playground/images/robotIdle.jpg"
+const pathI = "https://f1nnc.github.io/Playground/images/robotIdle.jpg"
+const pathR = "https://f1nnc.github.io/Playground/images/robotRun.jpg"
+var imageX = 0;
+var imageY = 0;
+
+var image = new Image();
+image.src = path;
+image.onload = function() {
+  drawImage();
+};
+
+function drawImage() {
+  ctx.clearRect(0, 0, 50, 50);
+  ctx.drawImage(image, imageX, imageY, 128, 128, squareX, squareY, 50, 50);
+}
+
+function updateImage() {
+    if (robotState == 0) {
+        path = pathI;
+        image.src = path;
+        imageX = imageX + 128;
+        if (imageX > 512) {
+            imageX = 0;
+
+            if (imageY < 384) {
+            imageY = imageY + 128;
+            } else {
+            imageY = 0;
+            }
+        }
+
+        if (imageY === 384 && imageX === 256) {
+            imageX = 0;
+            imageY = 0;
+        }
+    }
+    if (robotState == 1) {
+        path = pathR;
+        image.src = path;
+        imageY = 64;
+        imageX = 0;
+        robotState = 2;
+    }
+    if (robotState == 2) {
+        if (imageX < 512) {
+            imageX = imageX + 128;
+        }
+        if (imageX == 512) {
+            imageY = 216;
+            imageX = 0;
+        }
+        if (imageX == 512 && imageY == 216) {
+            imageY = 64;
+            imageX = 0;
+        }
+    }
+}
 
 function draw() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -85,6 +144,8 @@ function draw() {
     ctx.arc(25, 225, 10, 0, 2 * Math.PI);
     ctx.fill();
     ctx.closePath();
+
+    drawImage();
 }
 
 function collide() {
@@ -145,6 +206,7 @@ function collide() {
 // and uses setInterval to execute each movement in sequence at a delay of 800 milliseconds.
 function run() {
     // Read input values from the HTML document and convert them to integers.
+    robotState = 1;
     var UPinput = parseInt(document.getElementById("up").value);
     var DOWNinput = parseInt(document.getElementById("down").value);
     var LEFTinput = 2;
@@ -187,6 +249,7 @@ function run() {
         if (index >= movements.length) {
             clearInterval(intervalId);
             win(); // Call the win function.
+            robotState = 0;
             return;
         }
         movements[index](); // Execute the movement at the current index.
@@ -199,6 +262,10 @@ function win() {
         let person = prompt("Please enter your name to get credit for the level");
         console.log(person); // Print the entered name to the console.
     }
+    path = pathI;
+    image.src = path;
+    imageX = 0;
+    imageY = 0;
 }
 
 
@@ -244,6 +311,6 @@ function down() {
 }
 
 setInterval(draw, 10);
-
+setInterval(updateImage, 75);
 
 </script>
