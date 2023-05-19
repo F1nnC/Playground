@@ -36,7 +36,6 @@ var white_turn = true;
 for (i = 0; i < 8; i++) {
     for (j = 0; j < 8; j++) {
         board_add.push([80*i, 80*j]);
-
     }
     chess_board.push(board_add);
     board_add = [];
@@ -47,7 +46,6 @@ function draw_chess_board() {
             ctx.beginPath()
             ctx.fillStyle = "#484848";
             ctx.fillRect (80*(2*t+1), chess_board[t][2*k][1], 80, 80);
-            
             ctx.fill();
             ctx.closePath();
         }
