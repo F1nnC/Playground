@@ -85,7 +85,22 @@ function updateImage() {
     if (robotState == 1) {
         path = pathR;
         image.src = path;
-        imageY = 40;
+        imageY = 64;
+        imageX = 0;
+        robotState = 2;
+    }
+    if (robotState == 2) {
+        if (imageX < 512) {
+            imageX = imageX + 128;
+        }
+        if (imageX == 512) {
+            imageY = 216;
+            imageX = 0;
+        }
+        if (imageX == 512 && imageY == 216) {
+            imageY = 64;
+            imageX = 0;
+        }
     }
 }
 
