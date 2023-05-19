@@ -195,12 +195,31 @@ function run() {
 }
 
 function win() {
-    if (squareX == 0 && squareY == 200) {
-        let person = prompt("Please enter your name to get credit for the level");
-        console.log(person); // Print the entered name to the console.
+  if (squareX == 0 && squareY == 200) {
+    let person = prompt("Please enter your name:");
+    let password = prompt("Please enter your password:");
+    if (person != null && password != null) {
+      fetch('http://127.0.0.1:8687/api/users/win', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: person, password: password })
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          displayLeaderboard();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     }
-}
 
+    // increase the player's level by 1
+    let level = parseInt(localStorage.getItem('level')) || 1;
+    level += 1;
+    localStorage.setItem('level', level);
+  }
+}
 
 function right() {
     squareX += squareSize;
