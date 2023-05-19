@@ -31,4 +31,6 @@ Today in class we did the animation and 2d arrays tech talk. We then also contin
 <br>
 
 ## Thursday, May 17th, 2023
-Today in class Edwin, Gene, and Luka worked on fixing the sqlite because it would continually readd the original variables into the database, causing them to hsve duplicates in the database. Edwin was also working on his english paper that was due two weeks ago. Zeen today worked on frontend. Kush worked on tic tac toe game. James created the movement of the pawn in chess. Finn worked on robot animation. Gene made fixed all of the problems in the backend work. 
+Today in class Edwin, Gene, and Luka worked on fixing the sqlite because it would continually readd the original variables into the database, causing them to hsve duplicates in the database. Edwin was also working on his english paper that was due two weeks ago. Zeen today worked on frontend. Kush worked on tic tac toe game. James created the movement of the pawn in chess. Finn worked on robot animation. Gene made fixed all of the problems in the backend work.
+
+## Friday, May 18th, 2023

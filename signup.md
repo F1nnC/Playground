@@ -1,8 +1,8 @@
 ---
-title: Python Sign-in
+title: Python Signin
 layout: default
-description: A sign-in screen that interacts with Python and obtains a user.
-permalink: /login
+description: A signin screen 
+permalink: /signin
 ---
 
 <p><h2 style="text-align: center">Log In</h2></p>
@@ -35,28 +35,28 @@ permalink: /login
 </label></p>
 <p><button class="btn btn-dark button" type="submit" id="signUp">Sign Up</button></p>
 <p id="message2"></p>
-<script src="assets/js/login.js"></script>
+<script src="assets/js/loginjs"></script>
 <script>
+    //working script for the signup/login/whatever this monstrosity is page
     document.getElementById("form").addEventListener("submit", (event) => {
         event.preventDefault();
-        const url = "/api/leaderboards/";
-        // const url = "http://172.20.159.234:8087/api/names/"
+        //link should work now
+        const url = "https://tngc.nighthawkcodescrums.gq/api/names/";
+        //temporary localhost server, for your's truly
+        //const url = "http://127.0.0.1:8087/api/names/"
         const body = {
             name: document.getElementById("loginName").value,
             password: document.getElementById("loginPassword").value,
         };
         const requestOptions = {
             method: 'POST',
-            // mode: 'cors',
-            // cache: 'no-cache',
-            // credentials: 'same-origin',
-            body: JSON.stringify(body),
             headers: {
                 "Content-Type": "application/json",
             },
         };
         fetch(url, requestOptions)
             .then(response => {
+                //differentiate numbers
                 console.log(response)
                 if (response.status === 200){
                     return response.json()
@@ -64,13 +64,14 @@ permalink: /login
                 else if (response.status === 210) {
                     document.getElementById("message").innerHTML = "Username must be more than 2 characters";
                     return
+                //two character thing really necesarry? 
                 }
                 else if (response.status === 211) {
-                    document.getElementById("message").innerHTML = "Username not found";
+                    document.getElementById("message").innerHTML = "Username not found :(";
                     return
                 }
                 else if (response.status === 212) {
-                    document.getElementById("message").innerHTML = "Password incorrect";
+                    document.getElementById("message").innerHTML = "Password incorrect :(";
                     return
                 }
                 else {
@@ -78,17 +79,20 @@ permalink: /login
                     return
                 }
             })
+            //the code has a three way thing going on, a bit complex but it works :D
+            //maybe simplify it later
             .then(data => {
                 if (data.message == "name is missing") {
-                    document.getElementById("message").innerHTML = "Username must be more than 2 characters";
+                    document.getElementById("message").innerHTML = "Username must be more than 2 characters :(";
                     return
+                //maybe works? dunno, fix again 
                 }
                 else if (data.message == "invalid username") {
-                    document.getElementById("message").innerHTML = "Username not found";
+                    document.getElementById("message").innerHTML = "Username not found :(";
                     return
                 }
                 else if (data.message == "wrong password") {
-                    document.getElementById("message").innerHTML = "Password incorrect";
+                    document.getElementById("message").innerHTML = "Password incorrect :(";
                     return
                 }
                 const message = 'Login success: ' + data.name;
