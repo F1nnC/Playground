@@ -43,11 +43,6 @@ layout: robot
 <script>
 
 
-var path = "https://f1nnc.github.io/Playground/images/robotIdle.jpg"
-const pathI = "https://f1nnc.github.io/Playground/images/robotIdle.jpg"
-const pathR = "https://f1nnc.github.io/Playground/images/robotRun.jpg"
-var imageX = 0;
-var imageY = 0;
 var runner = document.getElementById("runner");
 var sim = document.getElementById("sim");
 var ctx = sim.getContext("2d");
@@ -61,7 +56,13 @@ var barX2 = 150;
 var barX3 = 200;
 var barY1 = 100;
 let winCheck = 0;
+
 var robotState = 0;
+var path = "https://f1nnc.github.io/Playground/images/robotIdle.jpg"
+const pathI = "https://f1nnc.github.io/Playground/images/robotIdle.jpg"
+const pathR = "https://f1nnc.github.io/Playground/images/robotRun.jpg"
+var imageX = 0;
+var imageY = 0;
 
 var image = new Image();
 image.src = path;
@@ -240,6 +241,10 @@ function win() {
           console.error('Error:', error);
         });
     }
+    path = pathI;
+    image.src = path;
+    imageX = 0;
+    imageY = 0;
 
     // increase the player's level by 1
     let level = parseInt(localStorage.getItem('level')) || 1;
