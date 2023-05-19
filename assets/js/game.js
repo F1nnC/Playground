@@ -518,149 +518,149 @@ function clickCanvas(event) {
                 userWhite_clickY = clickY;
                 return;
             }
-            if (clickX == pawn_black8[0] && clickY == pawn_black8[1]) {
-                black_click = true;
-                userBlack_clickX = clickX;
-                userBlack_clickY = clickY;
+            if (clickX == pawn_white8[0] && clickY == pawn_white8[1]) {
+                white_click = true;
+                userWhite_clickX = clickX;
+                userWhite_clickY = clickY;
                 return;
             }
             else {
-                if (userBlack_clickX == pawn_black1[0] && userBlack_clickY == pawn_black1[1]) {
-                    if (pawn_black1[1] == 80) {
-                        if (clickY == 240 && clickX == pawn_black1[0]) {
+                if (userWhite_clickX == pawn_white1[0] && userWhite_clickY == pawn_white1[1]) {
+                    if (pawn_white1[1] == 80) {
+                        if (clickY == 240 && clickX == pawn_white1[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black1[0] = clickX;
-                            pawn_black1[1] = clickY;
+                            pawn_white1[0] = clickX;
+                            pawn_white1[1] = clickY;
                             erase();
                             return;
                         }
-                        if (clickY == 160 && clickX == pawn_black1[0]) {
+                        if (clickY == 160 && clickX == pawn_white1[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black1[0] = clickX;
-                            pawn_black1[1] = clickY;
-                            erase();
-                            return;
-                        }
-                    }
-                    else {
-                        if (clickY == pawn_black1[1]+80 && clickX == pawn_black1[0]) {
-                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black1[0] = clickX;
-                            pawn_black1[1] = clickY;
-                            erase();
-                            return;
-                        }
-                    }
-                }
-                if (userBlack_clickX == pawn_black2[0] && userBlack_clickY == pawn_black2[1]) {
-                    if (pawn_black2[1] == 80) {
-                        if (clickY == 240 && clickX == pawn_black2[0]) {
-                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black2[0] = clickX;
-                            pawn_black2[1] = clickY;
-                            erase();
-                            return;
-                        }
-                        if (clickY == 160 && clickX == pawn_black2[0]) {
-                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black2[0] = clickX;
-                            pawn_black2[1] = clickY;
+                            pawn_white1[0] = clickX;
+                            pawn_white1[1] = clickY;
                             erase();
                             return;
                         }
                     }
                     else {
-                        if (clickY == pawn_black2[1]+80 && clickX == pawn_black2[0]) {
+                        if (clickY == pawn_white1[1]+80 && clickX == pawn_white1[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black2[0] = clickX;
-                            pawn_black2[1] = clickY;
+                            pawn_white1[0] = clickX;
+                            pawn_white1[1] = clickY;
                             erase();
                             return;
                         }
                     }
                 }
-                if (userBlack_clickX == pawn_black3[0] && userBlack_clickY == pawn_black3[1]) {
-                    if (pawn_black3[1] == 80) {
-                        if (clickY == 240 && clickX == pawn_black3[0]) {
+                if (userWhite_clickX == pawn_white2[0] && userWhite_clickY == pawn_white2[1]) {
+                    if (pawn_white2[1] == 80) {
+                        if (clickY == 240 && clickX == pawn_white2[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black3[0] = clickX;
-                            pawn_black3[1] = clickY;
+                            pawn_white2[0] = clickX;
+                            pawn_white2[1] = clickY;
                             erase();
                             return;
                         }
-                        if (clickY == 160 && clickX == pawn_black3[0]) {
+                        if (clickY == 160 && clickX == pawn_white2[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black3[0] = clickX;
-                            pawn_black3[1] = clickY;
+                            pawn_white2[0] = clickX;
+                            pawn_white2[1] = clickY;
                             erase();
                             return;
                         }
                     }
                     else {
-                        if (clickY == pawn_black3[1]+80 && clickX == pawn_black3[0]) {
+                        if (clickY == pawn_white2[1]+80 && clickX == pawn_white2[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black3[0] = clickX;
-                            pawn_black3[1] = clickY;
+                            pawn_white2[0] = clickX;
+                            pawn_white2[1] = clickY;
                             erase();
                             return;
                         }
                     }
                 }
-                if (userBlack_clickX == pawn_black4[0] && userBlack_clickY == pawn_black4[1]) {
-                    if (pawn_black4[1] == 80) {
-                        if (clickY == 240 && clickX == pawn_black4[0]) {
+                if (userWhite_clickX == pawn_white3[0] && userWhite_clickY == pawn_white3[1]) {
+                    if (pawn_white3[1] == 80) {
+                        if (clickY == 240 && clickX == pawn_white3[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black4[0] = clickX;
-                            pawn_black4[1] = clickY;
+                            pawn_white3[0] = clickX;
+                            pawn_white3[1] = clickY;
                             erase();
                             return;
                         }
-                        if (clickY == 160 && clickX == pawn_black4[0]) {
+                        if (clickY == 160 && clickX == pawn_white3[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black4[0] = clickX;
-                            pawn_black4[1] = clickY;
+                            pawn_white3[0] = clickX;
+                            pawn_white3[1] = clickY;
                             erase();
                             return;
                         }
                     }
                     else {
-                        if (clickY == pawn_black4[1]+80 && clickX == pawn_black4[0]) {
+                        if (clickY == pawn_white3[1]+80 && clickX == pawn_white3[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black4[0] = clickX;
-                            pawn_black4[1] = clickY;
+                            pawn_white3[0] = clickX;
+                            pawn_white3[1] = clickY;
                             erase();
                             return;
                         }
                     }
                 }
-                if (userBlack_clickX == pawn_black5[0] && userBlack_clickY == pawn_black5[1]) {
-                    if (pawn_black5[1] == 80) {
-                        if (clickY == 240 && clickX == pawn_black5[0]) {
+                if (userWhite_clickX == pawn_white4[0] && userWhite_clickY == pawn_white4[1]) {
+                    if (pawn_white4[1] == 80) {
+                        if (clickY == 240 && clickX == pawn_white4[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black5[0] = clickX;
-                            pawn_black5[1] = clickY;
+                            pawn_white4[0] = clickX;
+                            pawn_white4[1] = clickY;
                             erase();
                             return;
                         }
-                        if (clickY == 160 && clickX == pawn_black5[0]) {
+                        if (clickY == 160 && clickX == pawn_white4[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black5[0] = clickX;
-                            pawn_black5[1] = clickY;
+                            pawn_white4[0] = clickX;
+                            pawn_white4[1] = clickY;
                             erase();
                             return;
                         }
                     }
                     else {
-                        if (clickY == pawn_black5[1]+80 && clickX == pawn_black5[0]) {
+                        if (clickY == pawn_white4[1]+80 && clickX == pawn_white4[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black5[0] = clickX;
-                            pawn_black5[1] = clickY;
+                            pawn_white4[0] = clickX;
+                            pawn_white4[1] = clickY;
                             erase();
                             return;
                         }
                     }
                 }
-                if (userBlack_clickX == pawn_black6[0] && userBlack_clickY == pawn_black6[1]) {
+                if (userWhite_clickX == pawn_white5[0] && userWhites_clickY == pawn_white5[1]) {
+                    if (pawn_white5[1] == 80) {
+                        if (clickY == 240 && clickX == pawn_white5[0]) {
+                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                            pawn_white5[0] = clickX;
+                            pawn_white5[1] = clickY;
+                            erase();
+                            return;
+                        }
+                        if (clickY == 160 && clickX == pawn_white5[0]) {
+                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                            pawn_white5[0] = clickX;
+                            pawn_white5[1] = clickY;
+                            erase();
+                            return;
+                        }
+                    }
+                    else {
+                        if (clickY == pawn_white5[1]+80 && clickX == pawn_white5[0]) {
+                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                            pawn_white5[0] = clickX;
+                            pawn_white5[1] = clickY;
+                            erase();
+                            return;
+                        }
+                    }
+                }
+                if (userBlack_clickX == pawn_white6[0] && userBlack_clickY == pawn_white6[1]) {
                     if (pawn_black6[1] == 80) {
                         if (clickY == 240 && clickX == pawn_black6[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
