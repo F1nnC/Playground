@@ -43,6 +43,13 @@ layout: robot
     <ul id="leaderboard"></ul>
   </div>
 </div>
+<script>
+  fetch('http://127.0.0.1:8687/api/users/', {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: person, level: parseInt(localStorage.getItem('level')) || 1 })
+})
+</script>
 
 
 <script>
@@ -153,51 +160,48 @@ function collide() {
 
 function win() {
   if (squareX == 200 && squareY == 200) {
-    let person = prompt("Please enter your name to get credit for the level");
-    if (person != null) {
-      fetch('http://10.8.136.26:5000/api/leaderboard/', {
-        method: 'PUT',
+    let person = prompt("Please enter your name:");
+    let password = prompt("Please enter your password:");
+    if (person != null && password != null) {
+      fetch('http://127.0.0.1:8687/api/users/win', {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: person, level: parseInt(localStorage.getItem('level')) || 1 })
+        body: JSON.stringify({ name: person, password: password })
       })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data); // Print the saved player object to the console
-        displayLeaderboard();
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-      
-      // increase the player's level by 1
-      let level = parseInt(localStorage.getItem('level')) || 1;
-      level += 1;
-      localStorage.setItem('level', level);
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          displayLeaderboard();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     }
+
+    // increase the player's level by 1
+    let level = parseInt(localStorage.getItem('level')) || 1;
+    level += 1;
+    localStorage.setItem('level', level);
   }
 }
 
 function displayLeaderboard() {
-  fetch('http://10.8.136.26:5000/api/leaderboard/')
+  fetch('http://127.0.0.1:8687/api/users/')
     .then(response => response.json())
     .then(data => {
       const leaderboard = document.getElementById("leaderboard");
       leaderboard.innerHTML = '';
       data.forEach(player => {
         const listItem = document.createElement('li');
-        listItem.innerText = `${player.name}: Level ${player.level}`;
+        listItem.innerText = `${player.name}: Score ${player.score}`;
         leaderboard.appendChild(listItem);
       });
-      // Display the current player's level
-      const level = parseInt(localStorage.getItem('level')) || 1;
-      const listItem = document.createElement('li');
-      listItem.innerText = `You: Level ${level}`;
-      leaderboard.appendChild(listItem);
     })
     .catch(error => {
       console.error('Error:', error);
     });
 }
+
 
 
 displayLeaderboard();
