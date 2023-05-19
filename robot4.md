@@ -16,7 +16,7 @@ layout: robot
 </div>
 <br>
 <button id="runner" onclick="run()">RUN</button>
-<form action="https://f1nnc.github.io/Playground/robot4">
+<form action="{{ site.baseurl }}/robot4">
     <button type="submit">RESET</button>
 </form>
 </div>

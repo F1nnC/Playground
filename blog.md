@@ -21,3 +21,16 @@ Today, the whole group was present and we continued on the work we had. Today wa
 <br>
 
 ## Tuesday, May 16th, 2023
+Today was another live review where Mr. Mortensen checked in with individual and their progress on this project. Edwin and Luka talked about their plans for the Pizza API, and using SQLite and the JavaScript Frontend table. Gene and Zeen also talked about they are using a login system, as well as applying the leaderboard to each game. Then, Kush and James talked about how they were working on 2D Array games, mainly chess, but also Tic-Tac-Toe. Finn talked about his plans in changing his robot game and adding in some animations to show how the sprite can move from one spot to another.
+
+<br>
+
+## Wednesday, May 17th, 2023
+Today in class we did the animation and 2d arrays tech talk. We then also continued working on the plans that we had created and how we were going to incorporate animations into our projects. Finn planned on implementing animation into the robot game by giving the robot movements when it moved into different spaces. Edwin was working on the animations that were presented in class. Afterschool Edwin was working very diligently on tic tac toe and created a working beta. 
+
+<br>
+
+## Thursday, May 17th, 2023
+Today in class Edwin, Gene, and Luka worked on fixing the sqlite because it would continually readd the original variables into the database, causing them to hsve duplicates in the database. Edwin was also working on his english paper that was due two weeks ago. Zeen today worked on frontend. Kush worked on tic tac toe game. James created the movement of the pawn in chess. Finn worked on robot animation. Gene made fixed all of the problems in the backend work.
+
+## Friday, May 18th, 2023
