@@ -28,6 +28,13 @@ layout: robot
 </div>
 
 <script>
+
+
+var path = "https://f1nnc.github.io/Playground/images/robotIdle.jpg"
+const pathI = "https://f1nnc.github.io/Playground/images/robotIdle.jpg"
+const pathR = "https://f1nnc.github.io/Playground/images/robotRun.jpg"
+var imageX = 0;
+var imageY = 0;
 var runner = document.getElementById("runner");
 var sim = document.getElementById("sim");
 var ctx = sim.getContext("2d");
@@ -41,6 +48,48 @@ var barX2 = 150;
 var barX3 = 200;
 var barY1 = 100;
 let winCheck = 0;
+var robotState = 0;
+
+var image = new Image();
+image.src = path;
+image.onload = function() {
+  drawImage();
+};
+
+function drawImage() {
+  ctx.clearRect(0, 0, 50, 50);
+  ctx.drawImage(image, imageX, imageY, 128, 128, squareX, squareY, 50, 50);
+}
+
+
+function updateImage() {
+    if (robotState == 0) {
+        path = pathI;
+        image.src = path;
+        imageX = imageX + 128;
+        if (imageX > 512) {
+            imageX = 0;
+
+            if (imageY < 384) {
+            imageY = imageY + 128;
+            } else {
+            imageY = 0;
+            }
+        }
+
+        if (imageY === 384 && imageX === 256) {
+            imageX = 0;
+            imageY = 0;
+        }
+    }
+    if (robotState == 1) {
+        path = pathR;
+        image.src = path;
+        imageY = 40;
+    }
+}
+
+
 
 
 function draw() {
@@ -66,6 +115,8 @@ function draw() {
     ctx.arc(225, 225, 10, 0, 2 * Math.PI);
     ctx.fill();
     ctx.closePath();
+
+    drawImage();
 }
 
 function collide() {
@@ -94,6 +145,7 @@ function collide() {
 // and uses setInterval to execute each movement in sequence at a delay of 800 milliseconds.
 function run() {
     // Read input values from the HTML document and convert them to integers.
+    robotState = 1;
     UPinput = parseInt(document.getElementById("up").value);
     DOWNinput = parseInt(document.getElementById("down").value);
     LEFTinput = parseInt(document.getElementById("left").value);
@@ -132,11 +184,13 @@ function run() {
         if (index >= movements.length) {
             clearInterval(intervalId);
             win(); // Call the win function.
+            robotState = 0;
             return;
         }
         movements[index](); // Execute the movement at the current index.
         index++; // Increment the index.
     }, 800);
+
 }
 
 function win() {
@@ -190,6 +244,6 @@ function down() {
 
 
 setInterval(draw, 10);
-
+setInterval(updateImage, 75);
 
 </script>
