@@ -29,4 +29,4 @@ layout: robot
 </div>
 </div>
 
-<script src="{{ '/assets/js/robot5.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/robotJS/robot5.js' | relative_url }}"></script>

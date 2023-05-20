@@ -43,4 +43,4 @@ layout: robot
     <ul id="leaderboard"></ul>
   </div>
 </div>
-<script src="{{ '/assets/js/robot.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/robotJS/robot.js' | relative_url }}"></script>
