@@ -1,35 +1,3 @@
----
-layout: robot
----
-
-<div class="container">
-<div id="div3" class="shadow" style="padding: 50px; display: inline-block;">
-<h1>Code Block</h1>
-<div class="loop-block">
-    <p style="color: black; text-align: left;"><b>1 Loop</b></p>
-    <div class="up-block"><input id="up" class="block-input"><label class="label-block"><b>UP</b></label></div><br>
-    <div class="down-block"><input id="down" class="block-input"><label class="label-block"><b>DOWN</b></label></div><br>
-    <div class="left-block"><input id="left" class="block-input"><label class="label-block"><b>LEFT</b></label></div><br>
-    <div class="right-block"><input id="right" class="block-input"><label class="label-block"><b>RIGHT</b></label></div><br>
-</div>
-<br>
-<button id="runner" onclick="run()">RUN</button>
-<form action="{{ site.baseurl }}/robot2">
-    <button type="submit">RESET</button>
-</form>
-</div>
-<div id="div4" class="shadow" style="padding: 50px;">
-<h1>Simulation</h1>
-<div style="padding: 25px">
-    <canvas id="sim" width="250" height="250" style="background: white;">
-    </canvas>
-</div>
-</div>
-</div>
-
-<script>
-
-
 var runner = document.getElementById("runner");
 var sim = document.getElementById("sim");
 var ctx = sim.getContext("2d");
@@ -105,23 +73,11 @@ function updateImage() {
     }
 }
 
-
-
-
 function draw() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     ctx.beginPath();
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.fillRect(squareX, squareY, squareSize, squareSize);
-    ctx.fill();
-    ctx.closePath();
-
-    //barrier
-    ctx.beginPath();
-    ctx.fillStyle = "rgb(255, 0, 0)";
-    ctx.fillRect(barX1, barY1, 50, 50);
-    ctx.fillRect(barX2, barY1, 50, 50);
-    ctx.fillRect(barX3, barY1, 50, 50);
     ctx.fill();
     ctx.closePath();
 
@@ -135,63 +91,24 @@ function draw() {
     drawImage();
 }
 
-function collide() {
-    if (squareX == barX1 && squareY == barY1) {
-        squareX = 0;
-        squareY = 0;
-        console.log("collide");
-        return;
-    }
-    if (squareX == barX1 && squareY == barY1) {
-        squareX = 0;
-        squareY = 0;
-        console.log("collide");
-        return;
-    }
-    if (squareX == barX1 && squareY == barY1) {
-        squareX = 0;
-        squareY = 0;
-        console.log("collide");
-        return;
-    }
-    return;
-}
 
 // This function reads input values from the HTML document, creates an array of movements based on the input, 
 // and uses setInterval to execute each movement in sequence at a delay of 800 milliseconds.
 function run() {
     // Read input values from the HTML document and convert them to integers.
     robotState = 1;
-    UPinput = parseInt(document.getElementById("up").value);
-    DOWNinput = parseInt(document.getElementById("down").value);
-    LEFTinput = parseInt(document.getElementById("left").value);
-    RIGHTinput = parseInt(document.getElementById("right").value);
-
     runner.style.opacity = 0;
-    
+    looper = parseInt(document.getElementById("loop").value);
 
     // Create an array to hold the movements.
     let movements = [];
 
     // Push 'up' movements to the array.
-    for (let i = 0; i < UPinput; i++) {
-        movements.push(up);
-    }
-
-    // Push 'down' movements to the array.
-    for (let i = 0; i < DOWNinput; i++) {
+    for (let i = 0; i < looper; i++) {
         movements.push(down);
-    }
-
-    // Push 'left' movements to the array.
-    for (let i = 0; i < LEFTinput; i++) {
-        movements.push(left);
-    }
-
-    // Push 'right' movements to the array.
-    for (let i = 0; i < RIGHTinput; i++) {
         movements.push(right);
     }
+
 
     // Set the initial index to 0 and execute each movement in sequence with a delay of 800 milliseconds.
     let index = 0;
@@ -206,7 +123,6 @@ function run() {
         movements[index](); // Execute the movement at the current index.
         index++; // Increment the index.
     }, 800);
-
 }
 
 function win() {
@@ -228,16 +144,16 @@ function win() {
           console.error('Error:', error);
         });
     }
-    path = pathI;
-    image.src = path;
-    imageX = 0;
-    imageY = 0;
 
     // increase the player's level by 1
     let level = parseInt(localStorage.getItem('level')) || 1;
     level += 1;
     localStorage.setItem('level', level);
   }
+    path = pathI;
+    image.src = path;
+    imageX = 0;
+    imageY = 0;
 }
 
 
@@ -248,7 +164,6 @@ function right() {
     if (squareX + squareSize > canvasWidth) {
         squareX = canvasWidth - squareSize;
     }
-    collide();
     console.log("right")
 }
 
@@ -258,7 +173,6 @@ function left() {
     if (squareX < 0) {
         squareX = 0;
     }
-    collide();
     console.log("left")
 }
 
@@ -268,7 +182,6 @@ function up() {
     if (squareY < 0) {
         squareY = 0;
     }
-    collide();
     console.log("up")
 }
 
@@ -278,12 +191,9 @@ function down() {
     if (squareY + squareSize > canvasHeight) {
         squareY = canvasHeight - squareSize;
     }
-    collide();
     console.log("down")
 }
 
 
 setInterval(draw, 10);
 setInterval(updateImage, 75);
-
-</script>
