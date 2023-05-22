@@ -662,7 +662,7 @@ function clickCanvas(event) {
                             erase_White();
                             return;
                         }
-                        if (clickY == 160 && clickX == pawn_white4[0]) {
+                        if (clickY == 400 && clickX == pawn_white4[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                             pawn_white4[0] = clickX;
                             pawn_white4[1] = clickY;
@@ -671,7 +671,7 @@ function clickCanvas(event) {
                         }
                     }
                     else {
-                        if (clickY == pawn_white4[1]+80 && clickX == pawn_white4[0]) {
+                        if (clickY == pawn_white4[1]-80 && clickX == pawn_white4[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                             pawn_white4[0] = clickX;
                             pawn_white4[1] = clickY;
