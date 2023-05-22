@@ -1,3 +1,4 @@
+<<<<<<< HEAD:robot4.md
 ---
 layout: robot
 ---
@@ -35,7 +36,7 @@ layout: robot
   </div>
 </div>
 <script>
-  fetch('http://127.0.0.1:8687/api/users/', {
+  fetch('https://Playgroundproject.duckdns.org/api/users/', {
   method: 'PUT',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ name: person, level: parseInt(localStorage.getItem('level')) || 1 })
@@ -43,6 +44,8 @@ layout: robot
 </script>
 
 <script>
+=======
+>>>>>>> refs/remotes/origin/gh-pages:assets/js/robotJS/robot4.js
 var runner = document.getElementById("runner");
 var sim = document.getElementById("sim");
 var ctx = sim.getContext("2d");
@@ -275,7 +278,7 @@ function win() {
     let person = prompt("Please enter your name:");
     let password = prompt("Please enter your password:");
     if (person != null && password != null) {
-      fetch('http://127.0.0.1:8687/api/users/win', {
+      fetch('https://Playgroundproject.duckdns.org/api/users/win', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: person, password: password })
@@ -301,8 +304,9 @@ function win() {
     imageY = 0;
 }
 
+<<<<<<< HEAD:robot4.md
 function displayLeaderboard() {
-  fetch('http://127.0.0.1:8687/api/users/')
+  fetch('https://Playgroundproject.duckdns.org/api/users/')
     .then(response => response.json())
     .then(data => {
       const leaderboard = document.getElementById("leaderboard");
@@ -323,6 +327,8 @@ function displayLeaderboard() {
 displayLeaderboard();
 
 
+=======
+>>>>>>> refs/remotes/origin/gh-pages:assets/js/robotJS/robot4.js
 function right() {
     squareX += squareSize;
 
@@ -366,5 +372,3 @@ function down() {
 
 setInterval(draw, 10);
 setInterval(updateImage, 75);
-
-</script>
