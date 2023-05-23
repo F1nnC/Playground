@@ -105,8 +105,7 @@ function updateImage() {
     imageY = 0;
   }
 
-  console.log(imageX);
-  console.log(imageY);
+ 
 }
 
 
