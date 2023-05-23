@@ -113,7 +113,7 @@
       let person = prompt("Please enter your name:");
       let password = prompt("Please enter your password:");
       if (person != null && password != null) {
-        fetch('http://127.0.0.1:8687/api/users/win', {
+        fetch('https://Playgroundproject.duckdns.org/api/users/win', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: person, password: password })
@@ -136,7 +136,7 @@
   }
   
   function displayLeaderboard() {
-    fetch('http://127.0.0.1:8687/api/users/')
+    fetch('https://Playgroundproject.duckdns.org/api/users/')
       .then(response => response.json())
       .then(data => {
         const leaderboard = document.getElementById("leaderboard");
