@@ -1,18 +1,23 @@
+<<<<<<< HEAD:robot5.md
 ---
 layout: robot
 ---
+
+
 
 <div class="container">
 <div id="div3" class="shadow" style="padding: 50px; display: inline-block;">
 <h1>Code Block</h1>
 <div class="loop-block">
     <p style="color: black; text-align: left;"><input id="loop" class="block-input"><b>Loop</b></p>
-    <div class="down-block"><label class="label-block"><b>1 DOWN</b></label></div><br>
-    <div class="right-block"><label class="label-block"><b>1 RIGHT</b></label></div><br>
+    <div class="up-block"><input id="up" class="block-input"><label class="label-block"><b>UP</b></label></div><br>
+    <div class="down-block"><input id="down" class="block-input"><label class="label-block"><b>DOWN</b></label></div><br>
+    <div class="left-block"><input id="left" class="block-input"><label class="label-block"><b>LEFT</b></label></div><br>
+    <div class="right-block"><input id="right" class="block-input"><label class="label-block"><b>RIGHT</b></label></div><br>
 </div>
 <br>
 <button id="runner" onclick="run()">RUN</button>
-<form action="{{ site.baseurl }}/robot3">
+<form action="{{ site.baseurl }}/robot5">
     <button type="submit">RESET</button>
 </form>
 </div>
@@ -39,6 +44,8 @@ layout: robot
 </script>
 
 <script>
+=======
+>>>>>>> refs/remotes/origin/gh-pages:assets/js/robotJS/robot5.js
 var runner = document.getElementById("runner");
 var sim = document.getElementById("sim");
 var ctx = sim.getContext("2d");
@@ -47,10 +54,10 @@ var canvasHeight = sim.height;
 var squareSize = 50;
 var squareX = 0;
 var squareY = 0;
-var barX1 = 100;
-var barX2 = 150;
-var barX3 = 200;
+var barX1 = 0;
+var barX2 = 200;
 var barY1 = 100;
+var barY2 = 150;
 let winCheck = 0;
 
 var robotState = 0;
@@ -114,11 +121,20 @@ function updateImage() {
     }
 }
 
+
 function draw() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     ctx.beginPath();
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.fillRect(squareX, squareY, squareSize, squareSize);
+    ctx.fill();
+    ctx.closePath();
+
+    //barrier
+    ctx.beginPath();
+    ctx.fillStyle = "rgb(255, 0, 0)";
+    ctx.fillRect(barX1, barY1, 50, 50);
+    ctx.fillRect(barX2, barY2, 50, 50);
     ctx.fill();
     ctx.closePath();
 
@@ -132,22 +148,76 @@ function draw() {
     drawImage();
 }
 
+function collide() {
+    if (squareX == barX1 && squareY == barY1) {
+        squareX = 0;
+        squareY = 0;
+        console.log("collide");
+        return;
+    }
+    if (squareX == barX2 && squareY == barY2) {
+        squareX = 0;
+        squareY = 0;
+        console.log("collide");
+        return;
+    }
+    return;
+}
+
+function changepos() {
+    if (barX1 == 200) {
+        barX1 = 0;
+    } 
+    else {
+        barX1 = barX1 + 50;
+    }
+    if (barX2 == 0) {
+        barX2 = 200;
+    } 
+    else {
+        barX2 = barX2 - 50;
+    }
+}
+
+
 
 // This function reads input values from the HTML document, creates an array of movements based on the input, 
 // and uses setInterval to execute each movement in sequence at a delay of 800 milliseconds.
 function run() {
     // Read input values from the HTML document and convert them to integers.
     robotState = 1;
-    runner.style.opacity = 0;
+    UPinput = parseInt(document.getElementById("up").value);
+    DOWNinput = parseInt(document.getElementById("down").value);
+    LEFTinput = parseInt(document.getElementById("left").value);
+    RIGHTinput = parseInt(document.getElementById("right").value);
     looper = parseInt(document.getElementById("loop").value);
+
+    runner.style.opacity = 0;
+    
 
     // Create an array to hold the movements.
     let movements = [];
 
     // Push 'up' movements to the array.
-    for (let i = 0; i < looper; i++) {
-        movements.push(down);
-        movements.push(right);
+    for (let l = 0; l < looper; l++) {
+        for (let k = 0; k < UPinput; k++) {
+            movements.push(up);
+        }
+
+        // Push 'down' movements to the array.
+        for (let i = 0; i < DOWNinput; i++) {
+            movements.push(down);
+        }
+
+        // Push 'left' movements to the array.
+        for (let a = 0; a < LEFTinput; a++) {
+            movements.push(left);
+        }
+
+        // Push 'right' movements to the array.
+        for (let c = 0; c < RIGHTinput; c++) {
+            movements.push(right);
+        }
     }
 
 
@@ -197,6 +267,7 @@ function win() {
     imageY = 0;
 }
 
+<<<<<<< HEAD:robot5.md
 function displayLeaderboard() {
   fetch('https://Playgroundproject.duckdns.org/api/users/')
     .then(response => response.json())
@@ -217,6 +288,8 @@ function displayLeaderboard() {
 
 
 displayLeaderboard();
+=======
+>>>>>>> refs/remotes/origin/gh-pages:assets/js/robotJS/robot5.js
 
 
 function right() {
@@ -226,6 +299,7 @@ function right() {
     if (squareX + squareSize > canvasWidth) {
         squareX = canvasWidth - squareSize;
     }
+    collide();
     console.log("right")
 }
 
@@ -235,6 +309,7 @@ function left() {
     if (squareX < 0) {
         squareX = 0;
     }
+    collide();
     console.log("left")
 }
 
@@ -244,6 +319,7 @@ function up() {
     if (squareY < 0) {
         squareY = 0;
     }
+    collide();
     console.log("up")
 }
 
@@ -253,10 +329,10 @@ function down() {
     if (squareY + squareSize > canvasHeight) {
         squareY = canvasHeight - squareSize;
     }
+    collide();
     console.log("down")
 }
 
-
+setInterval(changepos, 1000)
 setInterval(draw, 10);
 setInterval(updateImage, 75);
-</script>
