@@ -578,14 +578,14 @@ function clickCanvas(event) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white1[0] = clickX;
                             pawn_white1[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                         if (clickY == 400 && clickX == pawn_white1[0]) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white1[0] = clickX;
                             pawn_white1[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                     }
@@ -594,7 +594,7 @@ function clickCanvas(event) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white1[0] = clickX;
                             pawn_white1[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                     }
@@ -605,14 +605,14 @@ function clickCanvas(event) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white2[0] = clickX;
                             pawn_white2[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                         if (clickY == 400 && clickX == pawn_white2[0]) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white2[0] = clickX;
                             pawn_white2[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                     }
@@ -621,7 +621,7 @@ function clickCanvas(event) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white2[0] = clickX;
                             pawn_white2[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                     }
@@ -632,14 +632,14 @@ function clickCanvas(event) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white3[0] = clickX;
                             pawn_white3[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                         if (clickY == 400 && clickX == pawn_white3[0]) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white3[0] = clickX;
                             pawn_white3[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                     }
@@ -648,7 +648,7 @@ function clickCanvas(event) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white3[0] = clickX;
                             pawn_white3[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                     }
@@ -659,14 +659,14 @@ function clickCanvas(event) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white4[0] = clickX;
                             pawn_white4[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                         if (clickY == 160 && clickX == pawn_white4[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                             pawn_white4[0] = clickX;
                             pawn_white4[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                     }
@@ -675,52 +675,52 @@ function clickCanvas(event) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                             pawn_white4[0] = clickX;
                             pawn_white4[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                     }
                 }
                 if (userWhite_clickX == pawn_white5[0] && userWhite_clickY == pawn_white5[1]) {
-                    if (pawn_white5[1] == 480) {
-                        if (clickY == 320 && clickX == pawn_white5[0]) {
-                            ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
+                    if (pawn_white5[1] == 80) {
+                        if (clickY == 240 && clickX == pawn_white5[0]) {
+                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                             pawn_white5[0] = clickX;
                             pawn_white5[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
-                        if (clickY == 400 && clickX == pawn_white5[0]) {
-                            ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
+                        if (clickY == 160 && clickX == pawn_white5[0]) {
+                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                             pawn_white5[0] = clickX;
                             pawn_white5[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                     }
                     else {
-                        if (clickY == pawn_white5[1]-80 && clickX == pawn_white5[0]) {
-                            ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
+                        if (clickY == pawn_white5[1]+80 && clickX == pawn_white5[0]) {
+                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                             pawn_white5[0] = clickX;
                             pawn_white5[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                     }
                 }
                 if (userWhite_clickX == pawn_white6[0] && userWhite_clickY == pawn_white6[1]) {
-                    if (pawn_white6[1] == 480) {
-                        if (clickY == 320 && clickX == pawn_white6[0]) {
-                            ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
+                    if (pawn_white6[1] == 80) {
+                        if (clickY == 240 && clickX == pawn_white6[0]) {
+                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                             pawn_white6[0] = clickX;
                             pawn_white6[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                         if (clickY == 160 && clickX == pawn_white6[0]) {
                             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                             pawn_white6[0] = clickX;
                             pawn_white6[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                     }
@@ -729,7 +729,7 @@ function clickCanvas(event) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white6[0] = clickX;
                             pawn_white6[1] = clickY;
-                            erase();
+                            erase_White();
                             return;
                         }
                     }
@@ -741,15 +741,13 @@ function clickCanvas(event) {
                             pawn_white7[0] = clickX;
                             pawn_white7[1] = clickY;
                             erase_White();
-                            white_turn = false;
                             return;
                         }
                         if (clickY == 160 && clickX == pawn_white7[0]) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white7[0] = clickX;
                             pawn_white7[1] = clickY;
-                            erase_White();
-                            white_turn = false;
+                            erase();
                             return;
                         }
                     }
@@ -758,8 +756,7 @@ function clickCanvas(event) {
                             ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white7[0] = clickX;
                             pawn_white7[1] = clickY;
-                            erase_White();
-                            white_turn = false;
+                            erase();
                             return;
                         }
                     }
