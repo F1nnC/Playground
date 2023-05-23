@@ -40,7 +40,19 @@ layout: robot
 <div id="div3" class="shadow" style="padding: 50px;">
   <h1>Leaderboard</h1>
   <div style="padding: 25px">
-    <ul id="leaderboard"></ul>
+    <input type="text" id="searchInput" onkeyup="searchPlayer()" placeholder="Search for a player...">
+    <table id="leaderboard" style="width:100%">
+      <tr>
+        <th onclick="sortLeaderboard(0)">Name</th>
+        <th onclick="sortLeaderboard(1)">Score</th>
+      </tr>
+    </table>
+  </div>
+</div>
+<div id="div3" class="shadow" style="padding: 50px;">
+  <h1>Leaderboard</h1>
+  <div style="padding: 25px">
+    <table id="leaderboard" style="width:100%"></table>
   </div>
 </div>
 <script>
@@ -184,23 +196,65 @@ function win() {
     localStorage.setItem('level', level);
   }
 }
-
 function displayLeaderboard() {
   fetch('https://Playgroundproject.duckdns.org/api/users/')
     .then(response => response.json())
     .then(data => {
       const leaderboard = document.getElementById("leaderboard");
-      leaderboard.innerHTML = '';
+      leaderboard.innerHTML = `
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+        </tr>
+      `;
       data.forEach(player => {
-        const listItem = document.createElement('li');
-        listItem.innerText = `${player.name}: Score ${player.score}`;
-        leaderboard.appendChild(listItem);
+        const row = leaderboard.insertRow();
+        const nameCell = row.insertCell();
+        const scoreCell = row.insertCell();
+        nameCell.textContent = player.name;
+        scoreCell.textContent = player.score;
       });
     })
     .catch(error => {
       console.error('Error:', error);
     });
 }
+
+function searchPlayer() {
+  const input = document.getElementById("searchInput");
+  const filter = input.value.toUpperCase();
+  const leaderboard = document.getElementById("leaderboard");
+  const rows = leaderboard.getElementsByTagName("tr");
+  for (let i = 0; i < rows.length; i++) {
+    const nameCell = rows[i].getElementsByTagName("td")[0];
+    if (nameCell) {
+      const name = nameCell.textContent || nameCell.innerText;
+      if (name.toUpperCase().indexOf(filter) > -1) {
+        rows[i].style.display = "";
+      } else {
+        rows[i].style.display = "none";
+      }
+    }
+  }
+}
+
+
+function sortLeaderboard(colIndex) {
+  const leaderboard = document.getElementById("leaderboard");
+  const rows = Array.from(leaderboard.getElementsByTagName("tr"));
+  rows.shift(); // Remove the header row from the sorting
+  rows.sort((a, b) => {
+    const cellA = a.getElementsByTagName("td")[colIndex];
+    const cellB = b.getElementsByTagName("td")[colIndex];
+    const valA = cellA.textContent || cellA.innerText;
+    const valB = cellB.textContent || cellB.innerText;
+    return valA.localeCompare(valB, undefined, { numeric: true });
+  });
+  leaderboard.innerHTML = ""; // Clear existing leaderboard
+  leaderboard.appendChild(rows[0].parentNode); // Append the sorted rows
+  rows.forEach(row => leaderboard.appendChild(row));
+}
+
 
 
 
