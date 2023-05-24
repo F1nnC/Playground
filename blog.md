@@ -41,3 +41,11 @@ Today James and James are planning on creating the movement of the pawn and its 
 <br>
 
 ## Monday, May 22nd, 2023
+
+<br>
+
+## Tuesday, May 23rd, 2023
+
+<br>
+
+## Wednesday, May 24th, 2023
