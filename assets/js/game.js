@@ -65,6 +65,12 @@ function draw_chess_board() {
         ctx.drawImage(pawn_white, 80*i, 480, 80, 80);
     }
 }
+function wait(sec) {
+    let start = Date.now(), now = start;
+    while (now - start < sec * 1000) {
+        now = Date.now();
+    }
+}
 function erase_Black() {
     if (userBlack_clickX%160 == 0) {
         if (userBlack_clickY%160 == 0){
@@ -113,6 +119,10 @@ function erase_White() {
     }
     white_click = false;
 }
+function king() {
+    ctx.drawImage(run1, 240, 560, 80, 80);
+    time.wait(10)
+}
 function clickCanvas(event) {
     var x = event.offsetX;
     var y = event.offsetY;
@@ -140,7 +150,7 @@ function clickCanvas(event) {
     //     ctx.fillStyle = "#DFFE00";
     //     ctx.fillRect (clickX, clickY, 80, 80);
     // }
-    if (!white_turn) {
+    if (white_turn == false) {
         if (black_click == false) {
             if (clickX == pawn_black1[0] && clickY == pawn_black1[1]) {
                 black_click = true;
@@ -663,7 +673,7 @@ function clickCanvas(event) {
                             return;
                         }
                         if (clickY == 400 && clickX == pawn_white4[0]) {
-                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                            ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white4[0] = clickX;
                             pawn_white4[1] = clickY;
                             erase_White();
@@ -672,7 +682,7 @@ function clickCanvas(event) {
                     }
                     else {
                         if (clickY == pawn_white4[1]-80 && clickX == pawn_white4[0]) {
-                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                            ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white4[0] = clickX;
                             pawn_white4[1] = clickY;
                             erase_White();
@@ -683,14 +693,14 @@ function clickCanvas(event) {
                 if (userWhite_clickX == pawn_white5[0] && userWhite_clickY == pawn_white5[1]) {
                     if (pawn_white5[1] == 480) {
                         if (clickY == 320 && clickX == pawn_white5[0]) {
-                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                            ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white5[0] = clickX;
                             pawn_white5[1] = clickY;
                             erase_White();
                             return;
                         }
                         if (clickY == 400 && clickX == pawn_white5[0]) {
-                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                            ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white5[0] = clickX;
                             pawn_white5[1] = clickY;
                             erase_White();
@@ -699,7 +709,7 @@ function clickCanvas(event) {
                     }
                     else {
                         if (clickY == pawn_white5[1]-80 && clickX == pawn_white5[0]) {
-                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                            ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white5[0] = clickX;
                             pawn_white5[1] = clickY;
                             erase_White();
@@ -710,14 +720,14 @@ function clickCanvas(event) {
                 if (userWhite_clickX == pawn_white6[0] && userWhite_clickY == pawn_white6[1]) {
                     if (pawn_white6[1] == 480) {
                         if (clickY == 320 && clickX == pawn_white6[0]) {
-                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                            ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white6[0] = clickX;
                             pawn_white6[1] = clickY;
                             erase_White();
                             return;
                         }
                         if (clickY == 400 && clickX == pawn_white6[0]) {
-                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                            ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                             pawn_white6[0] = clickX;
                             pawn_white6[1] = clickY;
                             erase_White();
