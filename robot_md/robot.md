@@ -11,6 +11,7 @@ layout: robot
 </style>
 
 
+
 <div class="container" style="">
   <div id="div1" class="shadow" style="padding: 50px; ">
     <h1>Controller</h1>
@@ -61,3 +62,4 @@ layout: robot
   body: JSON.stringify({ name: person, level: parseInt(localStorage.getItem('level')) || 1 })
 })
 </script>
+<script src="{{ '/assets/js/robotJS/robot.js' | relative_url }}"></script>
