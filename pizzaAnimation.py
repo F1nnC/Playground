@@ -35,7 +35,7 @@ def ship_print(position):  # print ship with colors and leading spaces according
 
     
     
-
+    
 
 
 
