@@ -20,6 +20,15 @@ run6.src = "images/run6.png"
 const run7 = new Image();
 run7.src = "images/run7.png"
 runs = [run1, run2, run3, run4, run5, run6, run7];
+const pic1 = new Image();
+pic1.src = "images/pic1.png"
+const pic2 = new Image();
+pic2.src = "images/pic2.png"
+const pic3 = new Image();
+pic3.src = "images/pic3.png"
+cats = [pic1, pic2, pic3];
+const white_bishop = new Image();
+
 var chess_board = [];
 var board_add = [];
 var pawn_white1 = [0, 480];
@@ -49,6 +58,7 @@ var userWhite_clickX = 0
 var black_turn = false;
 var white_turn = true;
 var num = 0;
+var cat_num = 0;
 for (i = 0; i < 8; i++) {
     for (j = 0; j < 8; j++) {
         board_add.push([80*i, 80*j]);
@@ -63,6 +73,13 @@ function king() {
     }
     ctx.drawImage(runs[num], 240, 560, 80, 80);
     num += 1;
+}
+function cat() {
+    if (cat_num >= 3) {
+        cat_num = 0;
+    }
+    ctx.drawImage(cats[cat_num], 80, 560, 80, 80);
+    cat_num += 1;
 }
 function draw_chess_board() {
     for (t=0; t< 4; t++) {
@@ -88,7 +105,9 @@ function draw_chess_board() {
         ctx.drawImage(pawn_black, 80*i, 80, 80, 80);
         ctx.drawImage(pawn_white, 80*i, 480, 80, 80);
     }
+    ctx.drawImage()
     setInterval(king, 100);
+    setInterval(cat, 70);
 }
 
 function erase_Black() {
