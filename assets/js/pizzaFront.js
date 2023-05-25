@@ -1,133 +1,152 @@
-  // Sample orders
-  const sampleOrders = [
-    { name: "John", pizza: "Margherita", address: "123 Main St" },
-    { name: "Sarah", pizza: "Pepperoni", address: "456 Elm St" },
-    { name: "Michael", pizza: "Supreme", address: "789 Oak St" }
-  ];
-
-  // Get table elements
+// Function to update an order
+async function updateOrder(orderId) {
   const nameInput = document.getElementById("name");
   const pizzaInput = document.getElementById("pizza");
   const addressInput = document.getElementById("address");
+
+  const order = {
+    id: orderId,
+    name: nameInput.value,
+    pizzaType: pizzaInput.value,
+    address: addressInput.value,
+  };
+
+  saveOrder(order);
+}
+
+// Function to populate the table with orders from the backend
+async function populateTable() {
+  const response = await fetch('https://playgroundproject.duckdns.org/api/pizza/');
+  const orders = await response.json();
+
   const tbody = document.getElementById("tbody");
+  tbody.innerHTML = ""; // Clear existing rows
 
-  // Function to populate the table with sample orders
-  function populateTable() {
-    for (let i = 0; i < sampleOrders.length; i++) {
-      const order = sampleOrders[i];
-      const newRow = document.createElement("tr");
-      const nameCell = document.createElement("td");
-      const pizzaCell = document.createElement("td");
-      const addressCell = document.createElement("td");
-      const deleteCell = document.createElement("td");
+  orders.forEach((order) => {
+    const newRow = document.createElement("tr");
+    const nameCell = document.createElement("td");
+    const pizzaCell = document.createElement("td");
+    const addressCell = document.createElement("td");
+    const deleteCell = document.createElement("td");
+    const updateCell = document.createElement("td");
 
-      nameCell.textContent = order.name;
-      pizzaCell.textContent = order.pizza;
-      addressCell.textContent = order.address;
+    nameCell.textContent = order.name;
+    pizzaCell.textContent = order.pizzaType;
+    addressCell.textContent = order.address;
 
-      const deleteButton = document.createElement("button");
-      deleteButton.innerHTML = "Delete";
-      deleteButton.onclick = () => {
-        tbody.removeChild(newRow);
-      };
-      deleteCell.appendChild(deleteButton);
+    const deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "Delete";
+    deleteButton.onclick = () => {
+      deleteOrder(order.id);
+    };
+    deleteCell.appendChild(deleteButton);
 
-      newRow.appendChild(nameCell);
-      newRow.appendChild(pizzaCell);
-      newRow.appendChild(addressCell);
-      newRow.appendChild(deleteCell);
+    const updateButton = document.createElement("button");
+    updateButton.innerHTML = "Update";
+    updateButton.onclick = () => {
+      updateOrder(order.id);
+    };
+    updateCell.appendChild(updateButton);
 
-      tbody.appendChild(newRow);
-    }
+    newRow.appendChild(nameCell);
+    newRow.appendChild(pizzaCell);
+    newRow.appendChild(addressCell);
+    newRow.appendChild(deleteCell);
+    newRow.appendChild(updateCell);
+
+    tbody.appendChild(newRow);
+  });
+}
+}
+
+// Function to handle the "Update" button click event
+function updateOrder() {
+  const updateButton = document.getElementById("updateButton");
+  const orderId = updateButton.dataset.orderId;
+  updateOrder(orderId);
+}
+
+// Function to populate the input fields with order details for updating
+function populateInputFields(order) {
+  const nameInput = document.getElementById("name");
+  const pizzaInput = document.getElementById("pizza");
+  const addressInput = document.getElementById("address");
+  const updateButton = document.getElementById("updateButton");
+
+  nameInput.value = order.name;
+  pizzaInput.value = order.pizzaType;
+  addressInput.value = order.address;
+  updateButton.dataset.orderId = order.id;
+}
+
+// Function to handle the "Delete" button click event
+async function deleteOrder(orderId) {
+  if (confirm("Are you sure you want to delete this order?")) {
+    await deleteOrder(orderId);
   }
-  // Function to add an order
-  function addOrder() {
-    const name = nameInput.value;
-    const pizza = pizzaInput.value;
-    const address = addressInput.value;
+}
 
-    // Check if the name already exists in the table
-    const existingRow = Array.from(tbody.getElementsByTagName("tr")).find(
-      (row) => row.cells[0].textContent === name
-    );
+// Function to create the table row for an order
+function createTableRow(order) {
+  const newRow = document.createElement("tr");
+  const nameCell = document.createElement("td");
+  const pizzaCell = document.createElement("td");
+  const addressCell = document.createElement("td");
+  const deleteCell = document.createElement("td");
+  const updateCell = document.createElement("td");
 
-    if (existingRow) {
-      // Update address and pizza for existing name
-      existingRow.cells[2].textContent = address;
-      existingRow.cells[1].textContent = pizza;
-    } else {
-      // Create a new row
-      const newRow = document.createElement("tr");
-      const nameCell = document.createElement("td");
-      const pizzaCell = document.createElement("td");
-      const addressCell = document.createElement("td");
-      const deleteCell = document.createElement("td");
+  nameCell.textContent = order.name;
+  pizzaCell.textContent = order.pizzaType;
+  addressCell.textContent = order.address;
 
-      nameCell.textContent = name;
-      pizzaCell.textContent = pizza;
-      addressCell.textContent = address;
+  const deleteButton = document.createElement("button");
+  deleteButton.innerHTML = "Delete";
+  deleteButton.onclick = () => {
+    deleteOrder(order.id);
+  };
+  deleteCell.appendChild(deleteButton);
 
-      // Add delete button to the new row
-      const deleteButton = document.createElement("button");
-      deleteButton.innerHTML = "Delete";
-      deleteButton.onclick = () => {
-        tbody.removeChild(newRow);
-      };
-      deleteCell.appendChild(deleteButton);
+  const updateButton = document.createElement("button");
+  updateButton.innerHTML = "Update";
+  updateButton.onclick = () => {
+    populateInputFields(order);
+  };
+  updateCell.appendChild(updateButton);
 
-      newRow.appendChild(nameCell);
-      newRow.appendChild(pizzaCell);
-      newRow.appendChild(addressCell);
-      newRow.appendChild(deleteCell);
+  newRow.appendChild(nameCell);
+  newRow.appendChild(pizzaCell);
+  newRow.appendChild(addressCell);
+  newRow.appendChild(deleteCell);
+  newRow.appendChild(updateCell);
 
-      tbody.appendChild(newRow);
-    }
+  return newRow;
+}
 
-    // Clear input fields after order
-    nameInput.value = "";
-    pizzaInput.value = "";
-    addressInput.value = "";
-  }
+// Function to populate the table with orders from the backend
 
-  // Function to update an order
-  function updateOrder() {
-    const name = nameInput.value;
-    const pizza = pizzaInput.value;
-    const address = addressInput.value;
 
-    // Find the row with the matching name
-    const rows = tbody.getElementsByTagName("tr");
-    for (let i = 0; i < rows.length; i++) {
-      const row = rows[i];
-      if (row.cells[0].textContent === name) {
-        // Update
-      row.cells[2].textContent = address;
-      row.cells[1].textContent = pizza;
-      break;
-      }
-      }
-    nameInput.value = "";
-    pizzaInput.value = "";
-    addressInput.value = "";
-    }
+// Function to handle the "Order" button click event
+function addOrder() {
+  const nameInput = document.getElementById("name");
+  const pizzaInput = document.getElementById("pizza");
+  const addressInput = document.getElementById("address");
 
-  // Function to delete an order
-  function deleteOrder() {
-  const name = nameInput.value;
-  // Find the row with the matching name
-  const rows = tbody.getElementsByTagName("tr");
-  for (let i = 0; i < rows.length; i++) {
-    const row = rows[i];
-    if (row.cells[0].textContent === name) {
-      tbody.removeChild(row);
-      break;
-    }
-  }
+  const order = {
+    name: nameInput.value,
+    pizzaType: pizzaInput.value,
+    address: addressInput.value,
+  };
 
-  // Clear input fields after deletion
-  nameInput.value = "";
-  pizzaInput.value = "";
-  addressInput.value = "";
-  }
+  saveOrder(order);
+}
 
-  populateTable();
+// Function to clear input fields after adding or updating an order
+function clearInputFields() {
+  document.getElementById("name").value = "";
+  document.getElementById("pizza").value = "";
+  document.getElementById("address").value = "";
+}
+
+// Populate the table with orders on page load
+populateTable();
+
