@@ -27,4 +27,12 @@ layout: robot
 </div>
 </div>
 
+<div style="padding: 50px;"></div>
+<div id="div3" class="shadow" style="padding: 50px;">
+  <h1>Leaderboard</h1>
+  <div style="padding: 25px">
+    <ul id="leaderboard"></ul>
+  </div>
+</div>
+
 <script src="{{ '/assets/js/robotJS/robot2.js' | relative_url }}"></script>

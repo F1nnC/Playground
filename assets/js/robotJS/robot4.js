@@ -31,6 +31,30 @@ const pathR = "https://f1nnc.github.io/Playground/images/robotRun.jpg"
 var imageX = 0;
 var imageY = 0;
 
+function displayLeaderboard() {
+    fetch('https://Playgroundproject.duckdns.org/api/users/')
+      .then(response => response.json())
+      .then(data => {
+        const leaderboard = document.getElementById("leaderboard");
+        leaderboard.innerHTML = '';
+        data.forEach(player => {
+          const listItem = document.createElement('li');
+          listItem.innerText = `${player.name}: Score ${player.score}`;
+          leaderboard.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+  
+  
+  
+  displayLeaderboard();
+
+
+
+
 var image = new Image();
 image.src = path;
 image.onload = function() {

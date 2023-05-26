@@ -250,6 +250,27 @@ function down() {
     console.log("down")
 }
 
+function displayLeaderboard() {
+    fetch('https://Playgroundproject.duckdns.org/api/users/')
+      .then(response => response.json())
+      .then(data => {
+        const leaderboard = document.getElementById("leaderboard");
+        leaderboard.innerHTML = '';
+        data.forEach(player => {
+          const listItem = document.createElement('li');
+          listItem.innerText = `${player.name}: Score ${player.score}`;
+          leaderboard.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+  
+  
+  
+  displayLeaderboard();
+
 
 setInterval(draw, 10);
 setInterval(updateImage, 75);

@@ -37,6 +37,7 @@ layout: robot
     </div>
   </div>
 </div>
+<div style="padding: 50px;"></div>
 <div id="div3" class="shadow" style="padding: 50px;">
   <h1>Leaderboard</h1>
   <div style="padding: 25px">
