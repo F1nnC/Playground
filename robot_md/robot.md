@@ -50,12 +50,6 @@ layout: robot
     </table>
   </div>
 </div>
-<div id="div3" class="shadow" style="padding: 50px;">
-  <h1>Leaderboard</h1>
-  <div style="padding: 25px">
-    <table id="leaderboard" style="width:100%"></table>
-  </div>
-</div>
 <script>
   fetch('https://Playgroundproject.duckdns.org/api/users/', {
   method: 'PUT',

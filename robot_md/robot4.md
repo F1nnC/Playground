@@ -33,7 +33,20 @@ layout: robot
 <div id="div3" class="shadow" style="padding: 50px;">
   <h1>Leaderboard</h1>
   <div style="padding: 25px">
-    <ul id="leaderboard"></ul>
+    <input type="text" id="searchInput" onkeyup="searchPlayer()" placeholder="Search for a player...">
+    <table id="leaderboard" style="width:100%">
+      <tr>
+        <th onclick="sortLeaderboard(0)">Name</th>
+        <th onclick="sortLeaderboard(1)">Score</th>
+      </tr>
+    </table>
   </div>
 </div>
+<script>
+  fetch('https://Playgroundproject.duckdns.org/api/users/', {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: person, level: parseInt(localStorage.getItem('level')) || 1 })
+})
+</script>
 <script src="{{ '/assets/js/robotJS/robot4.js' | relative_url }}"></script>
