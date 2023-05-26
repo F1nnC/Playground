@@ -55,3 +55,8 @@ Edwin and Luka went to ask for Gene for assistance on the Pizza API. Gene looked
 <br>
 
 ## Thursday, May 25th, 2023
+Today, Edwin and Luka worked on fixing the backend as well as cleaning up the Pizza API as well. One problem that was encountered was that there was an error with the Pizza API. Gene tried fixing this problem, but not sure what is causing it as it works on local server. Today Luka also tried to work more on the JavaScript table. Kush took a break from chess today and started working on Tic Tac Toe. So far the two player part of the game works, but Kush will try and make a one player one. James worked on chess again, especially with the animations of the king and the pawn movements. Kush also made plans to work on a login and sign up system for the whole website so that whenever a user finished a game, they just have to enter their password instead of logging in each time. Zeen will also help Kush in implementing this as well.
+
+<br>
+
+## Friday, May 26th, 2020
