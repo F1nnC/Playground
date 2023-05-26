@@ -572,18 +572,6 @@ function clickCanvas(event) {
                         }
                     }
                 }
-                if (userWhite_clickX == pawn_white2[0] && userWhite_clickY == pawn_white2[1]) {
-                    if (pawn_white2[1] == 480) {
-                        if (clickY == 320 || clickY == 400) {
-                            if (clickX == pawn_white2[0]) {
-                                ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
-                                pawn_white2[0] = clickX;
-                                pawn_white2[1] = clickY;
-                                erase_White();
-                                white_turn = false;
-                                return;
-                            }
-                        }
                     }
                     else {
                         if (clickY == pawn_white2[1]-80 && clickX == pawn_white2[0]) {
