@@ -31,6 +31,9 @@ const white_bishop = new Image();
 white_bishop.src = "https://f1nnc.github.io/Playground/images/Chess_blt60.png";
 const black_bishop = new Image();
 black_bishop.src = "https://f1nnc.github.io/Playground/images/Chess_bdt60.png";
+const black_look = new Image();
+black_look.src = "https://f1nnc.github.io/Playground/images/Chess_bdt60.png";
+
 var chess_board = [];
 var board_add = [];
 var pawn_white1 = [0, 480];
@@ -53,14 +56,28 @@ var black_bishop1 = [160, 0];
 var black_bishop2 = [480, 0];
 var white_bishop1 = [160, 560];
 var white_bishop2 = [480, 560];
-var clickX = 0;
-var clickY = 0;
+var black_horse1 = [80, 0];
+var black_horse2 = [480, 0];
+var white_horse1 = [80, 580];
+var white_horse2 = [480, 560];
+var black_look1 = [0,0];
+var black_look2 = [560,0];
+var white_look1 = [0,560];
+var white_look2 = [560, 560];
+
+
+
+
+
+
+var clickX = 640;
+var clickY = 640;
 var black_click = false;
 var white_click = false;
-var userBlack_clickX = 0;
-var userBlack_clickY = 0;
-var userWhite_clickY = 0;
-var userWhite_clickX = 0
+var userBlack_clickX = 640;
+var userBlack_clickY = 640;
+var userWhite_clickY = 640;
+var userWhite_clickX = 640;
 var black_turn = false;
 var white_turn = true;
 var num = 0;
@@ -275,15 +292,17 @@ function clickCanvas(event) {
                             }
                         }
                     }
+                    if (clickY == pawn_black2[1]+80 && clickX == pawn_black2[0]) {
+                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                        pawn_black2[0] = clickX;
+                        pawn_black2[1] = clickY;
+                        erase_Black();
+                        white_turn = true;
+                        return;
+                    }
                     else {
-                        if (clickY == pawn_black2[1]+80 && clickX == pawn_black2[0]) {
-                            ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                            pawn_black2[0] = clickX;
-                            pawn_black2[1] = clickY;
-                            erase_Black();
-                            white_turn = true;
-                            return;
-                        }
+                        black_click = false;
+                        return;
                     }
                 }
                 if (userBlack_clickX == pawn_black3[0] && userBlack_clickY == pawn_black3[1]) {
@@ -428,6 +447,9 @@ function clickCanvas(event) {
                             return;
                         }
                     }
+                }
+                if (userBlack_clickX == black_bishop1[0] && userBlack_clickY == black_bishop1[1]) {
+                    if (pa)
                 }
             }
         }
