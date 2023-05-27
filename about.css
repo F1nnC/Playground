@@ -25,6 +25,7 @@
     border-radius: 50%;
     box-shadow: 0 0 22px black;
     transition: 0.6s;   
+    margin: 0 25px;
 }
 .profile-card:hover {
     border-radius: 10px;
@@ -37,7 +38,7 @@
     transition: 0.6s;
     z-index: 99;
 }
-.profile-card:hover {
+.profile-card:hover .img {
     transform: translateY(-60px);
 }
 .img img {
@@ -61,12 +62,16 @@
     font-size: 21px;
 }
 .caption p {
-    font-size: 17px;
+    font-size: 16px;
     color: #0c52a1;
     margin: 2px 0 6px 0;
 }
-.caption .github-link a{
+.caption .github-link a {
     color: black; 
     margin-right: 8px;
     font-size: 18px;
+    transition: 0.6s;
+}
+.github-link a:hover {
+    color: #0c52a1;
 }

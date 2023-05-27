@@ -1,4 +1,4 @@
-## About Page
+<!-- ## About Page
 <style>
 * {
     margin: 0;
@@ -103,4 +103,4 @@
     <td>
         <tr>Text, in progress for project?????????????????</tr>
     </td>
-</table>   
+</table>    -->
