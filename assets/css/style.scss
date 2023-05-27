@@ -43,9 +43,7 @@ body {
   color: #F0EAD6;
   transition-duration: 0.4s;
 }
-
 #nav-bar .active {
-  /* styles for the active button */
   align-items: right;
   border: 1px solid #F0EAD6;
   border: 5px;
@@ -56,21 +54,17 @@ body {
   color: #F0EAD6;
   transition-duration: 0.4s;
 }
-
 #nav-bar button:hover {
   opacity: 1;
 }
-
 #nav-bar button a {
   color: #F0EAD6;
   text-decoration: none;
   transition-duration: 0.4s;
 }
-
 #nav-bar button a:hover {
   opacity: 1;
 }
-
 #title {
   padding: 15px;
   text-align: center;
