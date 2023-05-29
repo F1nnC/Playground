@@ -20,21 +20,28 @@ var imageX = 0;
 var imageY = 0;
 
 function displayLeaderboard() {
-    fetch('https://Playgroundproject.duckdns.org/api/users/')
-      .then(response => response.json())
-      .then(data => {
-        const leaderboard = document.getElementById("leaderboard");
-        leaderboard.innerHTML = '';
-        data.forEach(player => {
-          const listItem = document.createElement('li');
-          listItem.innerText = `${player.name}: Score ${player.score}`;
-          leaderboard.appendChild(listItem);
-        });
-      })
-      .catch(error => {
-        console.error('Error:', error);
+  fetch('https://Playgroundproject.duckdns.org/api/users/')
+    .then(response => response.json())
+    .then(data => {
+      const leaderboard = document.getElementById("leaderboard");
+      leaderboard.innerHTML = `
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+        </tr>
+      `;
+      data.forEach(player => {
+        const row = leaderboard.insertRow();
+        const nameCell = row.insertCell();
+        const scoreCell = row.insertCell();
+        nameCell.textContent = player.name;
+        scoreCell.textContent = player.score;
       });
-  }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
   function searchPlayer() {
     const input = document.getElementById("searchInput");
     const filter = input.value.toUpperCase();
@@ -156,6 +163,7 @@ function draw() {
     ctx.closePath();
 
     drawImage();
+    collide();
 }
 
 function collide() {

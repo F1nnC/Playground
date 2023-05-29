@@ -12,7 +12,7 @@ layout: robot
 
 
 
-<div class="container" style="">
+<div class="index-Container" style="">
   <div id="div1" class="shadow" style="padding: 50px; ">
     <h1>Controller</h1>
     <div style="padding: 15px"></div>
@@ -31,7 +31,7 @@ layout: robot
   </div>
   <div id="div2" class="shadow" style="padding: 50px;">
     <h1>Simulation</h1>
-    <div style="padding: 25px">
+    <div style="padding: 15px">
       <canvas id="sim" width="250" height="250" style="background: white;">
       </canvas>
     </div>

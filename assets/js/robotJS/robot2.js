@@ -255,11 +255,18 @@ function displayLeaderboard() {
       .then(response => response.json())
       .then(data => {
         const leaderboard = document.getElementById("leaderboard");
-        leaderboard.innerHTML = '';
+        leaderboard.innerHTML = `
+          <tr>
+            <th>Name</th>
+            <th>Score</th>
+          </tr>
+        `;
         data.forEach(player => {
-          const listItem = document.createElement('li');
-          listItem.innerText = `${player.name}: Score ${player.score}`;
-          leaderboard.appendChild(listItem);
+          const row = leaderboard.insertRow();
+          const nameCell = row.insertCell();
+          const scoreCell = row.insertCell();
+          nameCell.textContent = player.name;
+          scoreCell.textContent = player.score;
         });
       })
       .catch(error => {

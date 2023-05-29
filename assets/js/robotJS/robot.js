@@ -58,7 +58,7 @@
   }
 
 
-
+// yo
 
   function draw() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -84,6 +84,7 @@
     ctx.closePath();
 
     drawImage();
+    collide();
   }
 
   function collide() {

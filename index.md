@@ -8,9 +8,9 @@ layout: default
 ## Playground
 
 
-<div class="container">
+<div class="index-Container">
   <div id="div1" class="shadow">
-        <a href="/robot"><h1>Robot</h1></a>
+        <a href="{{ site.baseurl }}/robot_md/robot"><h1>Robot</h1></a>
         <p> Example Text </p>
     </div>
   <div id="div2" class="shadow">
