@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Exo;
+}
+#nav-bar {
+    display: flex;
+    margin: 0;
+    text-align: center;
+    background: rgb(24, 24, 24);
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+#nav-bar button, button {
+    align-items: right;
+    border: 1px solid #F0EAD6;
+    border: 5px;
+    background: rgb(24, 24, 24);
+    opacity: 0.6;
+    length: 140px;
+    padding: 30px;
+    color: #F0EAD6;
+    transition-duration: 0.4s;
+}
+#nav-bar .active {
+    align-items: right;
+    border: 1px solid #F0EAD6;
+    border: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0.6;
+    length: 140px;
+    padding: 30px;
+    color: #F0EAD6;
+    transition-duration: 0.4s;
+}
+#nav-bar button:hover {
+    opacity: 1;
+}
+#nav-bar button a {
+    color: #F0EAD6;
+    text-decoration: none;
+    transition-duration: 0.4s;
+}
+#nav-bar button a:hover {
+    opacity: 1;
+}
+@font-face {
+    font-family: Exo;
+    src: url(./fonts/Exo2.0-Medium.otf);
+}
+.main {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+}
+.main2 {
+    width: 100%;
+    height: 60vh;
+    position: top;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+}
+h1 {
+    color: rgb(234, 99, 99);
+    background-color: blue;
+    text-align: center;
+    font-size: 50px;
+}
+.profile-card {
+    position: relative;
+    width: 220px; 
+    height: 220px;
+    background: white;
+    padding: 30px;
+    border-radius: 50%;
+    box-shadow: 0 0 22px black;
+    transition: 0.6s;   
+    margin: 0 25px;
+}
+.profile-card:hover {
+    border-radius: 10px;
+    height: 260px;
+}
+.profile-card .img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: 0.6s;
+    z-index: 99;
+}
+.profile-card:hover .img {
+    transform: translateY(-60px);
+}
+.img img {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 22px black;
+    transition: 0.6s
+}
+.profile-card:hover img {
+    border-radius: 10px;
+}
+.profile-card:hover .caption {
+    opacity: 1;
+}
+.caption {
+    text-align: center;
+    transform: translateY(-80px);
+    opacity: 0;
+}
+.caption h3 {
+    font-size: 21px;
+}
+.caption p {
+    font-size: 16px;
+    color: #0c52a1;
+    margin: 2px 0 6px 0;
+}
+.caption .github-link a {
+    color: black; 
+    margin-right: 8px;
+    font-size: 18px;
+    transition: 0.6s;
+}
+.github-link a:hover {
+    color: #0c52a1;
+}
