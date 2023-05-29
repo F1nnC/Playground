@@ -43,9 +43,7 @@ body {
   color: #F0EAD6;
   transition-duration: 0.4s;
 }
-
 #nav-bar .active {
-  /* styles for the active button */
   align-items: right;
   border: 1px solid #F0EAD6;
   border: 5px;
@@ -56,21 +54,17 @@ body {
   color: #F0EAD6;
   transition-duration: 0.4s;
 }
-
 #nav-bar button:hover {
   opacity: 1;
 }
-
 #nav-bar button a {
   color: #F0EAD6;
   text-decoration: none;
   transition-duration: 0.4s;
 }
-
 #nav-bar button a:hover {
   opacity: 1;
 }
-
 #title {
   padding: 15px;
   text-align: center;
@@ -104,10 +98,16 @@ body {
 
 
 .container {
-  justify-content: space-between;
-  text-align: center;
+  align-items: center;
   display: flex;
 }
+
+.index-Container {
+  align-items: center;
+  display: flex;
+}
+
+
 
 #div1 {
   flex: 1;
@@ -127,16 +127,18 @@ body {
 
 #div3 {
   flex: 1;
-  background-color: rgb(227, 11, 11);
+  background-color: rgba(101, 105, 224, 0.9);
   text-align: center;
+  margin-right: 20px;
   margin-left: 20px;
 }
 
 #div4 {
-  width: 351px;
   flex: 1;
-  background-color: rgba(220, 224, 101, 0.9);
+  background-color: rgba(233, 221, 61, 0.9);
   text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .ControlB {
@@ -216,6 +218,18 @@ body {
   color: white;
 }
 
+.nav-tictactoe {
+  text-align: center;
+  padding: 12px;
+  flex: 3;
+  background-color: purple;
+  border-radius: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  text-decoration: none;
+  color: aquamarine;
+}
+
 body {
   text-align: center;
   background: #000;
@@ -275,3 +289,7 @@ body {
   backdrop-filter: blur(5px); /* apply a blur effect to the area behind the element */
 }
 
+#leaderboard {
+  text-align: center;
+  align-items: center;
+}

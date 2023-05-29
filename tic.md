@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: tictactoe
 ---
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -51,6 +51,9 @@ button:hover {
     background-color: #c1a2fe;
 }
 </style>
+
+
+
 <html>
 <html lang="en">
 <head>

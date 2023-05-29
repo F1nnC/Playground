@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+
 <html>
 <head>
   <title>Pizza Order</title>
 </head>
 <body>
+  <script src="pizzaFront.js"></script>
   <h1>Order Table</h1>
   <table class="Ptable">
     <thead>
