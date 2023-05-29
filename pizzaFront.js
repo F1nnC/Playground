@@ -46,6 +46,14 @@ function updateOrderButton() {
 
 // Function to handle the "Delete" button click event
 async function deleteOrder(orderId) {
+  const deleteRequestOptions = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  };
+  
+  await fetch(`https://playgroundproject.duckdns.org/api/pizza/${orderId}`, deleteRequestOptions);
   if (confirm("Are you sure you want to delete this order?")) {
     await fetch(`https://playgroundproject.duckdns.org/api/pizza/${orderId}`, {
       method: 'DELETE'
