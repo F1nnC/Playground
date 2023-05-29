@@ -22,6 +22,7 @@
         <td><input id="name" placeholder="Name"></td> <!-- Update here -->
         <td><input id="pizza" placeholder="Pizza"></td>
         <td><input id="address" placeholder="Address"></td>
+        <td><input id="OrderName" placeholder="Order"></td>
         <td><button onclick="addOrder()">Order</button></td>
         <td><button onclick="updateOrder()">Update</button></td>
       </tr>
