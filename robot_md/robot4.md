@@ -33,6 +33,12 @@ layout: robot
 <div id="div3" class="shadow" style="padding: 50px;">
   <h1>Leaderboard</h1>
   <div style="padding: 25px">
+    <label># of people shown</label>
+    <select name="Entries" id="numberRows" onchange="updateLeaderboard()">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="25">25</option>
+    </select>
     <input type="text" id="searchInput" onkeyup="searchPlayer()" placeholder="Search for a player...">
     <table id="leaderboard" style="width:100%">
       <tr>

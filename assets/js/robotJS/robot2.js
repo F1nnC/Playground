@@ -250,7 +250,9 @@ function down() {
     console.log("down")
 }
 
-function displayLeaderboard() {
+let numberOfPeopleShown = 5;
+
+  function displayLeaderboard() {
     fetch('https://Playgroundproject.duckdns.org/api/users/')
       .then(response => response.json())
       .then(data => {
@@ -261,7 +263,7 @@ function displayLeaderboard() {
             <th>Score</th>
           </tr>
         `;
-        data.forEach(player => {
+        data.slice(0, numberOfPeopleShown).forEach(player => {
           const row = leaderboard.insertRow();
           const nameCell = row.insertCell();
           const scoreCell = row.insertCell();
@@ -273,6 +275,15 @@ function displayLeaderboard() {
         console.error('Error:', error);
       });
   }
+
+  function updateLeaderboard() {
+    const select = document.getElementById("numberRows");
+    numberOfPeopleShown = parseInt(select.value);
+    displayLeaderboard();
+  }
+
+  updateLeaderboard();
+
   function searchPlayer() {
     const input = document.getElementById("searchInput");
     const filter = input.value.toUpperCase();
