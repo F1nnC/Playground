@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta name="permissions-policy" content="interest-cohort=()"/>
 <html>
 <head>
   <title>Pizza Order</title>
