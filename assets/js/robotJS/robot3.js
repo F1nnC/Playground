@@ -194,6 +194,61 @@ function down() {
     console.log("down")
 }
 
+function displayLeaderboard() {
+    fetch('https://Playgroundproject.duckdns.org/api/users/')
+      .then(response => response.json())
+      .then(data => {
+        const leaderboard = document.getElementById("leaderboard");
+        leaderboard.innerHTML = '';
+        data.forEach(player => {
+          const listItem = document.createElement('li');
+          listItem.innerText = `${player.name}: Score ${player.score}`;
+          leaderboard.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+  
+  function searchPlayer() {
+    const input = document.getElementById("searchInput");
+    const filter = input.value.toUpperCase();
+    const leaderboard = document.getElementById("leaderboard");
+    const rows = leaderboard.getElementsByTagName("tr");
+    for (let i = 0; i < rows.length; i++) {
+      const nameCell = rows[i].getElementsByTagName("td")[0];
+      if (nameCell) {
+        const name = nameCell.textContent || nameCell.innerText;
+        if (name.toUpperCase().indexOf(filter) > -1) {
+          rows[i].style.display = "";
+        } else {
+          rows[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+
+  function sortLeaderboard(colIndex) {
+    const leaderboard = document.getElementById("leaderboard");
+    const rows = Array.from(leaderboard.getElementsByTagName("tr"));
+    rows.shift(); // Remove the header row from the sorting
+    rows.sort((a, b) => {
+      const cellA = a.getElementsByTagName("td")[colIndex];
+      const cellB = b.getElementsByTagName("td")[colIndex];
+      const valA = cellA.textContent || cellA.innerText;
+      const valB = cellB.textContent || cellB.innerText;
+      return valA.localeCompare(valB, undefined, { numeric: true });
+    });
+    leaderboard.innerHTML = ""; // Clear existing leaderboard
+    leaderboard.appendChild(rows[0].parentNode); // Append the sorted rows
+    rows.forEach(row => leaderboard.appendChild(row));
+  }
+  
+  displayLeaderboard();
+
+
 
 setInterval(draw, 10);
 setInterval(updateImage, 75);

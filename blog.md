@@ -45,7 +45,18 @@ Today James and James are planning on creating the movement of the pawn and its 
 <br>
 
 ## Tuesday, May 23rd, 2023
+James created the animation for his project. Gene made a javascript table. Zeen made the javascript behind the log in page. Kush worked on the removal of the pieces on chess. Luka worked on removing the database for the menu and started changing it to a javascript table. 
 
 <br>
 
 ## Wednesday, May 24th, 2023
+Edwin and Luka went to ask for Gene for assistance on the Pizza API. Gene looked over the model part and added some code in order to stop the duplicate user ids being added. Edwin and Luka also discussed the possibility of assigning a pizza order number for each person. Gene managed to fix it, but Edwin simultaneously also tried fixing the backend. They both got it working and after school, both Edwin and Gene worked on getting the API to work and show up on the backend runtime url. Luka started working on the JavaScript table portion of the menu. James and Kush worked on the animation of the king in chess. 
+
+<br>
+
+## Thursday, May 25th, 2023
+Today, Edwin and Luka worked on fixing the backend as well as cleaning up the Pizza API as well. One problem that was encountered was that there was an error with the Pizza API. Gene tried fixing this problem, but not sure what is causing it as it works on local server. Today Luka also tried to work more on the JavaScript table. Kush took a break from chess today and started working on Tic Tac Toe. So far the two player part of the game works, but Kush will try and make a one player one. James worked on chess again, especially with the animations of the king and the pawn movements. Kush also made plans to work on a login and sign up system for the whole website so that whenever a user finished a game, they just have to enter their password instead of logging in each time. Zeen will also help Kush in implementing this as well.
+
+<br>
+
+## Friday, May 26th, 2020

@@ -12,7 +12,7 @@ OCEAN_COLOR = u"\u001B[34m\u001B[2D"
 SHIP_COLOR = u"\u001B[35m\u001B[2D"
 RESET_COLOR = u"\u001B[0m\u001B[2D"
 
-def ship_print(position):  # print ship with colors and leading spaces according to position
+def pizza_print(position):  # print ship with colors and leading spaces according to position
     clear_output(wait=True)
     print(RESET_COLOR)
     
@@ -20,9 +20,9 @@ def ship_print(position):  # print ship with colors and leading spaces according
     print(sp + "                     ____")
     print(sp + "               _,--~~    ~~--._")
     print(sp + "            ,/'  m%%%%%%=@%%m  `\.")
-    print(sp + "           /' m%%o(_)%%o%%%%o%%m `\")
-    print(sp + "         /' %%@=%o%%%o%%%o%(_)o%%% `\")
-    print(sp + "        /  %o%%%%%=@%%%(_)%%o%%@=%%  \")
+    print(sp + "           /' m%%o(_)%%o%%%%o%%m `\.")
+    print(sp + "         /' %%@=%o%%%o%%%o%(_)o%%% `\.")
+    print(sp + "        /  %o%%%%%=@%%%(_)%%o%%@=%%  \.")
     print(sp + "       |  (_)%(_)%%o%%%o%%%%=@(_)%%%  |")
     print(sp + "       | %%o%%%%o%%%(_)%%o%%o%%%%o%%% |")
     print(sp + "       | %%o%(_)%%%%%o%(_)%%%o%%o%o%% |")
@@ -35,19 +35,7 @@ def ship_print(position):  # print ship with colors and leading spaces according
 
     
     
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 
