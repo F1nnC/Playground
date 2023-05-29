@@ -1,5 +1,4 @@
 
-<meta name="permissions-policy" content="interest-cohort=()"/>
 <html>
 <head>
   <title>Pizza Order</title>
@@ -19,13 +18,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><input id="name" placeholder="Name"></td> <!-- Update here -->
+        <td><input id="name" placeholder="Name"></td>
         <td><input id="pizza" placeholder="Pizza"></td>
         <td><input id="address" placeholder="Address"></td>
         <td><button onclick="addOrder()">Order</button></td>
         <td><button onclick="updateOrder()">Update</button></td>
       </tr>
-
     </tbody>
   </table>
 

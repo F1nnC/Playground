@@ -72,7 +72,7 @@ function createTableRow(order) {
   const deleteCell = document.createElement("td");
   const updateCell = document.createElement("td");
 
-  nameCell.textContent = order.orderName; // Update here
+  nameCell.textContent = order.name;
   pizzaCell.textContent = order.pizzaType;
   addressCell.textContent = order.address;
 
