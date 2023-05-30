@@ -1,6 +1,4 @@
----
-layout: spaceinvaders
----
+
 
   <head>
     <title>Space Invaders</title>
