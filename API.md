@@ -2,6 +2,34 @@
 <html>
 <head>
   <title>Pizza Order</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    input {
+      width: 100%;
+    }
+
+    .Ptable {
+      margin-bottom: 20px;
+    }
+
+    .delete-button {
+      background-color: red;
+      color: white;
+    }
+  </style>
+</head>
+<head>
+  <title>Pizza Order</title>
 </head>
 <body>
   <script src="pizzaFront.js"></script>
