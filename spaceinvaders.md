@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+---
+layout: spaceinvaders
+---
+
+
 <html>
   <head>
     <title>Space Invaders</title>
@@ -32,7 +36,9 @@
         height: 20px;
         background-color: green;
       }
+
     </style>
+    
   </head>
   <body>
     <div id="game-board"></div>
