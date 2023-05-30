@@ -11,11 +11,6 @@ a {
 ## Playground
 
 <div class="index-Container">
-  <div id="div1" class="shadow">
-    <a href="{{ site.baseurl }}/robot_md/robot"><h1>Robot</h1></a>
-    <canvas id="sim" width="50" height="50"></canvas>
-    <p>Example Text</p>
-  </div>
   <div id="div2" class="shadow">
     <h1>Pizza API</h1>
     <img src="{{ site.baseurl }}/images/pizzaIndex.png" width="50" height="50">
@@ -24,6 +19,11 @@ a {
   <div id="div3" class="shadow">
     <h1>Chess</h1>
     <img src="{{ site.baseurl }}/images/white_pawn.png" width="50" height="50">
+    <p>Example Text</p>
+  </div>
+  <div id="div1" class="shadow">
+    <a href="{{ site.baseurl }}/robot_md/robot"><h1>Robot</h1></a>
+    <canvas id="sim" width="50" height="50"></canvas>
     <p>Example Text</p>
   </div>
   <div id="div4" class="shadow">
