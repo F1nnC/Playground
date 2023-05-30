@@ -1074,16 +1074,16 @@ function clickCanvas(event) {
                                 erase_White();
                                 return;
                             }
-                            if (clickY == white_look1[1] - 80*i) {
+                            if (clickY == white_look2[1] - 80*i) {
                                 for (t = 0; t < i; t++) {
-                                    if (White_validMove(white_look1[0], white_look1[1]- 80*i + 80*t) == false) {
+                                    if (White_validMove(white_look2[0], white_look2[1]- 80*i + 80*t) == false) {
                                         white_click = false;
                                         return;
                                     }
                                 }
                                 ctx.drawImage(white_look, clickX, clickY, 80, 80);
-                                white_look1[0] = clickX;
-                                white_look1[1] = clickY;
+                                white_look2[0] = clickX;
+                                white_look2[1] = clickY;
                                 erase_White();
                                 return;
                             }
@@ -1142,6 +1142,64 @@ function clickCanvas(event) {
                             ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
                             white_bishop1[0] = clickX;
                             white_bishop1[1] = clickY;
+                            erase_White();
+                            return;
+                        }
+                        
+                    }
+                }
+                if (userWhite_clickX == white_bishop2[0] && userWhite_clickY == white_bishop2[1]) {
+                   
+                    for (i = 0; i< 8; i++) {
+                        if (clickX == white_bishop2[0] + 80*i && clickY == white_bishop2[1] - 80*i ) {
+                            for (t = 0; t < i; t++) {
+                                if (White_validMove(white_bishop2[0] + 80*i - 80*t, white_bishop2[1] - 80*i + 80*t) == false) {
+                                    white_click = false;
+                                    return;
+                                }
+                            }
+                            ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
+                            white_bishop2[0] = clickX;
+                            white_bishop2[1] = clickY;
+                            erase_White();
+                            return;
+                        }
+                        else if (clickX == white_bishop2[0] - 80*i && clickY == white_bishop2[1] + 80*i) {
+                            for (t = 0; t < i; t++) {
+                                if (White_validMove(white_bishop2[0] - 80*i + 80*t, white_bishop2[1] + 80*i - 80*t) == false) {
+                                    white_click = false;
+                                    return;
+                                }
+                            }
+                            ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
+                            white_bishop2[0] = clickX;
+                            white_bishop2[1] = clickY;
+                            erase_White();
+                            return;
+                        }
+                        else if (clickX == white_bishop2[0] + 80*i && clickY == white_bishop2[1] - 80*i) {
+                            for (t = 0; t < i; t++) {
+                                if (White_validMove(white_bishop2[0] + 80*i - 80*t, white_bishop2[1] - 80*i + 80*t) == false) {
+                                    white_click = false;
+                                    return;
+                                }
+                            }
+                            ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
+                            white_bishop2[0] = clickX;
+                            white_bishop2[1] = clickY;
+                            erase_White();
+                            return;
+                        }
+                        else if (clickX == white_bishop2[0] - 80*i && clickY == white_bishop2[1] - 80*i) {
+                            for (t = 0; t < i; t++) {
+                                if (White_validMove(white_bishop2[0] - 80*i + 80*t, white_bishop2[1] - 80*i + 80*t) == false) {
+                                    white_click = false;
+                                    return;
+                                }
+                            }
+                            ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
+                            white_bishop2[0] = clickX;
+                            white_bishop2[1] = clickY;
                             erase_White();
                             return;
                         }
