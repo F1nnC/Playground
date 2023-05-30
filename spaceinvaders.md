@@ -2,8 +2,6 @@
 layout: spaceinvaders
 ---
 
-
-<html>
   <head>
     <title>Space Invaders</title>
     <style>
@@ -36,9 +34,7 @@ layout: spaceinvaders
         height: 20px;
         background-color: green;
       }
-
     </style>
-    
   </head>
   <body>
     <div id="game-board"></div>
@@ -65,11 +61,33 @@ layout: spaceinvaders
           }
         });
 
+        document.addEventListener('keydown', (event) => {
+          if (event.code === 'ArrowLeft') {
+            movePlayerLeft();
+          } else if (event.code === 'ArrowRight') {
+            movePlayerRight();
+          }
+        });
+
         setInterval(() => {
           moveInvaders(invaders);
           moveBullets(bullets);
           detectCollisions(invaders, bullets);
         }, 500);
+
+        function movePlayerLeft() {
+          const currentLeft = parseInt(player.style.left);
+          if (currentLeft > 0) {
+            player.style.left = currentLeft - 10 + 'px';
+          }
+        }
+
+        function movePlayerRight() {
+          const currentLeft = parseInt(player.style.left);
+          if (currentLeft < gameBoard.offsetWidth - player.offsetWidth) {
+            player.style.left = currentLeft + 10 + 'px';
+          }
+        }
       });
 
       function createPlayer() {
@@ -129,6 +147,7 @@ layout: spaceinvaders
           });
         });
       }
+
     </script>
+
   </body>
-</html>
