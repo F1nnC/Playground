@@ -1,4 +1,3 @@
-// Function to update an order
 async function updateOrder(orderId) {
   const nameInput = document.getElementById("name");
   const pizzaInput = document.getElementById("pizza");
@@ -11,7 +10,7 @@ async function updateOrder(orderId) {
     address: addressInput.value,
   };
 
-  await fetch(`https://playgroundproject.duckdns.org/api/pizza/${orderId}`, {
+  await fetch(`https://playgroundproject.duckdns.org/api/pizzaorders/${orderId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -25,7 +24,7 @@ async function updateOrder(orderId) {
 
 // Function to populate the table with orders from the backend
 async function populateTable() {
-  const response = await fetch('https://playgroundproject.duckdns.org/api/pizza/');
+  const response = await fetch('https://playgroundproject.duckdns.org/api/pizzaorders/');
   const orders = await response.json();
 
   const tbody = document.getElementById("tbody");
@@ -45,24 +44,23 @@ function updateOrderButton() {
 }
 
 // Function to handle the "Delete" button click event
+// Function to handle the "Delete" button click event
 async function deleteOrder(orderId) {
-  const deleteRequestOptions = {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-  };
-  
-  await fetch(`https://playgroundproject.duckdns.org/api/pizza/${orderId}`, deleteRequestOptions);
   if (confirm("Are you sure you want to delete this order?")) {
-    await fetch(`https://playgroundproject.duckdns.org/api/pizza/${orderId}`, {
-      method: 'DELETE'
-    });
+    const deleteRequestOptions = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    };
+
+    await fetch(`https://playgroundproject.duckdns.org/api/pizzaorders/${orderId}`, deleteRequestOptions);
 
     populateTable();
   }
 }
 
+// Function to create the table row for an order
 // Function to create the table row for an order
 function createTableRow(order) {
   const newRow = document.createElement("tr");
@@ -72,12 +70,13 @@ function createTableRow(order) {
   const deleteCell = document.createElement("td");
   const updateCell = document.createElement("td");
 
-  nameCell.textContent = order.orderName;
+  nameCell.textContent = order.name; // Update to use `order.name` instead of `order.orderName`
   pizzaCell.textContent = order.pizzaType;
   addressCell.textContent = order.address;
 
   const deleteButton = document.createElement("button");
   deleteButton.innerHTML = "Delete";
+  deleteButton.className = "delete-button"; // Add class for styling
   deleteButton.onclick = () => {
     deleteOrder(order.uid);
   };
@@ -99,6 +98,7 @@ function createTableRow(order) {
   return newRow;
 }
 
+
 // Function to handle the "Order" button click event
 async function addOrder() {
   const nameInput = document.getElementById("name");
@@ -112,7 +112,7 @@ async function addOrder() {
     address: addressInput.value,
   };
 
-  await fetch('https://playgroundproject.duckdns.org/api/pizza/', {
+  await fetch('https://playgroundproject.duckdns.org/api/pizzaorders/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
