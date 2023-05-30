@@ -98,10 +98,16 @@ body {
 
 
 .container {
-  justify-content: space-between;
-  text-align: center;
+  align-items: center;
   display: flex;
 }
+
+.index-Container {
+  align-items: center;
+  display: flex;
+}
+
+
 
 #div1 {
   flex: 1;
@@ -121,16 +127,18 @@ body {
 
 #div3 {
   flex: 1;
-  background-color: rgb(227, 11, 11);
+  background-color: rgba(101, 105, 224, 0.9);
   text-align: center;
+  margin-right: 20px;
   margin-left: 20px;
 }
 
 #div4 {
-  width: 351px;
   flex: 1;
-  background-color: rgba(220, 224, 101, 0.9);
+  background-color: rgba(233, 221, 61, 0.9);
   text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .ControlB {
@@ -281,3 +289,7 @@ body {
   backdrop-filter: blur(5px); /* apply a blur effect to the area behind the element */
 }
 
+#leaderboard {
+  text-align: center;
+  align-items: center;
+}

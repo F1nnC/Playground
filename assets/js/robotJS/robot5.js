@@ -19,22 +19,39 @@ const pathR = "https://f1nnc.github.io/Playground/images/robotRun.jpg"
 var imageX = 0;
 var imageY = 0;
 
-function displayLeaderboard() {
+let numberOfPeopleShown = 5;
+
+  function displayLeaderboard() {
     fetch('https://Playgroundproject.duckdns.org/api/users/')
       .then(response => response.json())
       .then(data => {
         const leaderboard = document.getElementById("leaderboard");
-        leaderboard.innerHTML = '';
-        data.forEach(player => {
-          const listItem = document.createElement('li');
-          listItem.innerText = `${player.name}: Score ${player.score}`;
-          leaderboard.appendChild(listItem);
+        leaderboard.innerHTML = `
+          <tr>
+            <th>Name</th>
+            <th>Score</th>
+          </tr>
+        `;
+        data.slice(0, numberOfPeopleShown).forEach(player => {
+          const row = leaderboard.insertRow();
+          const nameCell = row.insertCell();
+          const scoreCell = row.insertCell();
+          nameCell.textContent = player.name;
+          scoreCell.textContent = player.score;
         });
       })
       .catch(error => {
         console.error('Error:', error);
       });
   }
+
+  function updateLeaderboard() {
+    const select = document.getElementById("numberRows");
+    numberOfPeopleShown = parseInt(select.value);
+    displayLeaderboard();
+  }
+
+  updateLeaderboard();
   function searchPlayer() {
     const input = document.getElementById("searchInput");
     const filter = input.value.toUpperCase();
@@ -156,6 +173,7 @@ function draw() {
     ctx.closePath();
 
     drawImage();
+    collide();
 }
 
 function collide() {

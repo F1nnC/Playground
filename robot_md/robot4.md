@@ -2,37 +2,43 @@
 layout: robot
 ---
 
-
-
-<div class="container">
-<div id="div3" class="shadow" style="padding: 50px; display: inline-block;">
-<h1>Code Block</h1>
-<div class="loop-block">
-    <p style="color: black; text-align: left;"><input id="loop" class="block-input"><b>Loop</b></p>
-    <div class="up-block"><input id="up" class="block-input"><label class="label-block"><b>UP</b></label></div><br>
-    <div class="left-block"><label class="label-block"><b>2 LEFT</b></label></div><br>
-    <div class="down-block"><input id="down" class="block-input"><label class="label-block"><b>DOWN</b></label></div><br>
-    <div class="right-block"><input id="right" class="block-input"><label class="label-block"><b>RIGHT</b></label></div><br>
-</div>
 <br>
-<button id="runner" onclick="run()">RUN</button>
-<form action="{{ site.baseurl }}/robot_md/robot4">
-    <button type="submit">RESET</button>
-</form>
-</div>
-<div id="div4" class="shadow" style="padding: 50px;">
-<h1>Simulation</h1>
-<div style="padding: 25px">
-    <canvas id="sim" width="250" height="250" style="background: white;">
-    </canvas>
-</div>
-</div>
+
+<div class="index-Container">
+  <div id="div3" class="shadow" style="">
+    <h1>Code Block</h1>
+    <div class="loop-block">
+        <p style="color: black; text-align: left;"><input id="loop" class="block-input"><b>Loop</b></p>
+        <div class="up-block"><input id="up" class="block-input"><label class="label-block"><b>UP</b></label></div><br>
+        <div class="left-block"><label class="label-block"><b>2 LEFT</b></label></div><br>
+        <div class="down-block"><input id="down" class="block-input"><label class="label-block"><b>DOWN</b></label></div><br>
+        <div class="right-block"><input id="right" class="block-input"><label class="label-block"><b>RIGHT</b></label></div><br>
+    </div>
+    <br>
+    <button id="runner" onclick="run()">RUN</button>
+    <form action="{{ site.baseurl }}/robot_md/robot4">
+        <button type="submit">RESET</button>
+    </form>
+  </div>
+  <div id="div4" class="shadow" style="">
+    <h1>Simulation</h1>
+    <div style="padding: 17px">
+        <canvas id="sim" width="250" height="250" style="background: white;">
+        </canvas>
+    </div>
+  </div>
 </div>
 
 <div style="padding: 50px;"></div>
 <div id="div3" class="shadow" style="padding: 50px;">
   <h1>Leaderboard</h1>
   <div style="padding: 25px">
+    <label># of people shown</label>
+    <select name="Entries" id="numberRows" onchange="updateLeaderboard()">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="25">25</option>
+    </select>
     <input type="text" id="searchInput" onkeyup="searchPlayer()" placeholder="Search for a player...">
     <table id="leaderboard" style="width:100%">
       <tr>

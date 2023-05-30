@@ -12,7 +12,7 @@ layout: robot
 
 
 
-<div class="container" style="">
+<div class="index-Container" style="">
   <div id="div1" class="shadow" style="padding: 50px; ">
     <h1>Controller</h1>
     <div style="padding: 15px"></div>
@@ -31,7 +31,7 @@ layout: robot
   </div>
   <div id="div2" class="shadow" style="padding: 50px;">
     <h1>Simulation</h1>
-    <div style="padding: 25px">
+    <div style="padding: 15px">
       <canvas id="sim" width="250" height="250" style="background: white;">
       </canvas>
     </div>
@@ -41,6 +41,12 @@ layout: robot
 <div id="div3" class="shadow" style="padding: 50px;">
   <h1>Leaderboard</h1>
   <div style="padding: 25px">
+    <label># of people shown</label>
+    <select name="Entries" id="numberRows" onchange="updateLeaderboard()">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="25">25</option>
+    </select>
     <input type="text" id="searchInput" onkeyup="searchPlayer()" placeholder="Search for a player...">
     <table id="leaderboard" style="width:100%">
       <tr>
@@ -51,10 +57,5 @@ layout: robot
   </div>
 </div>
 <script>
-  fetch('https://Playgroundproject.duckdns.org/api/users/', {
-  method: 'PUT',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ name: person, level: parseInt(localStorage.getItem('level')) || 1 })
-})
 </script>
 <script src="{{ '/assets/js/robotJS/robot.js' | relative_url }}"></script>

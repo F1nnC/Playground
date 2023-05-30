@@ -58,7 +58,7 @@
   }
 
 
-
+// yo
 
   function draw() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -84,6 +84,7 @@
     ctx.closePath();
 
     drawImage();
+    collide();
   }
 
   function collide() {
@@ -132,6 +133,10 @@
       localStorage.setItem('level', level);
     }
   }
+
+
+  let numberOfPeopleShown = 5;
+
   function displayLeaderboard() {
     fetch('https://Playgroundproject.duckdns.org/api/users/')
       .then(response => response.json())
@@ -143,7 +148,7 @@
             <th>Score</th>
           </tr>
         `;
-        data.forEach(player => {
+        data.slice(0, numberOfPeopleShown).forEach(player => {
           const row = leaderboard.insertRow();
           const nameCell = row.insertCell();
           const scoreCell = row.insertCell();
@@ -156,47 +161,13 @@
       });
   }
 
-  function searchPlayer() {
-    const input = document.getElementById("searchInput");
-    const filter = input.value.toUpperCase();
-    const leaderboard = document.getElementById("leaderboard");
-    const rows = leaderboard.getElementsByTagName("tr");
-    for (let i = 0; i < rows.length; i++) {
-      const nameCell = rows[i].getElementsByTagName("td")[0];
-      if (nameCell) {
-        const name = nameCell.textContent || nameCell.innerText;
-        if (name.toUpperCase().indexOf(filter) > -1) {
-          rows[i].style.display = "";
-        } else {
-          rows[i].style.display = "none";
-        }
-      }
-    }
+  function updateLeaderboard() {
+    const select = document.getElementById("numberRows");
+    numberOfPeopleShown = parseInt(select.value);
+    displayLeaderboard();
   }
 
-
-  function sortLeaderboard(colIndex) {
-    const leaderboard = document.getElementById("leaderboard");
-    const rows = Array.from(leaderboard.getElementsByTagName("tr"));
-    rows.shift(); // Remove the header row from the sorting
-    rows.sort((a, b) => {
-      const cellA = a.getElementsByTagName("td")[colIndex];
-      const cellB = b.getElementsByTagName("td")[colIndex];
-      const valA = cellA.textContent || cellA.innerText;
-      const valB = cellB.textContent || cellB.innerText;
-      return valA.localeCompare(valB, undefined, { numeric: true });
-    });
-    leaderboard.innerHTML = ""; // Clear existing leaderboard
-    leaderboard.appendChild(rows[0].parentNode); // Append the sorted rows
-    rows.forEach(row => leaderboard.appendChild(row));
-  }
-
-
-
-
-  displayLeaderboard();
-
-
+  updateLeaderboard();
 
   function right() {
     squareX += squareSize;
