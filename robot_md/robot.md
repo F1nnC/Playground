@@ -57,5 +57,10 @@ layout: robot
   </div>
 </div>
 <script>
+  fetch('https://Playgroundproject.duckdns.org/api/users/', {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: person, level: parseInt(localStorage.getItem('level')) || 1 })
+})
 </script>
 <script src="{{ '/assets/js/robotJS/robot.js' | relative_url }}"></script>
