@@ -1,5 +1,3 @@
-
-
   <head>
     <title>Space Invaders</title>
     <style>
