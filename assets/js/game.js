@@ -13,6 +13,10 @@ const black_look = new Image();
 black_look.src = "https://f1nnc.github.io/Playground/images/Chess_rdt60.png";
 const white_look = new Image();
 white_look.src = "https://f1nnc.github.io/Playground/images/Chess_rlt60.png";
+const white_horse = new Image();
+white_horse.src = "https://f1nnc.github.io/Playground/images/Chess_nlt60.png";
+const black_horse = new Image();
+black_horse.src = "https://f1nnc.github.io/Playground/images/Chess_ndt60.png";
 var chess_board = [];
 var board_add = [];
 var pawn_white1 = [0, 480];
@@ -43,10 +47,6 @@ var black_look1 = [0,0];
 var black_look2 = [560,0];
 var white_look1 = [0,560];
 var white_look2 = [560, 560];
-
-
-
-
 var clickX = 640;
 var clickY = 640;
 var black_click = false;
@@ -64,7 +64,6 @@ for (i = 0; i < 8; i++) {
     chess_board.push(board_add);
     board_add = [];
 }
-
 function draw_chess_board() {
     for (t=0; t< 4; t++) {
         for (k = 0; k < 4; k++) {
@@ -311,6 +310,16 @@ function clickCanvas(event) {
                 userBlack_clickX = clickX;
                 userBlack_clickY = clickY;
             }
+            if (clickX == black_horse1[0] && clickY == black_horse1[1]) {
+                black_click = true;
+                userBlack_clickX = clickX;
+                userBlack_clickY = clickY;
+            }
+            if (clickX == black_horse2[0] && clickY == black_horse2[1]) {
+                black_click = true;
+                userBlack_clickX = clickX;
+                userBlack_clickY = clickY;
+            }
         }
         else if (black_click) {
             if (clickX == pawn_black1[0] && clickY == pawn_black1[1]) {
@@ -379,7 +388,26 @@ function clickCanvas(event) {
                 userBlack_clickY = clickY;
                 return;
             }
+            if (clickX == black_horse1[0] && clickY == black_horse1[1]) {
+                black_click = true;
+                userBlack_clickX = clickX;
+                userBlack_clickY = clickY;
+                return;
+            }
+            if (clickX == black_horse1[0] && clickY == black_horse1[1]) {
+                black_click = true;
+                userBlack_clickX = clickX;
+                userBlack_clickY = clickY;
+                return;
+            }
             else {
+                if (userBlack_clickX == black_horse1[0] && userBlack_clickY == black_horse1[1]) {
+                    if (clickX == black_horse[0] + 160) {
+                        if (clickY == black_horse[1] + 80 || clickY == black_horse[1] - 80) {
+                            
+                        }
+                    }
+                }
                 if (userBlack_clickX == black_bishop1[0] && userBlack_clickY == black_bishop1[1]) {
                     for (i = 0; i< 8; i++) {
                         if (clickX == black_bishop1[0] + 80*i && clickY == black_bishop1[1] + 80*i) {
