@@ -18,18 +18,22 @@ a {
   </div>
   <div id="div2" class="shadow">
     <h1>Pizza API</h1>
+    <img src="{{ site.baseurl }}/images/pizzaIndex.png" width="50" height="50">
     <p>Example Text</p>
   </div>
   <div id="div3" class="shadow">
     <h1>Chess</h1>
+    <img src="{{ site.baseurl }}/images/white_pawn.png" width="50" height="50">
     <p>Example Text</p>
   </div>
   <div id="div4" class="shadow">
     <h1>Memory Game</h1>
+    <img src="{{ site.baseurl }}/images/Playground-Logo-transparent.png" width="50" height="50">
     <p>Example Text</p>
   </div>
   <div id="div5" class="shadow">
     <h1>Space Invaders Game</h1>
+    <img src="{{ site.baseurl }}/images/space.png" width="50" height="50">
     <p>Example Text</p>
   </div>
 </div>
