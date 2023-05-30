@@ -103,51 +103,27 @@ body {
 }
 
 .index-Container {
-  align-items: center;
+  align-items: flex-start; /* Align items at the top */
   display: flex;
 }
 
 
 
-#div1 {
+#div1, #div2, #div3, #div4, #div5 {
   flex: 1;
-  background-color: rgb(227, 11, 11);
+  background-color: rgba(14, 14, 14, 0.7);
   text-align: center;
   margin-right: 20px;
   margin-left: 20px;
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
 }
 
-#div2 {
-  flex: 1;
-  background-color: rgba(101, 105, 224, 0.9);
-  text-align: center;
-  margin-right: 20px;
-  margin-left: 20px;
+#div1:hover, #div2:hover, #div3:hover, #div4:hover, #div5:hover {
+  opacity: 1;
 }
 
-#div3 {
-  flex: 1;
-  background-color: rgba(101, 224, 148, 0.9);
-  text-align: center;
-  margin-right: 20px;
-  margin-left: 20px;
-}
 
-#div4 {
-  flex: 1;
-  background-color: rgba(233, 61, 187, 0.9);
-  text-align: center;
-  margin-right: 20px;
-  margin-left: 20px;
-}
-
-#div5 {
-  flex: 1;
-  background-color: rgba(121, 61, 233, 0.9);
-  text-align: center;
-  margin-right: 20px;
-  margin-left: 20px;
-}
 
 .ControlB {
   height: 75px;
