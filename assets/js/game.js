@@ -325,6 +325,16 @@ function clickCanvas(event) {
                 userBlack_clickX = clickX;
                 userBlack_clickY = clickY;
             }
+            if (clickX == black_look1[0] && clickY == black_look1[1]) {
+                black_click = true;
+                userBlack_clickX = clickX;
+                userBlack_clickY = clickY;
+            }
+            if (clickX == black_look2[0] && clickY == black_look2[1]) {
+                black_click = true;
+                userBlack_clickX = clickX;
+                userBlack_clickY = clickY;
+            }
         }
         else if (black_click) {
             if (clickX == pawn_black1[0] && clickY == pawn_black1[1]) {
@@ -387,10 +397,15 @@ function clickCanvas(event) {
                 userBlack_clickY = clickY;
                 return;
             }
+            if (clickX == black_look2[0] && clickY == black_look2[1]) {
+                black_click = true;
+                userBlack_clickX = clickX;
+                userBlack_clickY = clickY;
+                return;
+            }
             else {
                 if (userBlack_clickX == black_bishop1[0] && userBlack_clickY == black_bishop1[1]) {
                     for (i = 0; i< 8; i++) {
-                        
                         if (clickX == black_bishop1[0] + 80*i && clickY == black_bishop1[1] + 80*i) {
                             for (t = 1; t < i; t++) {
                                 if (Black_validMove(black_bishop1[0] + 80*i - 80*t, black_bishop1[1] + 80*i - 80*t) == false) {
@@ -447,6 +462,11 @@ function clickCanvas(event) {
                             white_turn = true;
                             return;
                         }
+                    }
+                }
+                if (userBlack_clickX == black_look1[0] && userBlack_clickY == black_look1[1]) {
+                    for (i = 0; i <8; i++) {
+                        if (clickX == black)
                     }
                 }
                 if (userBlack_clickX == pawn_black1[0] && userBlack_clickY == pawn_black1[1]) {
