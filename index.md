@@ -14,41 +14,31 @@ p {
 
 
 <div class="index-Container">
-  <a href="{{ site.baseurl }}/API">
-    <div id="div2" class="shadow">
-      <h1>Pizza API</h1>
-      <img src="{{ site.baseurl }}/images/pizzaIndex.png" width="50" height="50">
-      <p>Example Text</p>
-    </div>
-  </a>
-  <a href="{{ site.baseurl }}/game">
-    <div id="div2" class="shadow">
-      <h1>Chess</h1>
-      <img src="{{ site.baseurl }}/images/Chess_nlt60.png" width="50" height="50">
-      <p>Example Text</p>
-    </div>
-  </a>
-  <a href="{{ site.baseurl }}/robot_md/robot">
-    <div id="div1" class="shadow">
-      <h1>Robot</h1>
-      <canvas id="sim" width="50" height="50"></canvas>
-      <p>Robot learning teaches fundamental coding principales at a beginner level. You learn the three main principles of coding, iteration, selection, and sequncing. It challenges with differnet puzzle where you input diffrent values. Your main goal is to get the robot to the yellow coin, while dodging the red squares.</p>
-    </div>
-  </a>
-  <a href="{{ site.baseurl }}/memory2">
-    <div id="div4" class="shadow">
-      <h1>Memory Game</h1>
-      <img src="{{ site.baseurl }}/images/Playground-Logo-transparent.png" width="50" height="50">
-      <p>Example Text</p>
-    </div>
-  </a>
-  <a href="{{ site.baseurl }}/tictactoe">
-    <div id="div5" class="shadow">
-      <h1>Tic Tac Toe</h1>
-      <img src="{{ site.baseurl }}/images/X.png" width="50" height="50">
-      <p>Example Text</p>
-    </div>
-  </a>
+  <div id="div2" class="shadow">
+    <a href="{{ site.baseurl }}/API"><h1>Pizza API</h1></a>
+    <img src="{{ site.baseurl }}/images/pizzaIndex.png" width="50" height="50">
+    <p>Example Text</p>
+  </div>
+  <div id="div2" class="shadow">
+    <a href="{{ site.baseurl }}/game"><h1>Chess</h1></a>
+    <img src="{{ site.baseurl }}/images/Chess_nlt60.png" width="50" height="50">
+    <p>Example Text</p>
+  </div>
+  <div id="div1" class="shadow">
+    <a href="{{ site.baseurl }}/robot_md/robot"><h1>Robot</h1></a>
+    <canvas id="sim" width="50" height="50"></canvas>
+    <p>Robot learning teaches fundamental coding principales at a beginner level. You learn the three main principles of coding, iteration, selection, and sequncing. It challenges with differnet puzzle where you input diffrent values. Your main goal is to get the robot to the yellow coin, while dodging the red squares.</p>
+  </div>
+  <div id="div4" class="shadow">
+    <a href="{{ site.baseurl }}/memory2"><h1>Memory Game</h1></a>
+    <img src="{{ site.baseurl }}/images/Playground-Logo-transparent.png" width="50" height="50">
+    <p>Example Text</p>
+  </div>
+  <div id="div5" class="shadow">
+    <a href="{{ site.baseurl }}/tictactoe"><h1>Tic Tac Toe</h1></a>
+    <img src="{{ site.baseurl }}/images/X.png" width="50" height="50">
+    <p>Example Text</p>
+  </div>
 </div>
 
 <div style="padding: 400px;"></div>
