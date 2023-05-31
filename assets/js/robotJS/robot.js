@@ -112,12 +112,13 @@
   }
 
   function deleteUser() {
-    let UID = prompt("Please enter your UID:");
-    let passwordD = prompt("Please enter your password");
-    if (UID != null && passwordD != null) {
-      fetch(`https://Playgroundproject.duckdns.org/api/users/delete_game/${UID}`, {
+    let username = prompt("Please enter your username:");
+    let password = prompt("Please enter your password");
+    if (username != null && password != null) {
+      fetch(`https://Playgroundproject.duckdns.org/api/users/delete_user/`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: username, password: password})
       });
     }
   }
