@@ -41,7 +41,6 @@
         <th>Pizza</th>
         <th>Address</th>
         <th>Order</th>
-        <th>Update</th>
       </tr>
     </thead>
     <tbody>
@@ -50,7 +49,6 @@
         <td><input id="pizza" placeholder="Pizza"></td>
         <td><input id="address" placeholder="Address"></td>
         <td><button onclick="addOrder()">Order</button></td>
-        <td><button onclick="updateOrder()">Update</button></td>
       </tr>
     </tbody>
   </table>
@@ -66,6 +64,7 @@
         <th>Pizza</th>
         <th>Address</th>
         <th>Delete</th>
+        <th>Update</th>
       </tr>
     </thead>
     <tbody id="tbody">

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: tictactoe
 ---
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
@@ -246,6 +246,7 @@ body{
       </div>
     </div>
     <div class="play-area">
+    <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
       <section>
         <span class="box1"></span>
         <span class="box2"></span>
@@ -263,7 +264,6 @@ body{
       </section>
     </div>
   </div>
-
   <div class="result-box">
     <div class="won-text"></div>
     <div class="btn"><button>Replay</button></div>
