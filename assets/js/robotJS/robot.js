@@ -110,26 +110,30 @@
       squareY = 0;
     }
   }
-
+  
   function deleteUser() {
-    let username = prompt("please enter your username")
-    let password = prompt("please enter your passsword")
+    let username = prompt("please enter your username");
+    let password = prompt("please enter your password");
     const url = `https://playgroundproject.duckdns.org/api/users/delete_user/${username}/${password}`;
   
     fetch(url, {
       method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        // Handle success or error message
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to delete user');
+        }
+        console.log('User deleted successfully');
+        // Perform any other necessary actions after deletion
       })
       .catch(error => {
-        console.error(error);
-        // Handle error
+        console.error('Error:', error);
       });
-  }  
-
+  }
+  
 
   function win() {
     if (squareX == 200 && squareY == 200) {
