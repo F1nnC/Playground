@@ -116,6 +116,14 @@ for (i = 0; i < 8; i++) {
     chess_board.push(board_add);
     board_add = [];
 }
+function gameEnd_white() {
+    ctx.clearRect(0, 0, 640, 640);
+    ctx.fillText("White Won", 10, 10);
+}
+function gameEnd_black() {
+    ctx.clearRect(0, 0, 640, 640);
+    ctx.fillText("Black Won", 10, 10);
+}
 function draw_chess_board() {
     for (t=0; t< 4; t++) {
         for (k = 0; k < 4; k++) {
@@ -182,6 +190,9 @@ function erase_Black(a, b) {
     }
     black_click = false;
     white_turn = true;
+    if (black_won) {
+        gameEnd_black();
+    }
 }
 function erase_White(a, b) {
     if (a%160 == 0) {
@@ -207,6 +218,9 @@ function erase_White(a, b) {
     }
     white_click = false;
     white_turn = false;
+    if (white_won) {
+        gameEnd_white();
+    }
 }
 function Black_beat_White(erasing_X, erasing_Y) {
     // 이건 항상 draw함수 앞에
@@ -308,7 +322,7 @@ function Black_beat_White(erasing_X, erasing_Y) {
         return;
     }
 }
-function White_beat_White(erasing_X, erasing_Y) {
+function White_beat_Black(erasing_X, erasing_Y) {
     // 이건 항상 draw함수 앞에
     if (erasing_X == pawn_black1[0] && erasing_Y == pawn_black1[1]) {
         erase_White(erasing_X, erasing_Y); 
@@ -334,7 +348,7 @@ function White_beat_White(erasing_X, erasing_Y) {
         pawn_black4[1] = 10000;
         what_white_beat.push("pawn");
     }
-    if (erasing_X == pawn_black5[0] && erasing_Y == pawn_white5[1]) {
+    if (erasing_X == pawn_black5[0] && erasing_Y == pawn_black5[1]) {
         erase_White(erasing_X, erasing_Y); 
         pawn_black5[0] = 10000;
         pawn_black5[1] = 10000;
@@ -348,8 +362,8 @@ function White_beat_White(erasing_X, erasing_Y) {
     }
     if (erasing_X == pawn_black7[0] && erasing_Y == pawn_black7[1]) {
         erase_White(erasing_X, erasing_Y); 
-        pawn_white7[0] = 10000;
-        pawn_white7[1] = 10000;
+        pawn_black7[0] = 10000;
+        pawn_black7[1] = 10000;
         what_white_beat.push("pawn");
     }
     if (erasing_X == pawn_black8[0] && erasing_Y == pawn_black8[1]) {
@@ -360,14 +374,14 @@ function White_beat_White(erasing_X, erasing_Y) {
     }
     if (erasing_X == black_bishop1[0] && erasing_Y == black_bishop1[1]) {
         erase_White(erasing_X, erasing_Y); 
-        white_bishop1[0] = 10000;
-        white_bishop1[1] = 10000;
+        black_bishop1[0] = 10000;
+        black_bishop1[1] = 10000;
         what_white_beat.push("bishop");
     }
     if (erasing_X == black_bishop2[0] && erasing_Y == black_bishop2[1]) {
         erase_White(erasing_X, erasing_Y); 
-        white_bishop2[0] = 10000;
-        white_bishop2[1] = 10000;
+        black_bishop2[0] = 10000;
+        black_bishop2[1] = 10000;
         what_white_beat.push("bishop");
     }
     if (erasing_X == black_horse2[0] && erasing_Y == black_horse2[1]) {
@@ -376,33 +390,33 @@ function White_beat_White(erasing_X, erasing_Y) {
         black_horse2[1] = 10000;
         what_white_beat.push("horse");
     }
-    if (erasing_X == white_horse1[0] && erasing_Y == white_horse1[1]) {
+    if (erasing_X == black_horse1[0] && erasing_Y == black_horse1[1]) {
         erase_White(erasing_X, erasing_Y); 
-        white_horse1[0] = 10000;
-        white_horse1[1] = 10000;
+        black_horse1[0] = 10000;
+        black_horse1[1] = 10000;
         what_white_beat.push("horse");
     }
-    if (erasing_X == white_look1[0] && erasing_Y == white_look1[1]) {
+    if (erasing_X == black_look1[0] && erasing_Y == black_look1[1]) {
         erase_White(erasing_X, erasing_Y); 
-        white_look1[0] = 10000;
-        white_look1[1] = 10000;
+        black_look1[0] = 10000;
+        black_look1[1] = 10000;
         what_white_beat.push("rook");
     }
-    if (erasing_X == white_look2[0] && erasing_Y == white_look2[1]) {
+    if (erasing_X == black_look2[0] && erasing_Y == black_look2[1]) {
         erase_White(erasing_X, erasing_Y); 
-        white_look2[0] = 10000;
-        white_look2[1] = 10000;
+        black_look2[0] = 10000;
+        black_look2[1] = 10000;
         what_white_beat.push("rook");
     }
-    if (erasing_X == white_queen[0] && erasing_Y == white_queen[1]) {
+    if (erasing_X == black_queen[0] && erasing_Y == black_queen[1]) {
         erase_White(erasing_X, erasing_Y); 
-        white_queen[0] = 10000;
-        white_queen[1] = 10000;
+        black_queen[0] = 10000;
+        black_queen[1] = 10000;
         what_white_beat.push("queen");
     }
-    if (erasing_X == white_king[0] && erasing_Y == white_king[1]) {
+    if (erasing_X == black_king[0] && erasing_Y == black_king[1]) {
         erase_White(erasing_X, erasing_Y); 
-        black_won = true;
+        white_won = true;
     }
     else {
         return;
@@ -623,14 +637,6 @@ function black_horse_move(c) {
         return;
     }
 }
-function gameEnd_white() {
-    ctx.clearRect(0, 0, 640, 640);
-    ctx.fillText("White Won", 10, 10);
-}
-function gameEnd_black() {
-    ctx.clearRect(0, 0, 640, 640);
-    ctx.fillText("Black Won", 10, 10);
-}
 function white_horse_move(c) {
     if (clickX == c[0] + 160) {
         if (clickY == c[1] + 80) {
@@ -735,6 +741,64 @@ function white_horse_move(c) {
             white_click = false;
             return;
         }
+    }
+    else {
+        black_click = false;
+        return;
+    }
+}
+function black_pawn_move(a) {
+    if (White_validMove(a[0] + 80, a[1] + 80) == false) {
+        if (clickX == a[0] + 80) {
+            if (clickY == a[1] + 80) {
+                Black_beat_White(clickX, clickY);
+                ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                a[0] = clickX;
+                a[1] = clickY;
+                erase_Black(userBlack_clickX, userBlack_clickY);
+                return;
+            }
+        }
+    }
+    if (White_validMove(a[0] - 80, a[1] + 80) == false) {
+        if (clickX == a[0] + 80) {
+            if (clickY == a[1] + 80) {
+                Black_beat_White(clickX, clickY);
+                ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                a[0] = clickX;
+                a[1] = clickY;
+                erase_Black(userBlack_clickX, userBlack_clickY);
+                return;
+            }
+        }
+    }
+    if (a[1] == 80) {
+        if (clickY == 240 || clickY == 160) {
+            if (clickX == a[0]) {
+                if (White_validMove(clickX, clickY) == false) {
+                    black_click = false;
+                    return;
+                }
+                Black_beat_White(clickX, clickY);
+                ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                a[0] = clickX;
+                a[1] = clickY;
+                erase_Black(userBlack_clickX, userBlack_clickY);
+                return;
+            }
+        }
+    }
+    if (clickY == a[1]+80 && clickX == a[0]) {
+        if (White_validMove(clickX, clickY) == false) {
+            black_click = false;
+            return;
+        }
+        Black_beat_White(clickX, clickY);
+        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+        a[0] = clickX;
+        a[1] = clickY;
+        erase_Black(userBlack_clickX, userBlack_clickY);
+        return;
     }
     else {
         black_click = false;
@@ -942,6 +1006,7 @@ function clickCanvas(event) {
                     }
                     if (clickX == black_king[0] || clickX == black_king[0] + 80 || clickX == black_king[0] - 80) {
                         if (clickY == black_king[1] + 80 || clickY == black_king[1] - 80 || clickY == black_king[1]) {
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_king_img, clickX, clickY, 80, 80);
                             black_king[0] = clickX;
                             black_king[1] = clickY;
@@ -960,6 +1025,7 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(black_queen_img, clickX, clickY, 80, 80);
                                 black_queen[0] = clickX;
                                 black_queen[1] = clickY;
@@ -973,6 +1039,7 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(black_queen_img, clickX, clickY, 80, 80);
                                 black_queen[0] = clickX;
                                 black_queen[1] = clickY;
@@ -992,6 +1059,7 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(black_queen_img, clickX, clickY, 80, 80);
                                 black_queen[0] = clickX;
                                 black_queen[1] = clickY;
@@ -1005,6 +1073,7 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(black_queen_img, clickX, clickY, 80, 80);
                                 black_queen[0] = clickX;
                                 black_queen[1] = clickY;
@@ -1023,6 +1092,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_queen_img, clickX, clickY, 80, 80);
                             black_queen[0] = clickX;
                             black_queen[1] = clickY;
@@ -1036,6 +1106,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_queen_img, clickX, clickY, 80, 80);
                             black_queen[0] = clickX;
                             black_queen[1] = clickY;
@@ -1049,6 +1120,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_queen_img, clickX, clickY, 80, 80);
                             black_queen[0] = clickX;
                             black_queen[1] = clickY;
@@ -1062,6 +1134,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_queen_img, clickX, clickY, 80, 80);
                             black_queen[0] = clickX;
                             black_queen[1] = clickY;
@@ -1087,6 +1160,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_bishop, clickX, clickY, 80, 80);
                             black_bishop1[0] = clickX;
                             black_bishop1[1] = clickY;
@@ -1100,6 +1174,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_bishop, clickX, clickY, 80, 80);
                             black_bishop1[0] = clickX;
                             black_bishop1[1] = clickY;
@@ -1113,6 +1188,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_bishop, clickX, clickY, 80, 80);
                             black_bishop1[0] = clickX;
                             black_bishop1[1] = clickY;
@@ -1126,6 +1202,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_bishop, clickX, clickY, 80, 80);
                             black_bishop1[0] = clickX;
                             black_bishop1[1] = clickY;
@@ -1145,6 +1222,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_bishop, clickX, clickY, 80, 80);
                             black_bishop2[0] = clickX;
                             black_bishop2[1] = clickY;
@@ -1158,6 +1236,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_bishop, clickX, clickY, 80, 80);
                             black_bishop2[0] = clickX;
                             black_bishop2[1] = clickY;
@@ -1171,6 +1250,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_bishop, clickX, clickY, 80, 80);
                             black_bishop2[0] = clickX;
                             black_bishop2[1] = clickY;
@@ -1184,6 +1264,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            Black_beat_White(clickX, clickY);
                             ctx.drawImage(black_bishop, clickX, clickY, 80, 80);
                             black_bishop2[0] = clickX;
                             black_bishop2[1] = clickY;
@@ -1204,6 +1285,7 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(black_look, clickX, clickY, 80, 80);
                                 black_look1[0] = clickX;
                                 black_look1[1] = clickY;
@@ -1217,6 +1299,7 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(black_look, clickX, clickY, 80, 80);
                                 black_look1[0] = clickX;
                                 black_look1[1] = clickY;
@@ -1236,6 +1319,7 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(black_look, clickX, clickY, 80, 80);
                                 black_look1[0] = clickX;
                                 black_look1[1] = clickY;
@@ -1249,6 +1333,7 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(black_look, clickX, clickY, 80, 80);
                                 black_look1[0] = clickX;
                                 black_look1[1] = clickY;
@@ -1274,6 +1359,7 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(black_look, clickX, clickY, 80, 80);
                                 black_look2[0] = clickX;
                                 black_look2[1] = clickY;
@@ -1287,6 +1373,7 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(black_look, clickX, clickY, 80, 80);
                                 black_look2[0] = clickX;
                                 black_look2[1] = clickY;
@@ -1306,6 +1393,7 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(black_look, clickX, clickY, 80, 80);
                                 black_look2[0] = clickX;
                                 black_look2[1] = clickY;
@@ -1319,6 +1407,7 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(black_look, clickX, clickY, 80, 80);
                                 black_look2[0] = clickX;
                                 black_look2[1] = clickY;
@@ -1335,33 +1424,37 @@ function clickCanvas(event) {
                     }
                 }
                 if (userBlack_clickX == pawn_black1[0] && userBlack_clickY == pawn_black1[1]) {
-                    if (pawn_black1[1] == 80) {
-                        if (clickY == 240 || clickY == 160) {
-                            if (clickX == pawn_black1[0]) {
-                                ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                                pawn_black1[0] = clickX;
-                                pawn_black1[1] = clickY;
-                                erase_Black(userBlack_clickX, userBlack_clickY);
-                                return;
-                            }
-                        }
-                    }
-                    if (clickY == pawn_black1[1]+80 && clickX == pawn_black1[0]) {
-                        ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
-                        pawn_black1[0] = clickX;
-                        pawn_black1[1] = clickY;
-                        erase_Black(userBlack_clickX, userBlack_clickY);
-                        return;
-                    }
-                    else {
-                        black_click = false;
-                        return;
-                    }
+                    black_pawn_move(pawn_black1);
+                    // if (pawn_black1[1] == 80) {
+                    //     if (clickY == 240 || clickY == 160) {
+                    //         if (clickX == pawn_black1[0]) {
+                    //             Black_beat_White(clickX, clickY);
+                    //             ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                    //             pawn_black1[0] = clickX;
+                    //             pawn_black1[1] = clickY;
+                    //             erase_Black(userBlack_clickX, userBlack_clickY);
+                    //             return;
+                    //         }
+                    //     }
+                    // }
+                    // if (clickY == pawn_black1[1]+80 && clickX == pawn_black1[0]) {
+                    //     Black_beat_White(clickX, clickY);
+                    //     ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
+                    //     pawn_black1[0] = clickX;
+                    //     pawn_black1[1] = clickY;
+                    //     erase_Black(userBlack_clickX, userBlack_clickY);
+                    //     return;
+                    // }
+                    // else {
+                    //     black_click = false;
+                    //     return;
+                    // }
                 }
                 if (userBlack_clickX == pawn_black2[0] && userBlack_clickY == pawn_black2[1]) {
                     if (pawn_black2[1] == 80) {
                         if (clickY == 240 || clickY == 160) {
                             if (clickX == pawn_black2[0]) {
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                                 pawn_black2[0] = clickX;
                                 pawn_black2[1] = clickY;
@@ -1371,6 +1464,7 @@ function clickCanvas(event) {
                         }
                     }
                     if (clickY == pawn_black2[1]+80 && clickX == pawn_black2[0]) {
+                        Black_beat_White(clickX, clickY);
                         ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                         pawn_black2[0] = clickX;
                         pawn_black2[1] = clickY;
@@ -1386,6 +1480,7 @@ function clickCanvas(event) {
                     if (pawn_black3[1] == 80) {
                         if (clickY == 240 || clickY == 160) {
                             if (clickX == pawn_black3[0]) {
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                                 pawn_black3[0] = clickX;
                                 pawn_black3[1] = clickY;
@@ -1395,6 +1490,7 @@ function clickCanvas(event) {
                         }
                     }
                     if (clickY == pawn_black3[1]+80 && clickX == pawn_black3[0]) {
+                        Black_beat_White(clickX, clickY);
                         ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                         pawn_black3[0] = clickX;
                         pawn_black3[1] = clickY;
@@ -1410,6 +1506,7 @@ function clickCanvas(event) {
                     if (pawn_black4[1] == 80) {
                         if (clickY == 240 || clickY == 160) {
                             if (clickX == pawn_black4[0]) {
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                                 pawn_black4[0] = clickX;
                                 pawn_black4[1] = clickY;
@@ -1419,6 +1516,7 @@ function clickCanvas(event) {
                         }
                     }
                     if (clickY == pawn_black4[1]+80 && clickX == pawn_black4[0]) {
+                        Black_beat_White(clickX, clickY);
                         ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                         pawn_black4[0] = clickX;
                         pawn_black4[1] = clickY;
@@ -1434,6 +1532,7 @@ function clickCanvas(event) {
                     if (pawn_black5[1] == 80) {
                         if (clickY == 240 || clickY == 160) {
                             if (clickX == pawn_black5[0]) {
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                                 pawn_black5[0] = clickX;
                                 pawn_black5[1] = clickY;
@@ -1443,6 +1542,7 @@ function clickCanvas(event) {
                         }
                     }
                     if (clickY == pawn_black5[1]+80 && clickX == pawn_black5[0]) {
+                        Black_beat_White(clickX, clickY);
                         ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                         pawn_black5[0] = clickX;
                         pawn_black5[1] = clickY;
@@ -1458,6 +1558,7 @@ function clickCanvas(event) {
                     if (pawn_black6[1] == 80) {
                         if (clickY == 240 || clickY == 160) {
                             if (clickX == pawn_black6[0]) {
+                                Black_beat_White(clickX, clickY);
                                 ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                                 pawn_black6[0] = clickX;
                                 pawn_black6[1] = clickY;
@@ -1467,6 +1568,7 @@ function clickCanvas(event) {
                         }
                     }
                     if (clickY == pawn_black6[1]+80 && clickX == pawn_black6[0]) {
+                        Black_beat_White(clickX, clickY);
                         ctx.drawImage(pawn_black, clickX, clickY, 80, 80);
                         pawn_black6[0] = clickX;
                         pawn_black6[1] = clickY;
@@ -1723,10 +1825,14 @@ function clickCanvas(event) {
                     }
                     if (clickX == white_king[0] || clickX == white_king[0] + 80 || clickX == white_king[0] - 80) {
                         if (clickY == white_king[1] + 80 || clickY == white_king[1] - 80 || clickY == white_king[1]) {
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_king_img, clickX, clickY, 80, 80);
                             white_king[0] = clickX;
                             white_king[1] = clickY;
                             erase_White(userWhite_clickX, userWhite_clickY);
+                            if (white_won) {
+                                gameEnd_white();
+                            }
                             return;
                         }
                     }
@@ -1741,10 +1847,14 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(white_queen_img, clickX, clickY, 80, 80);
                                 white_queen[0] = clickX;
                                 white_queen[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                             if (clickX == white_queen[0] - 80*i) {
@@ -1754,10 +1864,14 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(white_queen_img, clickX, clickY, 80, 80);
                                 white_queen[0] = clickX;
                                 white_queen[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                         }
@@ -1773,10 +1887,14 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(white_queen_img, clickX, clickY, 80, 80);
                                 white_queen[0] = clickX;
                                 white_queen[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                             if (clickY == white_queen[1] - 80*i) {
@@ -1786,10 +1904,14 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(white_queen_img, clickX, clickY, 80, 80);
                                 white_queen[0] = clickX;
                                 white_queen[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                         }
@@ -1804,10 +1926,14 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_queen_img, clickX, clickY, 80, 80);
                             white_queen[0] = clickX;
                             white_queen[1] = clickY;
                             erase_White(userWhite_clickX, userWhite_clickY);
+                            if (white_won) {
+                                gameEnd_white();
+                            }
                             return;
                         }
                         if (clickX == white_queen[0] - 80*i && clickY == white_queen[1] + 80*i) {
@@ -1817,10 +1943,14 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_queen_img, clickX, clickY, 80, 80);
                             white_queen[0] = clickX;
                             white_queen[1] = clickY;
                             erase_White(userWhite_clickX, userWhite_clickY);
+                            if (white_won) {
+                                gameEnd_white();
+                            }
                             return;
                         }
                         if (clickX == white_queen[0] + 80*i && clickY == white_queen[1] - 80*i) {
@@ -1830,10 +1960,14 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_queen_img, clickX, clickY, 80, 80);
                             white_queen[0] = clickX;
                             white_queen[1] = clickY;
                             erase_White(userWhite_clickX, userWhite_clickY);
+                            if (white_won) {
+                                gameEnd_white();
+                            }
                             return;
                         }
                         if (clickX == white_queen[0] - 80*i && clickY == white_queen[1] - 80*i) {
@@ -1843,10 +1977,14 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_queen_img, clickX, clickY, 80, 80);
                             white_queen[0] = clickX;
                             white_queen[1] = clickY;
                             erase_White(userWhite_clickX, userWhite_clickY);
+                            if (white_won) {
+                                gameEnd_white();
+                            }
                             return;
                         }
                     }
@@ -1863,19 +2001,27 @@ function clickCanvas(event) {
                     if (pawn_white1[1] == 480) {
                         if (clickY == 320 || clickY == 400) {
                             if (clickX == pawn_white1[0]) {
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                                 pawn_white1[0] = clickX;
                                 pawn_white1[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                         }
                     }
                     if (clickY == pawn_white1[1]-80 && clickX == pawn_white1[0]) {
+                        White_beat_Black(clickX, clickY);
                         ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                         pawn_white1[0] = clickX;
                         pawn_white1[1] = clickY;
                         erase_White(userWhite_clickX, userWhite_clickY);
+                        if (white_won) {
+                            gameEnd_white();
+                        }
                         return;
                     }
                     else {
@@ -1894,10 +2040,14 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(white_look, clickX, clickY, 80, 80);
                                 white_look1[0] = clickX;
                                 white_look1[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                             if (clickX == white_look1[0] - 80*i) {
@@ -1907,10 +2057,14 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(white_look, clickX, clickY, 80, 80);
                                 white_look1[0] = clickX;
                                 white_look1[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                         }
@@ -1926,10 +2080,14 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(white_look, clickX, clickY, 80, 80);
                                 white_look1[0] = clickX;
                                 white_look1[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                             if (clickY == white_look1[1] - 80*i) {
@@ -1939,10 +2097,14 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(white_look, clickX, clickY, 80, 80);
                                 white_look1[0] = clickX;
                                 white_look1[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                         }
@@ -1964,10 +2126,14 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(white_look, clickX, clickY, 80, 80);
                                 white_look2[0] = clickX;
                                 white_look2[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                             if (clickX == white_look2[0] - 80*i) {
@@ -1977,10 +2143,14 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(white_look, clickX, clickY, 80, 80);
                                 white_look2[0] = clickX;
                                 white_look2[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                         }
@@ -1992,10 +2162,14 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(white_look, clickX, clickY, 80, 80);
                                 white_look2[0] = clickX;
                                 white_look2[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                             if (clickY == white_look2[1] - 80*i) {
@@ -2005,10 +2179,14 @@ function clickCanvas(event) {
                                         return;
                                     }
                                 }
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(white_look, clickX, clickY, 80, 80);
                                 white_look2[0] = clickX;
                                 white_look2[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white_won) {
+                                    gameEnd_white();
+                                }
                                 return;
                             }
                         }
@@ -2024,6 +2202,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
                             white_bishop1[0] = clickX;
                             white_bishop1[1] = clickY;
@@ -2037,6 +2216,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
                             white_bishop1[0] = clickX;
                             white_bishop1[1] = clickY;
@@ -2050,6 +2230,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
                             white_bishop1[0] = clickX;
                             white_bishop1[1] = clickY;
@@ -2063,6 +2244,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
                             white_bishop1[0] = clickX;
                             white_bishop1[1] = clickY;
@@ -2083,6 +2265,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
                             white_bishop2[0] = clickX;
                             white_bishop2[1] = clickY;
@@ -2096,6 +2279,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
                             white_bishop2[0] = clickX;
                             white_bishop2[1] = clickY;
@@ -2109,6 +2293,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
                             white_bishop2[0] = clickX;
                             white_bishop2[1] = clickY;
@@ -2122,6 +2307,7 @@ function clickCanvas(event) {
                                     return;
                                 }
                             }
+                            White_beat_Black(clickX, clickY);
                             ctx.drawImage(white_bishop, clickX, clickY, 80, 80);
                             white_bishop2[0] = clickX;
                             white_bishop2[1] = clickY;
@@ -2136,6 +2322,7 @@ function clickCanvas(event) {
                     if (pawn_white2[1] == 480) {
                         if (clickY == 320 || clickY == 400) {
                             if (clickX == pawn_white2[0]) {
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                                 pawn_white2[0] = clickX;
                                 pawn_white2[1] = clickY;
@@ -2145,6 +2332,7 @@ function clickCanvas(event) {
                         }
                     }
                     if (clickY == pawn_white2[1]-80 && clickX == pawn_white2[0]) {
+                        White_beat_Black(clickX, clickY);
                         ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                         pawn_white2[0] = clickX;
                         pawn_white2[1] = clickY;
@@ -2160,6 +2348,7 @@ function clickCanvas(event) {
                     if (pawn_white3[1] == 480) {
                         if (clickY == 320 || clickY == 400) {
                             if (clickX == pawn_white3[0]) {
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                                 pawn_white3[0] = clickX;
                                 pawn_white3[1] = clickY;
@@ -2169,6 +2358,7 @@ function clickCanvas(event) {
                         }
                     }
                     if (clickY == pawn_white3[1]-80 && clickX == pawn_white3[0]) {
+                        White_beat_Black(clickX, clickY);
                         ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                         pawn_white3[0] = clickX;
                         pawn_white3[1] = clickY;
@@ -2184,6 +2374,7 @@ function clickCanvas(event) {
                     if (pawn_white4[1] == 480) {
                         if (clickY == 320 || clickY == 400) {
                             if (clickX == pawn_white4[0]) {
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                                 pawn_white4[0] = clickX;
                                 pawn_white4[1] = clickY;
@@ -2193,6 +2384,7 @@ function clickCanvas(event) {
                         }
                     }
                     if (clickY == pawn_white4[1]-80 && clickX == pawn_white4[0]) {
+                        White_beat_Black(clickX, clickY);
                         ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                         pawn_white4[0] = clickX;
                         pawn_white4[1] = clickY;
@@ -2208,6 +2400,7 @@ function clickCanvas(event) {
                     if (pawn_white5[1] == 480) {
                         if (clickY == 320 || clickY == 400) {
                             if (clickX == pawn_white5[0]) {
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                                 pawn_white5[0] = clickX;
                                 pawn_white5[1] = clickY;
@@ -2217,6 +2410,7 @@ function clickCanvas(event) {
                         }
                     }
                     if (clickY == pawn_white5[1]-80 && clickX == pawn_white5[0]) {
+                        White_beat_Black(clickX, clickY);
                         ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                         pawn_white5[0] = clickX;
                         pawn_white5[1] = clickY;
@@ -2233,6 +2427,7 @@ function clickCanvas(event) {
                     if (pawn_white6[1] == 480) {
                         if (clickY == 320 || clickY == 400) {
                             if (clickX == pawn_white6[0]) {
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                                 pawn_white6[0] = clickX;
                                 pawn_white6[1] = clickY;
@@ -2242,6 +2437,7 @@ function clickCanvas(event) {
                         }
                     }
                     if (clickY == pawn_white6[1]-80 && clickX == pawn_white6[0]) {
+                        White_beat_Black(clickX, clickY);
                         ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                         pawn_white6[0] = clickX;
                         pawn_white6[1] = clickY;
@@ -2257,6 +2453,7 @@ function clickCanvas(event) {
                     if (pawn_white7[1] == 480) {
                         if (clickY == 320 || clickY == 400) {
                             if (clickX == pawn_white7[0]) {
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                                 pawn_white7[0] = clickX;
                                 pawn_white7[1] = clickY;
@@ -2266,6 +2463,7 @@ function clickCanvas(event) {
                         }
                     }
                     if (clickY == pawn_white7[1]-80 && clickX == pawn_white7[0]) {
+                        White_beat_Black(clickX, clickY);
                         ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                         pawn_white7[0] = clickX;
                         pawn_white7[1] = clickY;
@@ -2281,15 +2479,18 @@ function clickCanvas(event) {
                     if (pawn_white8[1] == 480) {
                         if (clickY == 320 || clickY == 400) {
                             if (clickX == pawn_white8[0]) {
+                                White_beat_Black(clickX, clickY);
                                 ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                                 pawn_white8[0] = clickX;
                                 pawn_white8[1] = clickY;
                                 erase_White(userWhite_clickX, userWhite_clickY);
+                                if (white)
                                 return;
                             }
                         }
                     }
                     if (clickY == pawn_white8[1]-80 && clickX == pawn_white8[0]) {
+                        White_beat_Black(clickX, clickY);
                         ctx.drawImage(pawn_white, clickX, clickY, 80, 80);
                         pawn_white8[0] = clickX;
                         pawn_white8[1] = clickY;
