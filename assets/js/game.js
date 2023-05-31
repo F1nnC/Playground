@@ -87,6 +87,7 @@ function gameTime() {
     if (white_turn == true) {
       whiteTime -= 1;
       resultWT.innerHTML = formatTime(whiteTime); // Update the display for white time
+      resultWT.style.opacity = 1;
       resultBT.style.opacity = 0.5;
     }
   
