@@ -93,6 +93,7 @@ function gameTime() {
     if (white_turn == false) {
       BlackTime -= 1;
       resultBT.innerHTML = formatTime(BlackTime); // Update the display for black time
+      resultBT.style.opacity = 1;
       resultWT.style.opacity = 0.5;
     }
   }
