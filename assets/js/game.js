@@ -80,6 +80,7 @@ var BlackTime = 600;
 setInterval(gameTime, 1000);
 
 
+
 function gameTime() {
     var resultWT = document.getElementById("whiteTime");
     var resultBT = document.getElementById("blackTime");
