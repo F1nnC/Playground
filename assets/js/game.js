@@ -73,6 +73,40 @@ var black_turn = false;
 var white_turn = true;
 var black_won = false;
 var white_won = false;
+var timetime = 0;
+var whiteTime = 600;
+var BlackTime = 600;
+
+setInterval(gameTime, 1000);
+
+
+function gameTime() {
+    var resultWT = document.getElementById("whiteTime");
+    var resultBT = document.getElementById("blackTime");
+  
+    if (white_turn == true) {
+      whiteTime -= 1;
+      resultWT.innerHTML = formatTime(whiteTime); // Update the display for white time
+    }
+  
+    if (white_turn == false) {
+      BlackTime -= 1;
+      resultBT.innerHTML = formatTime(BlackTime); // Update the display for black time
+    }
+  }
+  
+  function formatTime(time) {
+    var minutes = Math.floor(time / 60);
+    var seconds = time % 60;
+    return pad(minutes) + ":" + pad(seconds);
+  }
+  
+  function pad(number) {
+    return (number < 10 ? "0" : "") + number;
+  }  
+
+
+
 for (i = 0; i < 8; i++) {
     for (j = 0; j < 8; j++) {
         board_add.push([80*i, 80*j]);

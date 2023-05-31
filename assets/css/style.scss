@@ -14,6 +14,27 @@ body {
   color: #F0EAD6;
 }
 
+.timerC {
+  align-items: center;
+  display: inline-block;
+  margin: auto;
+}
+
+.timer1 {
+  background-color: #FFFFFF;
+  color: black;
+  flex: 1;
+  font-size: 75px;
+  padding: 15px;
+}
+
+.timer2 {
+  background-color: #000;
+  font-size: 75px;
+  flex: 1;
+  padding: 15px;
+}
+
 .shadow {
   box-shadow: 0 0 10px rgba(24, 24, 24, 0.6); /* create a regular shadow */
   backdrop-filter: blur(5px); /* apply a blur effect to the area behind the element */
