@@ -272,6 +272,106 @@ function Black_beat_White(erasing_X, erasing_Y) {
         return;
     }
 }
+function White_beat_White(erasing_X, erasing_Y) {
+    // 이건 항상 draw함수 앞에
+    if (erasing_X == pawn_black1[0] && erasing_Y == pawn_black1[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        pawn_black1[0] = 10000;
+        pawn_black1[1] = 10000;
+        what_white_beat.push("pawn");
+    }
+    if (erasing_X == pawn_black2[0] && erasing_Y == pawn_black2[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        pawn_black2[0] = 10000;
+        pawn_black2[1] = 10000;
+        what_white_beat.push("pawn");
+    }
+    if (erasing_X == pawn_black3[0] && erasing_Y == pawn_black3[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        pawn_black3[0] = 10000;
+        pawn_black3[1] = 10000;
+        what_white_beat.push("pawn");
+    }
+    if (erasing_X == pawn_black4[0] && erasing_Y == pawn_black4[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        pawn_black4[0] = 10000;
+        pawn_black4[1] = 10000;
+        what_white_beat.push("pawn");
+    }
+    if (erasing_X == pawn_black5[0] && erasing_Y == pawn_white5[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        pawn_black5[0] = 10000;
+        pawn_black5[1] = 10000;
+        what_white_beat.push("pawn");
+    }
+    if (erasing_X == pawn_black6[0] && erasing_Y == pawn_black6[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        pawn_black6[0] = 10000;
+        pawn_black6[1] = 10000;
+        what_white_beat.push("pawn");
+    }
+    if (erasing_X == pawn_black7[0] && erasing_Y == pawn_black7[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        pawn_white7[0] = 10000;
+        pawn_white7[1] = 10000;
+        what_white_beat.push("pawn");
+    }
+    if (erasing_X == pawn_black8[0] && erasing_Y == pawn_black8[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        pawn_black8[0] = 10000;
+        pawn_black8[1] = 10000;
+        what_white_beat.push("pawn");
+    }
+    if (erasing_X == black_bishop1[0] && erasing_Y == black_bishop1[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        white_bishop1[0] = 10000;
+        white_bishop1[1] = 10000;
+        what_white_beat.push("bishop");
+    }
+    if (erasing_X == black_bishop2[0] && erasing_Y == black_bishop2[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        white_bishop2[0] = 10000;
+        white_bishop2[1] = 10000;
+        what_white_beat.push("bishop");
+    }
+    if (erasing_X == black_horse2[0] && erasing_Y == black_horse2[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        black_horse2[0] = 10000;
+        black_horse2[1] = 10000;
+        what_white_beat.push("horse");
+    }
+    if (erasing_X == white_horse1[0] && erasing_Y == white_horse1[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        white_horse1[0] = 10000;
+        white_horse1[1] = 10000;
+        what_white_beat.push("horse");
+    }
+    if (erasing_X == white_look1[0] && erasing_Y == white_look1[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        white_look1[0] = 10000;
+        white_look1[1] = 10000;
+        what_white_beat.push("rook");
+    }
+    if (erasing_X == white_look2[0] && erasing_Y == white_look2[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        white_look2[0] = 10000;
+        white_look2[1] = 10000;
+        what_white_beat.push("rook");
+    }
+    if (erasing_X == white_queen[0] && erasing_Y == white_queen[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        white_queen[0] = 10000;
+        white_queen[1] = 10000;
+        what_white_beat.push("queen");
+    }
+    if (erasing_X == white_king[0] && erasing_Y == white_king[1]) {
+        erase_White(erasing_X, erasing_Y); 
+        black_won = true;
+    }
+    else {
+        return;
+    }
+}
 function Black_validMove(a , b) {
     if (pawn_black1[0]==a && pawn_black1[1] == b) {
         return false;
