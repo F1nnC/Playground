@@ -41,7 +41,7 @@ var white_bishop1 = [160, 560];
 var white_bishop2 = [480, 560];
 var black_horse1 = [80, 0];
 var black_horse2 = [480, 0];
-var white_horse1 = [80, 580];
+var white_horse1 = [80, 560];
 var white_horse2 = [480, 560];
 var black_look1 = [0,0];
 var black_look2 = [560,0];
@@ -92,10 +92,14 @@ function draw_chess_board() {
     ctx.drawImage(white_bishop, 400, 560, 80, 80);
     ctx.drawImage(black_bishop, 160, 0, 80, 80);
     ctx.drawImage(black_bishop, 400, 0, 80, 80);
-    ctx.drawImage(black_look, black_look1[0], black_look1[1], 80, 80)
-    ctx.drawImage(black_look, black_look2[0], black_look2[1], 80, 80)
-    ctx.drawImage(white_look, white_look1[0], white_look1[1], 80, 80)
-    ctx.drawImage(white_look, white_look2[0], white_look2[1], 80, 80)
+    ctx.drawImage(black_look, black_look1[0], black_look1[1], 80, 80);
+    ctx.drawImage(black_look, black_look2[0], black_look2[1], 80, 80);
+    ctx.drawImage(white_look, white_look1[0], white_look1[1], 80, 80);
+    ctx.drawImage(white_look, white_look2[0], white_look2[1], 80, 80);
+    ctx.drawImage(white_horse, white_horse2[0], white_horse2[1], 80, 80);
+    ctx.drawImage(white_horse, white_horse1[0], white_horse1[1], 80, 80);
+    ctx.drawImage(black_horse, black_horse1[0], black_horse1[1], 80, 80);
+    ctx.drawImage(black_horse, black_horse2[0], black_horse2[1], 80, 80);
 }
 
 function erase_Black() {
@@ -460,6 +464,10 @@ function clickCanvas(event) {
                             black_bishop1[0] = clickX;
                             black_bishop1[1] = clickY;
                             erase_Black();
+                            return;
+                        }
+                        else {
+                            black_click = false;
                             return;
                         }
                     }
