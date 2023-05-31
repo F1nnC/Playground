@@ -60,6 +60,11 @@
 
 // yo
 
+
+
+
+
+
   function draw() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     ctx.beginPath();
@@ -105,6 +110,19 @@
       squareY = 0;
     }
   }
+
+  function deleteUser() {
+    let UID = prompt("Please enter your UID:");
+    let passwordD = prompt("Please enter your password");
+    if (UID != null && passwordD != null) {
+      fetch(`https://Playgroundproject.duckdns.org/api/users/delete_game/${UID}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+  }
+  
+
 
 
   function win() {
