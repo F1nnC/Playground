@@ -48,6 +48,7 @@ layout: robot
       <option value="25">25</option>
     </select>
     <input type="text" id="searchInput" onkeyup="searchPlayer()" placeholder="Search for a player...">
+    <button onclick="deleteUser()">Delete User</button>
     <table id="leaderboard" style="width:100%">
       <tr>
         <th onclick="sortLeaderboard(0)">Name</th>
