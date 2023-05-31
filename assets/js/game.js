@@ -80,6 +80,7 @@ var BlackTime = 600;
 setInterval(gameTime, 1000);
 
 
+
 function gameTime() {
     var resultWT = document.getElementById("whiteTime");
     var resultBT = document.getElementById("blackTime");
@@ -87,11 +88,15 @@ function gameTime() {
     if (white_turn == true) {
       whiteTime -= 1;
       resultWT.innerHTML = formatTime(whiteTime); // Update the display for white time
+      resultWT.style.opacity = 1;
+      resultBT.style.opacity = 0.5;
     }
   
     if (white_turn == false) {
       BlackTime -= 1;
       resultBT.innerHTML = formatTime(BlackTime); // Update the display for black time
+      resultBT.style.opacity = 1;
+      resultWT.style.opacity = 0.5;
     }
   }
   
