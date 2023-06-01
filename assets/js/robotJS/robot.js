@@ -110,16 +110,18 @@
       squareY = 0;
     }
   }
-  
+
   function deleteUser() {
-    let username = prompt("Please enter your username:");
-    let password = prompt("Please enter your password:");
+    let username = prompt("Please enter your username");
+    let password = prompt("Please enter your password");
     const url = `https://playgroundproject.duckdns.org/api/users/delete_user/${username}/${password}`;
+
     fetch(url, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify({ username: username, password: password }) // Pass the username and password in the request body
     })
       .then(response => {
         if (!response.ok) {
