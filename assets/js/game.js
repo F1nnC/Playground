@@ -2097,8 +2097,8 @@ function clickCanvas(event) {
                 if (white_king_moved ==  false && white_look1_moved == false) {
                     if (Black_validMove(80, 560) != false && Black_validMove(160, 560) != false && Black_validMove(240, 560) != false) {
                         if (White_validMove(80, 560) !=  false && White_validMove(160, 560) != false && White_validMove(240, 560) != false) {
-                            ctx.drawImage(white_king_img, 160, 0, 80, 80);
-                            ctx.drawImage(white_look, 240, 0, 80, 80);
+                            ctx.drawImage(white_king_img, 160, 560, 80, 80);
+                            ctx.drawImage(white_look, 240, 560, 80, 80);
                             white_king[0] = 160;
                             white_king[1] = 0;
                             white_look1[0] = 240; 
@@ -2118,8 +2118,8 @@ function clickCanvas(event) {
                 if (white_king_moved ==  false && white_look2_moved == false) {
                     if (Black_validMove(400, 560) != false && Black_validMove(480, 560) != false) {
                         if (White_validMove(400, 560) != false && White_validMove(480, 560) != false) {
-                            ctx.drawImage(white_king_img, 480, 0, 80, 80);
-                            ctx.drawImage(white_look, 400, 0, 80, 80);
+                            ctx.drawImage(white_king_img, 480, 560, 80, 80);
+                            ctx.drawImage(white_look, 400, 560, 80, 80);
                             white_king[0] = 480;
                             white_king[1] = 560;
                             white_look2[0] = 400; 
