@@ -112,10 +112,9 @@
   }
   
   function deleteUser() {
-    let username = prompt("please enter your username");
-    let password = prompt("please enter your password");
+    let username = prompt("Please enter your username:");
+    let password = prompt("Please enter your password:");
     const url = `https://playgroundproject.duckdns.org/api/users/delete_user/${username}/${password}`;
-  
     fetch(url, {
       method: 'DELETE',
       headers: {
@@ -133,6 +132,7 @@
         console.error('Error:', error);
       });
   }
+
   
 
   function win() {
