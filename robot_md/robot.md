@@ -53,7 +53,6 @@ layout: robot
         <th onclick="sortLeaderboard(1)">Score</th>
       </tr>
     </table>
-    <label><button onclick="deleteUser()" style="float: left;">Delete User</button></label>
   </div>
 </div>
 <script>
