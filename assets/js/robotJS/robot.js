@@ -60,6 +60,11 @@
 
 // yo
 
+
+
+
+
+
   function draw() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     ctx.beginPath();
@@ -106,13 +111,38 @@
     }
   }
 
+  function deleteUser() {
+    let username = prompt("Please enter your username");
+    let password = prompt("Please enter your password");
+    const url = `https://playgroundproject.duckdns.org/api/users/delete_user/${username}/${password}`;
+
+    fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username: username, password: password }) // Pass the username and password in the request body
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to delete user');
+        }
+        console.log('User deleted successfully');
+        // Perform any other necessary actions after deletion
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+  
 
   function win() {
     if (squareX == 200 && squareY == 200) {
       let person = prompt("Please enter your name:");
       let password = prompt("Please enter your password:");
       if (person != null && password != null) {
-        fetch('https://Playgroundproject.duckdns.org/api/users/win', {
+        fetch('http://127.0.0.1:8142/api/users/win', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: person, password: password })
@@ -138,7 +168,7 @@
   let numberOfPeopleShown = 5;
 
   function displayLeaderboard() {
-    fetch('https://Playgroundproject.duckdns.org/api/users/')
+    fetch('http://127.0.0.1:8142/api/users/')
       .then(response => response.json())
       .then(data => {
         const leaderboard = document.getElementById("leaderboard");

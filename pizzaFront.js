@@ -10,7 +10,7 @@ async function updateOrder(orderId) {
     address: addressInput.value,
   };
 
-  await fetch(`https://playgroundproject.duckdns.org/api/pizzaorders/${orderId}`, {
+  await fetch(`http://127.0.0.1:8142/api/pizzaorders/${orderId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ async function updateOrder(orderId) {
 
 // Function to populate the table with orders from the backend
 async function populateTable() {
-  const response = await fetch('https://playgroundproject.duckdns.org/api/pizzaorders/');
+  const response = await fetch('http://127.0.0.1:8142/api/pizzaorders/');
   const orders = await response.json();
 
   const tbody = document.getElementById("tbody");
@@ -54,7 +54,7 @@ async function deleteOrder(orderId) {
       },
     };
 
-    await fetch(`https://playgroundproject.duckdns.org/api/pizzaorders/${orderId}`, deleteRequestOptions);
+    await fetch(`http://127.0.0.1:8142/api/pizzaorders/${orderId}`, deleteRequestOptions);
 
     populateTable();
   }
@@ -112,7 +112,7 @@ async function addOrder() {
     address: addressInput.value,
   };
 
-  await fetch('https://playgroundproject.duckdns.org/api/pizzaorders/', {
+  await fetch('http://127.0.0.1:8142/api/pizzaorders/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
