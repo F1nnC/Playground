@@ -10,7 +10,7 @@ async function updateOrder(orderId) {
     address: addressInput.value,
   };
 
-  await fetch(`https://playgroundproject.duckdns.org/api/pizzaorders/${orderId}`, {
+  await fetch(`https://playgroundproject.duckdns.org/api/pizza/${orderId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -46,15 +46,18 @@ function updateOrderButton() {
 // Function to handle the "Delete" button click event
 // Function to handle the "Delete" button click event
 async function deleteOrder(orderId) {
+  const deleteRequestOptions = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  };
+  
+  await fetch(`https://playgroundproject.duckdns.org/api/pizzaorders/${orderId}`, deleteRequestOptions);
   if (confirm("Are you sure you want to delete this order?")) {
-    const deleteRequestOptions = {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    };
-
-    await fetch(`https://playgroundproject.duckdns.org/api/pizzaorders/${orderId}`, deleteRequestOptions);
+    await fetch(`https://playgroundproject.duckdns.org/api/pizzaorders/${orderId}`, {
+      method: 'DELETE'
+    });
 
     populateTable();
   }

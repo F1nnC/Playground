@@ -84,7 +84,7 @@ let gameActive = true;
 let currentPlayer = "X";
 
 let gameState = ["", "", "", "", "", "", "", "", ""];
-
+// Display the message for the winning
 const winningMessage = () => `Player ${currentPlayer} has won!`;
 const drawMessage = () => `Game ended in a draw!`;
 const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
@@ -93,7 +93,7 @@ statusDisplay.innerHTML = currentPlayerTurn();
 
 document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellClick));
 document.querySelector('.game--restart').addEventListener('click', handleRestartGame);
-
+// When the cell is clicked it will alternate through X and O and then show that character when the cell is interacted with
 function handleCellClick(clickedCellEvent) {   
         const clickedCell = clickedCellEvent.target;
         const clickedCellIndex = parseInt(
@@ -113,7 +113,7 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
         gameState[clickedCellIndex] = currentPlayer;
         clickedCell.innerHTML = currentPlayer;
     }
-
+// These are the winning conditions based on the user's input
     const winningConditions = [
         [0, 1, 2],
         [3, 4, 5],
@@ -139,12 +139,13 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
                 break
             }
         }
+    // Using iteration to check and see if the game has been won
     if (roundWon) {
         statusDisplay.innerHTML = winningMessage();
         gameActive = false;
         return;
     }
-
+    // Reference the winning conditions and check the list for the conditions and show the message in the CSS
     let roundDraw = !gameState.includes("");
     if (roundDraw) {
         statusDisplay.innerHTML = drawMessage();
@@ -154,12 +155,12 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
 
     handlePlayerChange();
 }
-
+// Checking the current player
 function handlePlayerChange() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     statusDisplay.innerHTML = currentPlayerTurn();
 }
-
+// When the restart button is clicked, the game is restarted
 function handleRestartGame() {
     gameActive = true;
     currentPlayer = "X";
