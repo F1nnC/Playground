@@ -20,14 +20,15 @@
             },
         };
 
-    // I copied and pasted from rapid api
+    // I copied and pasted from rapid api above 
+
         fetch(url, headers)
         .then(response => {
             if (response.status !== 200) {
                 const errorMsg = 'Database response error: ' + response.status;
                 console.log(errorMsg);
             }
-
+        // The code above fetched data from the api itself, and the const made it so it is permanent 
 
             // I assigned different elements to different data, such as the name of the reigon,
             response.json().then(data => {
