@@ -10,7 +10,7 @@ async function updateOrder(orderId) {
     address: addressInput.value,
   };
 
-  await fetch(`http://127.0.0.1:8142/api/pizzaorders/${orderId}`, {
+  await fetch(`https://playgroundproject.duckdns.org/api/pizza/${orderId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ async function updateOrder(orderId) {
 
 // Function to populate the table with orders from the backend
 async function populateTable() {
-  const response = await fetch('http://127.0.0.1:8142/api/pizzaorders/');
+  const response = await fetch('https://playgroundproject.duckdns.org/api/pizza/');
   const orders = await response.json();
 
   const tbody = document.getElementById("tbody");
@@ -46,15 +46,18 @@ function updateOrderButton() {
 // Function to handle the "Delete" button click event
 // Function to handle the "Delete" button click event
 async function deleteOrder(orderId) {
+  const deleteRequestOptions = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  };
+  
+  await fetch(`https://playgroundproject.duckdns.org/api/pizza/${orderId}`, deleteRequestOptions);
   if (confirm("Are you sure you want to delete this order?")) {
-    const deleteRequestOptions = {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    };
-
-    await fetch(`http://127.0.0.1:8142/api/pizzaorders/${orderId}`, deleteRequestOptions);
+    await fetch(`https://playgroundproject.duckdns.org/api/pizza/${orderId}`, {
+      method: 'DELETE'
+    });
 
     populateTable();
   }
@@ -112,7 +115,7 @@ async function addOrder() {
     address: addressInput.value,
   };
 
-  await fetch('http://127.0.0.1:8142/api/pizzaorders/', {
+  await fetch('https://playgroundproject.duckdns.org/api/pizza/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
